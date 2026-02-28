@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoEco — Weather Station Network</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       LoEco Landing Page — Dark map theme
+       Matches the DivumWX-inspired dashboard aesthetic
+       ============================================================ */
+    :root {
+      --bg-primary:   #0a0a1a;
+      --bg-secondary: #111128;
+      --bg-card:      #161637;
+      --border:       #252555;
+      --text-primary: #e8e8f0;
+      --text-muted:   #8888aa;
+      --text-dim:     #555577;
+      --accent-blue:  #45b7d1;
+      --accent-green: #4ecdc4;
+      --accent-red:   #ff6b6b;
+      --radius:       12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* -- Header ------------------------------------------------ */
+    .header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      z-index: 1000;
+      flex-shrink: 0;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+      color: #000;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .site-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .site-title span {
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .station-count {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .station-count .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* -- Map container ----------------------------------------- */
+    #map {
+      flex: 1;
+      background: var(--bg-primary);
+    }
+
+    /* -- Override Leaflet tile brightness for dark theme -------- */
+    .leaflet-tile-pane {
+      filter: brightness(0.7) contrast(1.1) saturate(0.7);
+    }
+
+    .leaflet-control-attribution {
+      background: rgba(10, 10, 26, 0.85) !important;
+      color: var(--text-dim) !important;
+      font-size: 0.6rem !important;
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+    .leaflet-control-attribution a {
+      color: var(--accent-blue) !important;
+    }
+    .leaflet-control-zoom a {
+      background: var(--bg-card) !important;
+      color: var(--text-primary) !important;
+      border-color: var(--border) !important;
+    }
+    .leaflet-control-zoom a:hover {
+      background: var(--bg-secondary) !important;
+    }
+
+    /* -- Custom temperature marker ----------------------------- */
+    .temp-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .temp-marker:hover {
+      transform: scale(1.12);
+    }
+
+    .temp-bubble {
+      background: var(--bg-card);
+      border: 2px solid var(--accent-blue);
+      border-radius: 10px;
+      padding: 6px 10px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(69, 183, 209, 0.25),
+                  0 0 30px rgba(69, 183, 209, 0.08);
+      min-width: 70px;
+      position: relative;
+    }
+    .temp-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 7px solid var(--accent-blue);
+    }
+
+    .temp-wind {
+        font-size: 11px;
+        font-weight: 600;
+        color: #94a3b8;
+        line-height: 1.2;
+        margin-bottom: 1px;
+      }
+      .temp-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+    .temp-unit {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    .temp-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .temp-pin {
+      width: 3px;
+      height: 10px;
+      background: var(--accent-blue);
+      opacity: 0.5;
+    }
+    .temp-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-blue);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(69, 183, 209, 0.6);
+    }
+
+    /* Color coding by temperature */
+    .temp-cold .temp-bubble    { border-color: #74b9ff; }
+    .temp-cold .temp-bubble::after { border-top-color: #74b9ff; }
+    .temp-cold .temp-pin       { background: #74b9ff; }
+    .temp-cold .temp-dot       { background: #74b9ff; box-shadow: 0 0 8px rgba(116, 185, 255, 0.6); }
+    .temp-cold .temp-bubble    { box-shadow: 0 4px 20px rgba(116, 185, 255, 0.25), 0 0 30px rgba(116, 185, 255, 0.08); }
+
+    .temp-cool .temp-bubble    { border-color: #45b7d1; }
+    .temp-cool .temp-bubble::after { border-top-color: #45b7d1; }
+    .temp-cool .temp-pin       { background: #45b7d1; }
+    .temp-cool .temp-dot       { background: #45b7d1; box-shadow: 0 0 8px rgba(69, 183, 209, 0.6); }
+
+    .temp-mild .temp-bubble    { border-color: #4ecdc4; }
+    .temp-mild .temp-bubble::after { border-top-color: #4ecdc4; }
+    .temp-mild .temp-pin       { background: #4ecdc4; }
+    .temp-mild .temp-dot       { background: #4ecdc4; box-shadow: 0 0 8px rgba(78, 205, 196, 0.6); }
+    .temp-mild .temp-bubble    { box-shadow: 0 4px 20px rgba(78, 205, 196, 0.25), 0 0 30px rgba(78, 205, 196, 0.08); }
+
+    .temp-warm .temp-bubble    { border-color: #f9ca24; }
+    .temp-warm .temp-bubble::after { border-top-color: #f9ca24; }
+    .temp-warm .temp-pin       { background: #f9ca24; }
+    .temp-warm .temp-dot       { background: #f9ca24; box-shadow: 0 0 8px rgba(249, 202, 36, 0.6); }
+    .temp-warm .temp-bubble    { box-shadow: 0 4px 20px rgba(249, 202, 36, 0.25), 0 0 30px rgba(249, 202, 36, 0.08); }
+
+    .temp-hot .temp-bubble     { border-color: #ff6b6b; }
+    .temp-hot .temp-bubble::after  { border-top-color: #ff6b6b; }
+    .temp-hot .temp-pin        { background: #ff6b6b; }
+    .temp-hot .temp-dot        { background: #ff6b6b; box-shadow: 0 0 8px rgba(255, 107, 107, 0.6); }
+    .temp-hot .temp-bubble     { box-shadow: 0 4px 20px rgba(255, 107, 107, 0.25), 0 0 30px rgba(255, 107, 107, 0.08); }
+
+    /* -- Popup override ---------------------------------------- */
+    .leaflet-popup-content-wrapper {
+      background: var(--bg-card) !important;
+      border: 1px solid var(--border) !important;
+      border-radius: var(--radius) !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+      color: var(--text-primary) !important;
+    }
+    .leaflet-popup-tip {
+      background: var(--bg-card) !important;
+      border: 1px solid var(--border) !important;
+    }
+    .leaflet-popup-content {
+      margin: 0.8rem 1rem !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.85rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .popup-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+    .popup-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-bottom: 0.6rem;
+    }
+    .popup-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.35rem 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .popup-stat {
+      display: flex;
+      justify-content: space-between;
+    }
+    .popup-stat-label {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+    .popup-stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+    .popup-link {
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+      color: #000;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .popup-link:hover { opacity: 0.85; }
+
+    /* -- Loading overlay --------------------------------------- */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      transition: opacity 0.4s ease;
+    }
+    .loading-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* -- Error state ------------------------------------------ */
+    .error-banner {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--bg-card);
+      border: 1px solid var(--accent-red);
+      color: var(--text-primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      z-index: 2000;
+      box-shadow: 0 4px 20px rgba(255, 107, 107, 0.2);
+      display: none;
+    }
+
+    /* -- Responsive -------------------------------------------- */
+    @media (max-width: 600px) {
+      .header { padding: 0.6rem 1rem; }
+      .site-title { font-size: 1rem; }
+      .site-title span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- Error banner -->
+  <div class="error-banner" id="error-banner"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo-badge">LoEco</div>
+      <div class="site-title">
+        Weather Station Network
+        <span>Real-time meteorological monitoring</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="station-count">
+        <div class="dot"></div>
+        <span id="station-count">— stations online</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- MarkerCluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <script>
+    // =========================================================
+    // LoEco — Map Landing Page
+    // Loads stations_summary.json and creates temperature markers
+    // =========================================================
+
+    const BASE_URL = '.';  // relative to gh-pages root
+
+    // Temperature → color class
+    function tempClass(t) {
+      if (t == null) return 'temp-cool';
+      if (t < 0)   return 'temp-cold';
+      if (t < 10)  return 'temp-cool';
+      if (t < 20)  return 'temp-mild';
+      if (t < 30)  return 'temp-warm';
+      return 'temp-hot';
+    }
+
+    // Create custom DivIcon marker
+    function createTempMarker(station) {
+      const tc = tempClass(station.temperature);
+      const tempStr = station.temperature != null
+        ? station.temperature.toFixed(1)
+        : '—';
+      const windMs = station.metrics && station.metrics.wind_speed_ms != null
+        ? station.metrics.wind_speed_ms
+        : null;
+      const windStr = windMs != null ? windMs.toFixed(1) + ' m/s' : null;
+
+      const icon = L.divIcon({
+        className: '',  // no default leaflet styling
+        html: `
+          <div class="temp-marker ${tc}">
+            <div class="temp-bubble">
+              <div class="temp-value">${tempStr}<span class="temp-unit">°C</span></div>
+              ${windStr ? `<div class="temp-wind">${windStr}</div>` : ''}
+              <div class="temp-name">${station.display_name}</div>
+            </div>
+            <div class="temp-pin"></div>
+            <div class="temp-dot"></div>
+          </div>
+        `,
+        iconSize: [90, 90],
+        iconAnchor: [45, 80],
+        popupAnchor: [0, -70],
+      });
+
+      return icon;
+    }
+
+    // Build popup HTML
+    function buildPopup(s) {
+      const metrics = s.metrics || {};
+      const rows = [];
+
+      if (metrics.temperature_c != null)
+        rows.push(['Temp', metrics.temperature_c.toFixed(1) + '°C']);
+      if (metrics.wbgt_c != null)
+        rows.push(['WBGT', metrics.wbgt_c.toFixed(1) + '°C']);
+      if (metrics.humidity_pct != null)
+        rows.push(['Humidity', metrics.humidity_pct.toFixed(0) + '%']);
+      if (metrics.pressure_hpa != null)
+        rows.push(['Pressure', metrics.pressure_hpa.toFixed(1) + ' hPa']);
+      if (metrics.wind_speed_ms != null)
+        rows.push(['Wind', metrics.wind_speed_ms.toFixed(1) + ' m/s']);
+      if (metrics.rain_rate_mmhr != null)
+        rows.push(['Rain rate', metrics.rain_rate_mmhr.toFixed(1) + ' mm/h']);
+      if (metrics.battery_voltage_v != null)
+        rows.push(['Battery', metrics.battery_voltage_v.toFixed(2) + ' V']);
+
+      const statsHtml = rows.map(([label, val]) =>
+        `<div class="popup-stat">
+           <span class="popup-stat-label">${label}</span>
+           <span class="popup-stat-value">${val}</span>
+         </div>`
+      ).join('');
+
+      return `
+        <div class="popup-title">${s.display_name}</div>
+        <div class="popup-meta">${s.sensor_type} · ${s.owner}</div>
+        <div class="popup-stats">${statsHtml}</div>
+        <a class="popup-link" href="stations/${s.id}/index.html">Open Dashboard →</a>
+      `;
+    }
+
+    // Initialize map
+    async function init() {
+      const loadingEl = document.getElementById('loading');
+      const errorEl = document.getElementById('error-banner');
+
+      try {
+        // Fetch station summary
+        const res = await fetch(`${BASE_URL}/stations_summary.json`);
+        if (!res.ok) throw new Error(`Failed to load stations_summary.json (${res.status})`);
+        const stations = await res.json();
+
+        // Update station count
+        document.getElementById('station-count').textContent =
+          `${stations.length} station${stations.length !== 1 ? 's' : ''} online`;
+
+        // Create map
+        const map = L.map('map', {
+          zoomControl: true,
+          attributionControl: true,
+          maxBounds: [[48.6, 1.1], [59.7, 12.5]],
+          maxBoundsViscosity: 0.6,
+          minZoom: 7,
+        });
+
+        // Dark tile layer (CartoDB Dark Matter)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+          subdomains: 'abcd',
+          maxZoom: 19,
+        }).addTo(map);
+
+        // Remove tile filter since we use a dark basemap
+        document.querySelector('.leaflet-tile-pane').style.filter = 'none';
+
+        // Marker cluster group with custom settings
+        const clusterGroup = L.markerClusterGroup({
+          showCoverageOnHover: false,
+          maxClusterRadius: 40,
+          spiderfyOnMaxZoom: true,
+          iconCreateFunction: function(cluster) {
+            const markers = cluster.getAllChildMarkers();
+            const temps = markers
+              .map(m => m.options._temperature)
+              .filter(t => t != null);
+            const avgTemp = temps.length
+              ? temps.reduce((a, b) => a + b, 0) / temps.length
+              : null;
+            const tc = tempClass(avgTemp);
+            const tempStr = avgTemp != null ? avgTemp.toFixed(1) : '—';
+
+            return L.divIcon({
+              className: '',
+              html: `
+                <div class="temp-marker ${tc}">
+                  <div class="temp-bubble">
+                    <div class="temp-value">${tempStr}<span class="temp-unit">°C</span></div>
+                    <div class="temp-name">${markers.length} stations</div>
+                  </div>
+                  <div class="temp-pin"></div>
+                  <div class="temp-dot"></div>
+                </div>
+              `,
+              iconSize: [70, 50],
+              iconAnchor: [35, 60],
+            });
+          }
+        });
+
+        // Add markers
+        const bounds = [];
+        stations.forEach(s => {
+          const marker = L.marker([s.latitude, s.longitude], {
+            icon: createTempMarker(s),
+            _temperature: s.temperature,
+          });
+
+          marker.bindPopup(buildPopup(s), {
+            maxWidth: 280,
+            minWidth: 220,
+          });
+
+          // Click marker → open dashboard (double click or after popup shows)
+          marker.on('dblclick', () => {
+            window.location.href = `stations/${s.id}/index.html`;
+          });
+
+          clusterGroup.addLayer(marker);
+          bounds.push([s.latitude, s.longitude]);
+        });
+
+        map.addLayer(clusterGroup);
+
+        // Centre on the Netherlands
+        map.setView([52.3, 5.3], 8);
+
+        // Hide loading
+        loadingEl.classList.add('hidden');
+
+      } catch (err) {
+        console.error('Init error:', err);
+        loadingEl.classList.add('hidden');
+        errorEl.textContent = `⚠ ${err.message}`;
+        errorEl.style.display = 'block';
+
+        // Still show the map with a default view
+        const map = L.map('map').setView([52.12, 5.12], 12);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          attribution: '&copy; OSM &copy; CARTO',
+          subdomains: 'abcd',
+          maxZoom: 19,
+        }).addTo(map);
+        document.querySelector('.leaflet-tile-pane').style.filter = 'none';
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

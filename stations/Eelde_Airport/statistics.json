@@ -1,0 +1,53 @@
+{
+  "generated_utc": "2026-02-28 22:20 UTC",
+  "window_days": 7,
+  "record_count": 2014,
+  "metrics": {
+    "temperature_c": {
+      "label": "Temperatuur",
+      "unit": "°C",
+      "color": "#ff6b6b",
+      "accent": "#ff4d8d",
+      "latest": 5.4,
+      "mean": 9.82,
+      "min": 3.1,
+      "max": 18.9,
+      "std": 2.6,
+      "trend": "down",
+      "trend_value": -3.4,
+      "arrow": "↓"
+    },
+    "humidity_pct": {
+      "label": "Rel.vochtigheid",
+      "unit": "%",
+      "color": "#4ecdc4",
+      "accent": "#2dd4bf",
+      "latest": 91.0,
+      "mean": 92.98,
+      "min": 72.0,
+      "max": 99.0,
+      "std": 5.78,
+      "trend": "up",
+      "trend_value": 1.0,
+      "arrow": "→"
+    },
+    "pressure_hpa": {
+      "label": "Luchtdruk",
+      "unit": "hPa",
+      "color": "#45b7d1",
+      "accent": "#2ea8e6",
+      "latest": 1019.6,
+      "mean": 1014.36,
+      "min": 1009.3,
+      "max": 1019.6,
+      "std": 3.11,
+      "trend": "up",
+      "trend_value": 7.3,
+      "arrow": "↑"
+    }
+  },
+  "date_range": {
+    "start": "2026-02-21 22:25",
+    "end": "2026-02-28 22:10"
+  }
+}

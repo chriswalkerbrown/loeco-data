@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoEco — Station Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================================================
+       LoEco Dashboard — DivumWX-inspired dark theme
+       Designed after Ian Millard's DivumWX / Weather34 skin
+       =========================================================== */
+    :root {
+      --bg-primary:   #0a0a1a;
+      --bg-secondary: #111128;
+      --bg-card:      #161637;
+      --bg-card-alt:  #1a1a3e;
+      --border:       #252555;
+      --border-glow:  rgba(100, 100, 255, 0.08);
+      --text-primary: #e8e8f0;
+      --text-muted:   #8888aa;
+      --text-dim:     #555577;
+      --accent-blue:  #45b7d1;
+      --accent-green: #4ecdc4;
+      --accent-red:   #ff6b6b;
+      --radius:       12px;
+      --radius-sm:    8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* Subtle animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(69, 183, 209, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(78, 205, 196, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(255, 107, 107, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* -- Header ------------------------------------------------ */
+    .header {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .back-link:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-blue);
+      background: rgba(69, 183, 209, 0.06);
+    }
+    .back-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .station-badge {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+      color: #000;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .station-name {
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+    .station-name span {
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .header-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .header-stat .label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+    .header-stat .value {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+      display: inline-block;
+      margin-right: 0.4rem;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* -- Main content ------------------------------------------ */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* -- Metric card grid -------------------------------------- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--card-accent, var(--border));
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-accent, var(--accent-blue));
+      opacity: 0.7;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .card-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--card-accent, var(--text-primary));
+      margin-bottom: 0.5rem;
+    }
+    .card-unit {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-left: 0.15rem;
+    }
+
+    .card-trend { margin-bottom: 0.75rem; }
+
+    .trend {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .trend-label {
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      margin-left: 0.25rem;
+      text-transform: uppercase;
+    }
+
+    .card-stats {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 0.65rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+    }
+    .stat-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+    }
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* -- Chart cards ------------------------------------------- */
+    .chart-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .chart-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .chart-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 1.25rem 0.5rem;
+    }
+    .chart-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .chart-container {
+      width: 100%;
+      height: 300px;
+      padding: 0 0.5rem 0.5rem;
+    }
+
+    /* -- Footer ------------------------------------------------ */
+    .footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+    .footer a:hover { text-decoration: underline; }
+    .footer-brand {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    /* -- Loading skeleton -------------------------------------- */
+    .skeleton-pulse {
+      background: linear-gradient(90deg,
+        var(--bg-card) 25%,
+        var(--bg-card-alt) 50%,
+        var(--bg-card) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .loading-message {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+    }
+
+    /* -- Responsive -------------------------------------------- */
+    @media (max-width: 768px) {
+      .header {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-right { flex-wrap: wrap; gap: 0.75rem; }
+      .card-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+      .card-value { font-size: 2rem; }
+      .container { padding: 1rem; }
+      .chart-container { height: 250px; }
+    }
+    @media (max-width: 480px) {
+      .card-grid { grid-template-columns: 1fr 1fr; }
+      .station-name { font-size: 1.1rem; }
+      .station-name span { display: block; margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== HEADER ====== -->
+  <header class="header">
+    <div class="header-left">
+      <a class="back-link" href="../../index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+        Map
+      </a>
+      <div class="station-badge" id="owner-badge">MeteoA</div>
+      <div class="station-name" id="station-title">
+        Loading…
+        <span id="station-subtitle">Fetching station data</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-stat">
+        <span class="label">Last update</span>
+        <span class="value"><span class="live-dot"></span><span id="last-update">—</span></span>
+      </div>
+      <div class="header-stat">
+        <span class="label">Date range</span>
+        <span class="value" id="date-range">—</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== MAIN ====== -->
+  <main class="container">
+    <section class="card-grid" id="card-grid">
+      <div class="loading-message">Loading station data…</div>
+    </section>
+    <section class="chart-grid" id="chart-grid"></section>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer-brand">LoEco Weather Dashboard</div>
+    <div>
+      <a href="https://www.meteoa.com" target="_blank">MeteoA</a> —
+      Smarter decisions through local weather intelligence
+    </div>
+  </footer>
+
+  <!-- ====== PLOTLY.JS ====== -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+
+  <script>
+    // ===========================================================
+    // LoEco Dashboard — Dynamic data loader
+    // Loads statistics.json and chart_data.json from same directory
+    // ===========================================================
+
+    // Card display order
+    const CARD_ORDER = [
+      'temperature_c', 'wbgt_c', 'dew_point_c', 'humidity_pct', 'feels_like_c',
+      'globe_temp_c', 'pressure_hpa', 'rain_rate_mmhr', 'wind_gust_ms', 'battery_voltage_v',
+    ];
+
+    // Chart display order
+    const CHART_ORDER = [
+      'temperature_c', 'wbgt_c', 'globe_temp_c', 'humidity_pct', 'pressure_hpa',
+      'wind_speed_ms', 'wind_gust_ms', 'wind_dir_deg',
+      'solar_wm2', 'rain_daily_mm',
+    ];
+
+    const WIND_DIR_KEYS = ['wind_dir_deg'];
+    const RAIN_KEYS     = ['rain_daily_mm'];
+
+    const COMPASS_TICKS = {
+      vals:   [0, 45, 90, 135, 180, 225, 270, 315, 360],
+      labels: ['N','NE','E','SE','S','SW','W','NW','N'],
+    };
+
+    // Station display names (override from stations_summary or fallback)
+    const STATION_NAMES = {
+      ecowitt_home: { title: 'EcoWitt WS2910', subtitle: 'Hoofdkantoor — Real-time monitoring', owner: 'MeteoA' },
+      loeco_ttn:    { title: 'LoRa TTN Node',   subtitle: 'Field test — LoRaWAN telemetry',    owner: 'MeteoA' },
+    };
+
+    function fmt(val, unit = '', precision = 1) {
+      if (val == null) return 'N/A';
+      try { return parseFloat(val).toFixed(precision) + unit; }
+      catch { return 'N/A'; }
+    }
+
+    function trendArrow(trend, trendValue, unit) {
+      let arrow, sign;
+      if (trend === 'up')        { arrow = '&#9650;'; sign = '+'; }
+      else if (trend === 'down') { arrow = '&#9660;'; sign = ''; }
+      else                       { arrow = '&#9654;'; sign = ''; }
+      return `<span class="trend">${arrow} ${sign}${fmt(trendValue, unit, 1)}<span class="trend-label">6h</span></span>`;
+    }
+
+    function buildCard(key, m) {
+      const prec = key === 'battery_voltage_v' ? 2 : 1;
+      return `
+        <div class="card" style="--card-accent: ${m.color}">
+          <div class="card-header">
+            <span class="card-title">${m.label}</span>
+          </div>
+          <div class="card-value">${fmt(m.latest, '', prec)}<span class="card-unit">${m.unit}</span></div>
+          <div class="card-trend">${trendArrow(m.trend, m.trend_value, m.unit)}</div>
+          <div class="card-stats">
+            <div class="stat"><span class="stat-label">Min</span><span class="stat-value">${fmt(m.min, '', prec)}</span></div>
+            <div class="stat"><span class="stat-label">Avg</span><span class="stat-value">${fmt(m.mean, '', prec)}</span></div>
+            <div class="stat"><span class="stat-label">Max</span><span class="stat-value">${fmt(m.max, '', prec)}</span></div>
+          </div>
+        </div>`;
+    }
+
+    function buildChartDiv(key, meta) {
+      return `
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">${meta.label || key} — Last 7 days</span>
+          </div>
+          <div class="chart-container" id="chart-${key}"></div>
+        </div>`;
+    }
+
+    // Plotly theme
+    const LAYOUT_BASE = {
+      paper_bgcolor: 'rgba(0,0,0,0)',
+      plot_bgcolor: '#111128',
+      font: { family: 'JetBrains Mono, monospace', size: 11, color: '#8888aa' },
+      margin: { l: 50, r: 20, t: 10, b: 40 },
+      xaxis: { gridcolor: '#252555', linecolor: '#252555', zerolinecolor: '#252555', type: 'date' },
+      yaxis: { gridcolor: '#252555', linecolor: '#252555', zerolinecolor: '#252555' },
+      legend: {
+        bgcolor: 'rgba(22,22,55,0.8)', bordercolor: '#252555', borderwidth: 1,
+        font: { size: 10, color: '#8888aa' }, orientation: 'h', y: -0.15,
+      },
+      hovermode: 'x unified',
+      hoverlabel: {
+        bgcolor: '#161637', bordercolor: '#252555',
+        font: { family: 'JetBrains Mono', size: 11, color: '#e8e8f0' },
+      },
+    };
+    const PLOTLY_CONFIG = { displayModeBar: false, responsive: true };
+
+    function renderCharts(chartData) {
+      CHART_ORDER.forEach(key => {
+        const el = document.getElementById('chart-' + key);
+        const d = chartData[key];
+        if (!el || !d) return;
+
+        const traces = [];
+
+        // Wind direction: scatter dots
+        if (WIND_DIR_KEYS.includes(key)) {
+          traces.push({
+            x: d.timestamps, y: d.raw, type: 'scatter', mode: 'markers',
+            name: 'Raw', marker: { color: d.color, size: 3, opacity: 0.6 },
+            hovertemplate: '%{y:.0f}°<extra></extra>',
+          });
+          if (d.avg_3h) {
+            traces.push({
+              x: d.timestamps, y: d.avg_3h, type: 'scatter', mode: 'lines',
+              name: '3h avg', line: { color: d.color, width: 2 },
+              hovertemplate: '%{y:.1f} ' + d.unit + '<extra>3h avg</extra>',
+            });
+          }
+          Plotly.newPlot(el, traces, {
+            ...LAYOUT_BASE,
+            yaxis: {
+              ...LAYOUT_BASE.yaxis,
+              title: { text: 'Direction', font: { size: 11 } },
+              range: [-10, 370],
+              tickmode: 'array',
+              tickvals: COMPASS_TICKS.vals,
+              ticktext: COMPASS_TICKS.labels,
+            },
+          }, PLOTLY_CONFIG);
+          return;
+        }
+
+        // Rainfall: bar chart
+        if (RAIN_KEYS.includes(key)) {
+          traces.push({
+            x: d.timestamps, y: d.raw, type: 'bar', name: d.label,
+            marker: { color: d.color, opacity: 0.7 },
+            hovertemplate: '%{y:.1f} ' + d.unit + '<extra></extra>',
+          });
+          Plotly.newPlot(el, traces, {
+            ...LAYOUT_BASE,
+            yaxis: { ...LAYOUT_BASE.yaxis, title: { text: d.label + ' (' + d.unit + ')', font: { size: 11 } } },
+            bargap: 0.05,
+          }, PLOTLY_CONFIG);
+          return;
+        }
+
+        // Standard line chart
+        traces.push({
+          x: d.timestamps, y: d.raw, type: 'scatter', mode: 'lines',
+          name: 'Raw', line: { color: d.color, width: 1.25 }, opacity: 0.8,
+          hovertemplate: '%{y:.1f} ' + d.unit + '<extra>Raw</extra>',
+        });
+        if (d.avg_3h) {
+          traces.push({
+            x: d.timestamps, y: d.avg_3h, type: 'scatter', mode: 'lines',
+            name: '3h avg', line: { color: d.accent, width: 1 },
+            hovertemplate: '%{y:.1f} ' + d.unit + '<extra>3h avg</extra>',
+          });
+        }
+        if (d.avg_24h) {
+          traces.push({
+            x: d.timestamps, y: d.avg_24h, type: 'scatter', mode: 'lines',
+            name: '24h avg', line: { color: d.color, width: 1, dash: 'dot' }, opacity: 0.5,
+            hovertemplate: '%{y:.1f} ' + d.unit + '<extra>24h avg</extra>',
+          });
+        }
+        Plotly.newPlot(el, traces, {
+          ...LAYOUT_BASE,
+          yaxis: { ...LAYOUT_BASE.yaxis, title: { text: d.label + ' (' + d.unit + ')', font: { size: 11 } } },
+        }, PLOTLY_CONFIG);
+      });
+
+      // Combined normalised chart
+      const combEl = document.getElementById('chart-combined');
+      if (!combEl) return;
+      const combTraces = [];
+      Object.keys(chartData).forEach(key => {
+        const d = chartData[key];
+        if (!d || !d.raw) return;
+        const vals = d.raw.map(v => v === null ? NaN : v);
+        const valid = vals.filter(v => !isNaN(v));
+        if (valid.length < 2) return;
+        const lo = Math.min(...valid), hi = Math.max(...valid);
+        if (hi === lo) return;
+        const normed = vals.map(v => isNaN(v) ? null : (v - lo) / (hi - lo));
+        combTraces.push({
+          x: d.timestamps, y: normed, type: 'scatter', mode: 'lines',
+          name: d.label, line: { color: d.color, width: 2 },
+          hovertemplate: d.label + ': %{y:.2f}<extra></extra>',
+        });
+      });
+      if (combTraces.length > 0) {
+        Plotly.newPlot(combEl, combTraces, {
+          ...LAYOUT_BASE,
+          yaxis: { ...LAYOUT_BASE.yaxis, title: { text: 'Normalised (0–1)', font: { size: 11 } }, range: [-0.05, 1.05] },
+        }, PLOTLY_CONFIG);
+      }
+    }
+
+    // Main init
+    async function init() {
+      // Detect station ID from URL path
+      const pathParts = window.location.pathname.split('/').filter(Boolean);
+      const stationsIdx = pathParts.indexOf('stations');
+      const stationId = stationsIdx >= 0 ? pathParts[stationsIdx + 1] : 'unknown';
+
+      // Set station header info
+      const stationInfo = STATION_NAMES[stationId] || {
+        title: stationId,
+        subtitle: 'Weather station dashboard',
+        owner: 'LoEco',
+      };
+      document.getElementById('station-title').innerHTML =
+        `${stationInfo.title} <span>${stationInfo.subtitle}</span>`;
+      document.getElementById('owner-badge').textContent = stationInfo.owner;
+      document.title = `LoEco — ${stationInfo.title}`;
+
+      try {
+        // Load statistics and chart data from same directory
+        const [statsRes, chartRes] = await Promise.all([
+          fetch('./statistics.json'),
+          fetch('./chart_data.json'),
+        ]);
+
+        if (!statsRes.ok) throw new Error(`statistics.json: ${statsRes.status}`);
+        if (!chartRes.ok) throw new Error(`chart_data.json: ${chartRes.status}`);
+
+        const stats = await statsRes.json();
+        const chartData = await chartRes.json();
+
+        // Update header
+        document.getElementById('last-update').textContent = stats.generated_utc || '—';
+        const dr = stats.date_range || {};
+        document.getElementById('date-range').textContent =
+          `${dr.start || '—'} → ${dr.end || '—'}`;
+
+        // Build metric cards
+        const metrics = stats.metrics || {};
+        let cardsHtml = '';
+        CARD_ORDER.forEach(key => {
+          if (metrics[key]) cardsHtml += buildCard(key, metrics[key]);
+        });
+        document.getElementById('card-grid').innerHTML = cardsHtml;
+
+        // Build chart containers
+        let chartsHtml = '';
+        CHART_ORDER.forEach(key => {
+          if (chartData[key]) chartsHtml += buildChartDiv(key, chartData[key]);
+        });
+        // Combined overview
+        if (Object.keys(chartData).length > 1) {
+          chartsHtml += `
+            <div class="chart-card">
+              <div class="chart-header">
+                <span class="chart-title">Combined Overview — Normalised</span>
+              </div>
+              <div class="chart-container" id="chart-combined"></div>
+            </div>`;
+        }
+        document.getElementById('chart-grid').innerHTML = chartsHtml;
+
+        // Render charts
+        renderCharts(chartData);
+
+      } catch (err) {
+        console.error('Dashboard load error:', err);
+        document.getElementById('card-grid').innerHTML = `
+          <div class="loading-message">
+            ⚠ Failed to load station data: ${err.message}<br>
+            <small style="color: var(--text-dim)">Ensure statistics.json and chart_data.json exist in this directory.</small>
+          </div>`;
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
