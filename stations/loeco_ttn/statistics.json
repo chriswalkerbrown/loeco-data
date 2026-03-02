@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-01 22:25 UTC",
+  "generated_utc": "2026-03-02 01:32 UTC",
   "window_days": 7,
   "record_count": 264,
   "metrics": {
@@ -8,13 +8,13 @@
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 11.13,
-      "mean": 10.78,
+      "latest": 9.17,
+      "mean": 10.8,
       "min": 4.62,
       "max": 18.32,
-      "std": 2.65,
+      "std": 2.64,
       "trend": "down",
-      "trend_value": -0.68,
+      "trend_value": -2.25,
       "arrow": "↓"
     },
     "humidity_pct": {
@@ -22,13 +22,13 @@
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 72.2,
-      "mean": 88.87,
+      "latest": 77.5,
+      "mean": 88.63,
       "min": 59.0,
       "max": 99.9,
-      "std": 10.01,
+      "std": 10.08,
       "trend": "up",
-      "trend_value": 3.8,
+      "trend_value": 5.5,
       "arrow": "↑"
     },
     "battery_voltage_v": {
@@ -43,20 +43,20 @@
       "std": 0.01,
       "trend": "stable",
       "trend_value": -0.0,
-      "arrow": "→"
+      "arrow": "↓"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 6.31,
-      "mean": 8.91,
+      "latest": 5.44,
+      "mean": 8.89,
       "min": 3.74,
       "max": 12.76,
-      "std": 2.24,
-      "trend": "up",
-      "trend_value": 0.13,
+      "std": 2.26,
+      "trend": "down",
+      "trend_value": -1.11,
       "arrow": "↓"
     },
     "wbgt_c": {
@@ -64,18 +64,18 @@
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 9.05,
-      "mean": 9.94,
+      "latest": 7.37,
+      "mean": 9.95,
       "min": 4.09,
       "max": 16.7,
       "std": 2.43,
       "trend": "down",
-      "trend_value": -0.41,
+      "trend_value": -1.96,
       "arrow": "↓"
     }
   },
   "date_range": {
-    "start": "2026-02-23 00:01",
-    "end": "2026-03-01 21:39"
+    "start": "2026-02-23 01:41",
+    "end": "2026-03-02 01:19"
   }
 }
