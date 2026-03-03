@@ -6,15 +6,15 @@
     "sensor_type": "ttn-node",
     "latitude": 52.1234,
     "longitude": 5.1334,
-    "temperature": 9.1,
+    "temperature": 12.31,
     "metrics": {
-      "temperature_c": 9.1,
-      "humidity_pct": 83.4,
+      "temperature_c": 12.31,
+      "humidity_pct": 74.4,
       "battery_voltage_v": 3.0,
-      "dew_point_c": 6.43,
-      "wbgt_c": 8.57
+      "dew_point_c": 7.88,
+      "wbgt_c": 11.3
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "ecowitt_home",
@@ -23,23 +23,23 @@
     "sensor_type": "ecowitt-wh65",
     "latitude": 52.1234,
     "longitude": 5.1234,
-    "temperature": 12.0,
+    "temperature": 13.5,
     "metrics": {
-      "temperature_c": 12.0,
-      "humidity_pct": 73.0,
-      "pressure_hpa": 1023.9,
-      "dew_point_c": 7.2,
-      "feels_like_c": 12.0,
-      "wind_speed_ms": 0.4,
-      "wind_gust_ms": 1.8,
-      "wind_dir_deg": 134.0,
-      "solar_wm2": 120.1,
+      "temperature_c": 13.5,
+      "humidity_pct": 70.0,
+      "pressure_hpa": 1024.6,
+      "dew_point_c": 8.2,
+      "feels_like_c": 13.5,
+      "wind_speed_ms": 0.0,
+      "wind_gust_ms": 0.0,
+      "wind_dir_deg": 51.0,
+      "solar_wm2": 301.7,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 15.22,
-      "globe_temp_c": 29.86
+      "wbgt_c": 17.99,
+      "globe_temp_c": 38.2
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "Eelde_Airport",
@@ -48,13 +48,13 @@
     "sensor_type": "ecowitt-Temponly",
     "latitude": 53.1284,
     "longitude": 6.5848,
-    "temperature": 13.1,
+    "temperature": 16.2,
     "metrics": {
-      "temperature_c": 13.1,
-      "humidity_pct": 80.0,
-      "pressure_hpa": 1024.5
+      "temperature_c": 16.2,
+      "humidity_pct": 74.0,
+      "pressure_hpa": 1025.7
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "AMS_VU_Roof_Top",
@@ -63,23 +63,23 @@
     "sensor_type": "ecowitt-Wittboy",
     "latitude": 52.3343,
     "longitude": 4.86683,
-    "temperature": 9.5,
+    "temperature": 13.9,
     "metrics": {
-      "temperature_c": 9.5,
-      "humidity_pct": 76.0,
-      "pressure_hpa": 1018.1,
-      "dew_point_c": 5.5,
-      "feels_like_c": 8.4,
-      "wind_speed_ms": 8.3,
-      "wind_gust_ms": 9.4,
-      "wind_dir_deg": 230.0,
-      "solar_wm2": 87.5,
+      "temperature_c": 13.9,
+      "humidity_pct": 66.0,
+      "pressure_hpa": 1019.0,
+      "dew_point_c": 7.7,
+      "feels_like_c": 13.9,
+      "wind_speed_ms": 8.6,
+      "wind_gust_ms": 11.5,
+      "wind_dir_deg": 163.0,
+      "solar_wm2": 293.9,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 7.71,
-      "globe_temp_c": 12.48
+      "wbgt_c": 11.54,
+      "globe_temp_c": 18.45
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "BON006_Kralendijk_Haven",
@@ -88,23 +88,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.148319,
     "longitude": -68.276546,
-    "temperature": 26.6,
+    "temperature": 26.5,
     "metrics": {
-      "temperature_c": 26.6,
+      "temperature_c": 26.5,
       "humidity_pct": 78.0,
-      "pressure_hpa": 1009.0,
+      "pressure_hpa": 1009.9,
       "dew_point_c": 22.4,
-      "feels_like_c": 26.6,
-      "wind_speed_ms": 21.7,
-      "wind_gust_ms": 34.9,
-      "wind_dir_deg": 107.0,
-      "solar_wm2": 0.0,
+      "feels_like_c": 26.5,
+      "wind_speed_ms": 18.0,
+      "wind_gust_ms": 23.8,
+      "wind_dir_deg": 117.0,
+      "solar_wm2": 0.3,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 20.57,
-      "globe_temp_c": 28.44
+      "wbgt_c": 21.69,
+      "globe_temp_c": 28.55
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "BON003_Rincon",
@@ -113,23 +113,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.233157,
     "longitude": -68.331587,
-    "temperature": 26.2,
+    "temperature": 26.0,
     "metrics": {
-      "temperature_c": 26.2,
-      "humidity_pct": 82.0,
-      "pressure_hpa": 1010.0,
+      "temperature_c": 26.0,
+      "humidity_pct": 83.0,
+      "pressure_hpa": 1010.7,
       "dew_point_c": 22.9,
-      "feels_like_c": 26.2,
-      "wind_speed_ms": 4.9,
-      "wind_gust_ms": 9.4,
-      "wind_dir_deg": 114.0,
-      "solar_wm2": 0.0,
+      "feels_like_c": 26.0,
+      "wind_speed_ms": 6.4,
+      "wind_gust_ms": 11.2,
+      "wind_dir_deg": 95.0,
+      "solar_wm2": 0.1,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 26.32,
-      "globe_temp_c": 30.56
+      "wbgt_c": 25.67,
+      "globe_temp_c": 29.73
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "BON002_Washington_Slagbaai",
@@ -138,23 +138,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.269665,
     "longitude": -68.345604,
-    "temperature": 26.5,
+    "temperature": 26.4,
     "metrics": {
-      "temperature_c": 26.5,
-      "humidity_pct": 82.0,
-      "pressure_hpa": 1009.2,
-      "dew_point_c": 23.3,
-      "feels_like_c": 26.5,
-      "wind_speed_ms": 10.3,
-      "wind_gust_ms": 18.4,
-      "wind_dir_deg": 75.0,
-      "solar_wm2": 0.0,
+      "temperature_c": 26.4,
+      "humidity_pct": 84.0,
+      "pressure_hpa": 1010.0,
+      "dew_point_c": 23.5,
+      "feels_like_c": 26.4,
+      "wind_speed_ms": 10.9,
+      "wind_gust_ms": 14.8,
+      "wind_dir_deg": 87.0,
+      "solar_wm2": 0.3,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 24.78,
-      "globe_temp_c": 29.36
+      "wbgt_c": 24.68,
+      "globe_temp_c": 29.17
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "BON004_Bonaire_Galileo",
@@ -163,23 +163,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.213874,
     "longitude": -68.323051,
-    "temperature": 26.0,
+    "temperature": 26.1,
     "metrics": {
-      "temperature_c": 26.0,
+      "temperature_c": 26.1,
       "humidity_pct": 81.0,
-      "pressure_hpa": 1011.2,
-      "dew_point_c": 22.4,
-      "feels_like_c": 26.0,
+      "pressure_hpa": 1012.0,
+      "dew_point_c": 22.6,
+      "feels_like_c": 26.1,
       "wind_speed_ms": 14.8,
       "wind_gust_ms": 23.8,
-      "wind_dir_deg": 102.0,
-      "solar_wm2": 0.0,
+      "wind_dir_deg": 106.0,
+      "solar_wm2": 0.1,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 22.51,
-      "globe_temp_c": 28.28
+      "wbgt_c": 22.69,
+      "globe_temp_c": 28.39
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "BON007_Sur",
@@ -199,23 +199,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.17686,
     "longitude": -68.227141,
-    "temperature": 26.8,
+    "temperature": 26.7,
     "metrics": {
-      "temperature_c": 26.8,
-      "humidity_pct": 79.0,
-      "pressure_hpa": 1009.7,
-      "dew_point_c": 22.8,
-      "feels_like_c": 29.2,
-      "wind_speed_ms": 18.1,
-      "wind_gust_ms": 27.7,
-      "wind_dir_deg": 89.0,
-      "solar_wm2": 0.0,
+      "temperature_c": 26.7,
+      "humidity_pct": 80.0,
+      "pressure_hpa": 1010.4,
+      "dew_point_c": 22.9,
+      "feels_like_c": 28.2,
+      "wind_speed_ms": 22.0,
+      "wind_gust_ms": 34.9,
+      "wind_dir_deg": 97.0,
+      "solar_wm2": 0.1,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 22.04,
-      "globe_temp_c": 28.86
+      "wbgt_c": 20.85,
+      "globe_temp_c": 28.54
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "SAB006_The_Harbor",
@@ -224,23 +224,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.616269,
     "longitude": -63.250914,
-    "temperature": 25.9,
+    "temperature": 26.0,
     "metrics": {
-      "temperature_c": 25.9,
-      "humidity_pct": 73.0,
-      "pressure_hpa": 1012.8,
-      "dew_point_c": 20.7,
-      "feels_like_c": 25.9,
-      "wind_speed_ms": 18.2,
-      "wind_gust_ms": 29.5,
-      "wind_dir_deg": 104.0,
-      "solar_wm2": 0.0,
+      "temperature_c": 26.0,
+      "humidity_pct": 71.0,
+      "pressure_hpa": 1013.8,
+      "dew_point_c": 20.3,
+      "feels_like_c": 26.0,
+      "wind_speed_ms": 24.8,
+      "wind_gust_ms": 34.9,
+      "wind_dir_deg": 101.0,
+      "solar_wm2": 7.6,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 20.3,
-      "globe_temp_c": 27.89
+      "wbgt_c": 18.04,
+      "globe_temp_c": 27.66
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "SAB005_The_Bottom",
@@ -249,23 +249,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.62597,
     "longitude": -63.247604,
-    "temperature": 23.8,
+    "temperature": 23.7,
     "metrics": {
-      "temperature_c": 23.8,
-      "humidity_pct": 81.0,
-      "pressure_hpa": 1012.3,
-      "dew_point_c": 20.3,
-      "feels_like_c": 23.8,
-      "wind_speed_ms": 7.6,
-      "wind_gust_ms": 11.2,
-      "wind_dir_deg": 31.0,
-      "solar_wm2": 0.0,
+      "temperature_c": 23.7,
+      "humidity_pct": 77.0,
+      "pressure_hpa": 1013.3,
+      "dew_point_c": 19.6,
+      "feels_like_c": 23.7,
+      "wind_speed_ms": 9.9,
+      "wind_gust_ms": 18.4,
+      "wind_dir_deg": 187.0,
+      "solar_wm2": 3.4,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 22.65,
-      "globe_temp_c": 27.0
+      "wbgt_c": 21.39,
+      "globe_temp_c": 26.43
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "SAB004_Julianas_Hotel",
@@ -285,23 +285,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.643074,
     "longitude": -63.227046,
-    "temperature": 24.0,
+    "temperature": 24.2,
     "metrics": {
-      "temperature_c": 24.0,
-      "humidity_pct": 81.0,
-      "pressure_hpa": 1010.8,
+      "temperature_c": 24.2,
+      "humidity_pct": 80.0,
+      "pressure_hpa": 1011.9,
       "dew_point_c": 20.5,
-      "feels_like_c": 24.0,
-      "wind_speed_ms": 35.4,
-      "wind_gust_ms": 47.9,
-      "wind_dir_deg": 133.0,
-      "solar_wm2": 0.0,
+      "feels_like_c": 24.2,
+      "wind_speed_ms": 37.3,
+      "wind_gust_ms": 43.9,
+      "wind_dir_deg": 137.0,
+      "solar_wm2": 6.5,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 14.11,
-      "globe_temp_c": 25.32
+      "wbgt_c": 13.61,
+      "globe_temp_c": 25.48
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "SAB002_The_Church",
@@ -310,23 +310,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.638941,
     "longitude": -63.229518,
-    "temperature": 22.0,
+    "temperature": 22.3,
     "metrics": {
-      "temperature_c": 22.0,
-      "humidity_pct": 88.0,
-      "pressure_hpa": 1010.7,
+      "temperature_c": 22.3,
+      "humidity_pct": 87.0,
+      "pressure_hpa": 1011.7,
       "dew_point_c": 20.0,
-      "feels_like_c": 22.0,
-      "wind_speed_ms": 16.6,
-      "wind_gust_ms": 25.6,
-      "wind_dir_deg": 151.0,
-      "solar_wm2": 0.3,
+      "feels_like_c": 22.3,
+      "wind_speed_ms": 14.8,
+      "wind_gust_ms": 27.7,
+      "wind_dir_deg": 157.0,
+      "solar_wm2": 8.3,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 18.75,
-      "globe_temp_c": 23.98
+      "wbgt_c": 19.45,
+      "globe_temp_c": 24.43
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "SAB003_The_Level",
@@ -338,20 +338,20 @@
     "temperature": 21.0,
     "metrics": {
       "temperature_c": 21.0,
-      "humidity_pct": 94.0,
-      "pressure_hpa": 1011.2,
-      "dew_point_c": 20.0,
+      "humidity_pct": 93.0,
+      "pressure_hpa": 1012.1,
+      "dew_point_c": 19.8,
       "feels_like_c": 21.0,
-      "wind_speed_ms": 5.5,
-      "wind_gust_ms": 9.4,
-      "wind_dir_deg": 176.0,
-      "solar_wm2": 0.0,
+      "wind_speed_ms": 6.6,
+      "wind_gust_ms": 11.2,
+      "wind_dir_deg": 186.0,
+      "solar_wm2": 7.7,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 21.99,
-      "globe_temp_c": 24.72
+      "wbgt_c": 21.46,
+      "globe_temp_c": 24.34
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "EUX001_The_Harbor",
@@ -360,23 +360,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.47798,
     "longitude": -62.985968,
-    "temperature": 26.0,
+    "temperature": 25.2,
     "metrics": {
-      "temperature_c": 26.0,
+      "temperature_c": 25.2,
       "humidity_pct": 71.0,
-      "pressure_hpa": 1015.8,
-      "dew_point_c": 20.4,
-      "feels_like_c": 26.0,
-      "wind_speed_ms": 7.8,
-      "wind_gust_ms": 20.2,
-      "wind_dir_deg": 174.0,
-      "solar_wm2": 0.0,
+      "pressure_hpa": 1016.8,
+      "dew_point_c": 19.7,
+      "feels_like_c": 25.2,
+      "wind_speed_ms": 6.9,
+      "wind_gust_ms": 16.6,
+      "wind_dir_deg": 140.0,
+      "solar_wm2": 5.0,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 23.53,
-      "globe_temp_c": 29.25
+      "wbgt_c": 23.1,
+      "globe_temp_c": 28.63
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "EUX002_Upper_Town",
@@ -388,20 +388,20 @@
     "temperature": 24.2,
     "metrics": {
       "temperature_c": 24.2,
-      "humidity_pct": 75.0,
-      "pressure_hpa": 1013.3,
-      "dew_point_c": 19.6,
+      "humidity_pct": 78.0,
+      "pressure_hpa": 1014.0,
+      "dew_point_c": 20.2,
       "feels_like_c": 24.2,
-      "wind_speed_ms": 8.3,
+      "wind_speed_ms": 7.1,
       "wind_gust_ms": 16.6,
-      "wind_dir_deg": 316.0,
-      "solar_wm2": 0.0,
+      "wind_dir_deg": 346.0,
+      "solar_wm2": 5.0,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 22.14,
-      "globe_temp_c": 27.24
+      "wbgt_c": 22.93,
+      "globe_temp_c": 27.55
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "EUX003_The_Quill_Garden",
@@ -410,23 +410,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.487301,
     "longitude": -62.96904,
-    "temperature": 23.9,
+    "temperature": 23.1,
     "metrics": {
-      "temperature_c": 23.9,
-      "humidity_pct": 80.0,
-      "pressure_hpa": 1010.6,
-      "dew_point_c": 20.2,
-      "feels_like_c": 23.9,
-      "wind_speed_ms": 6.0,
-      "wind_gust_ms": 14.8,
-      "wind_dir_deg": 101.0,
-      "solar_wm2": 0.0,
+      "temperature_c": 23.1,
+      "humidity_pct": 84.0,
+      "pressure_hpa": 1011.4,
+      "dew_point_c": 20.3,
+      "feels_like_c": 23.1,
+      "wind_speed_ms": 4.9,
+      "wind_gust_ms": 13.0,
+      "wind_dir_deg": 96.0,
+      "solar_wm2": 8.5,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 23.2,
-      "globe_temp_c": 27.57
+      "wbgt_c": 23.35,
+      "globe_temp_c": 27.2
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "EUX004_EOC",
@@ -435,23 +435,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.480953,
     "longitude": -62.980393,
-    "temperature": 24.6,
+    "temperature": 24.7,
     "metrics": {
-      "temperature_c": 24.6,
-      "humidity_pct": 75.0,
-      "pressure_hpa": 1012.3,
-      "dew_point_c": 19.9,
-      "feels_like_c": 24.6,
-      "wind_speed_ms": 19.8,
-      "wind_gust_ms": 42.1,
-      "wind_dir_deg": 107.0,
-      "solar_wm2": 0.0,
+      "temperature_c": 24.7,
+      "humidity_pct": 74.0,
+      "pressure_hpa": 1013.3,
+      "dew_point_c": 19.6,
+      "feels_like_c": 24.7,
+      "wind_speed_ms": 12.0,
+      "wind_gust_ms": 31.3,
+      "wind_dir_deg": 81.0,
+      "solar_wm2": 5.7,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 18.78,
-      "globe_temp_c": 26.45
+      "wbgt_c": 21.11,
+      "globe_temp_c": 27.17
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "EUX005_Drop_off",
@@ -460,23 +460,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.465822,
     "longitude": -62.971836,
-    "temperature": 25.0,
+    "temperature": 24.1,
     "metrics": {
-      "temperature_c": 25.0,
-      "humidity_pct": 75.0,
-      "pressure_hpa": 1011.1,
-      "dew_point_c": 20.3,
-      "feels_like_c": 25.0,
-      "wind_speed_ms": 15.4,
-      "wind_gust_ms": 23.8,
-      "wind_dir_deg": 105.0,
-      "solar_wm2": 0.0,
-      "rain_daily_mm": 0.0,
-      "rain_rate_mmhr": 0.0,
-      "wbgt_c": 20.58,
-      "globe_temp_c": 27.16
+      "temperature_c": 24.1,
+      "humidity_pct": 82.0,
+      "pressure_hpa": 1011.8,
+      "dew_point_c": 20.9,
+      "feels_like_c": 24.1,
+      "wind_speed_ms": 11.9,
+      "wind_gust_ms": 25.6,
+      "wind_dir_deg": 148.0,
+      "solar_wm2": 7.0,
+      "rain_daily_mm": 0.8,
+      "rain_rate_mmhr": 4.8,
+      "wbgt_c": 21.71,
+      "globe_temp_c": 26.59
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "KNMI_Saba_Airport",
@@ -485,19 +485,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 17.6461,
     "longitude": -63.2208,
-    "temperature": 25.5,
+    "temperature": 25.7,
     "metrics": {
-      "temperature_c": 25.5,
+      "temperature_c": 25.7,
       "humidity_pct": 76.0,
-      "pressure_hpa": 1014.29,
-      "dew_point_c": 21.0,
-      "wind_speed_ms": 9.92,
-      "wind_dir_deg": 100.4,
-      "solar_wm2": 0.0,
-      "wbgt_c": 24.68,
-      "globe_temp_c": 29.61
+      "pressure_hpa": 1015.3,
+      "dew_point_c": 21.2,
+      "wind_speed_ms": 10.33,
+      "wind_dir_deg": 103.7,
+      "solar_wm2": 1.0,
+      "wbgt_c": 24.8,
+      "globe_temp_c": 29.74
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:39 UTC"
   },
   {
     "id": "KNMI_Sint_Eustatius_Airport",
@@ -506,19 +506,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 17.4956,
     "longitude": -62.9828,
-    "temperature": 25.1,
+    "temperature": 23.4,
     "metrics": {
-      "temperature_c": 25.1,
-      "humidity_pct": 77.0,
-      "pressure_hpa": 1014.93,
-      "dew_point_c": 20.9,
-      "wind_speed_ms": 7.54,
-      "wind_dir_deg": 83.3,
+      "temperature_c": 23.4,
+      "humidity_pct": 82.0,
+      "pressure_hpa": 1015.96,
+      "dew_point_c": 20.2,
+      "wind_speed_ms": 3.89,
+      "wind_dir_deg": 101.4,
       "solar_wm2": 0.0,
-      "wbgt_c": 25.01,
-      "globe_temp_c": 29.97
+      "wbgt_c": 24.86,
+      "globe_temp_c": 30.35
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:40 UTC"
   },
   {
     "id": "KNMI_Bonaire_Airport",
@@ -527,18 +527,18 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 12.13,
     "longitude": -68.2758,
-    "temperature": 26.6,
+    "temperature": 26.2,
     "metrics": {
-      "temperature_c": 26.6,
-      "humidity_pct": 75.0,
-      "pressure_hpa": 1010.11,
-      "dew_point_c": 22.0,
-      "wind_speed_ms": 7.01,
-      "wind_dir_deg": 93.9,
+      "temperature_c": 26.2,
+      "humidity_pct": 78.0,
+      "pressure_hpa": 1010.91,
+      "dew_point_c": 22.1,
+      "wind_speed_ms": 8.8,
+      "wind_dir_deg": 98.4,
       "solar_wm2": 0.0,
-      "wbgt_c": 25.11,
-      "globe_temp_c": 30.17
+      "wbgt_c": 24.41,
+      "globe_temp_c": 29.32
     },
-    "last_update": "2026-03-03 08:41 UTC"
+    "last_update": "2026-03-03 10:40 UTC"
   }
 ]

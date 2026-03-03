@@ -1,20 +1,20 @@
 {
-  "generated_utc": "2026-03-03 08:41 UTC",
+  "generated_utc": "2026-03-03 10:39 UTC",
   "window_days": 7,
-  "record_count": 273,
+  "record_count": 274,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 9.1,
-      "mean": 10.64,
+      "latest": 12.31,
+      "mean": 10.66,
       "min": 4.62,
       "max": 18.32,
       "std": 3.2,
       "trend": "up",
-      "trend_value": 3.17,
+      "trend_value": 7.08,
       "arrow": "↑"
     },
     "humidity_pct": {
@@ -22,13 +22,13 @@
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 83.4,
-      "mean": 85.51,
+      "latest": 74.4,
+      "mean": 85.3,
       "min": 45.5,
       "max": 99.9,
-      "std": 12.21,
+      "std": 12.16,
       "trend": "down",
-      "trend_value": -3.0,
+      "trend_value": -15.6,
       "arrow": "↓"
     },
     "battery_voltage_v": {
@@ -42,7 +42,7 @@
       "max": 3.05,
       "std": 0.01,
       "trend": "stable",
-      "trend_value": -0.0,
+      "trend_value": 0.0,
       "arrow": "↑"
     },
     "dew_point_c": {
@@ -50,13 +50,13 @@
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 6.43,
-      "mean": 8.13,
+      "latest": 7.88,
+      "mean": 8.11,
       "min": 2.99,
       "max": 12.76,
-      "std": 2.84,
+      "std": 2.83,
       "trend": "up",
-      "trend_value": 2.6,
+      "trend_value": 4.16,
       "arrow": "↑"
     },
     "wbgt_c": {
@@ -64,18 +64,18 @@
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 8.57,
+      "latest": 11.3,
       "mean": 9.57,
       "min": 3.75,
       "max": 16.7,
       "std": 2.99,
       "trend": "up",
-      "trend_value": 3.79,
+      "trend_value": 6.92,
       "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-02-24 08:41",
-    "end": "2026-03-03 08:18"
+    "start": "2026-02-24 10:41",
+    "end": "2026-03-03 09:58"
   }
 }
