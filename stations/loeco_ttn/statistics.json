@@ -1,20 +1,20 @@
 {
-  "generated_utc": "2026-03-08 10:20 UTC",
+  "generated_utc": "2026-03-08 12:34 UTC",
   "window_days": 7,
-  "record_count": 266,
+  "record_count": 265,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 6.48,
-      "mean": 9.87,
+      "latest": 12.83,
+      "mean": 9.83,
       "min": 2.21,
       "max": 19.28,
       "std": 4.26,
-      "trend": "down",
-      "trend_value": -0.26,
+      "trend": "up",
+      "trend_value": 6.76,
       "arrow": "↑"
     },
     "humidity_pct": {
@@ -22,14 +22,14 @@
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 99.9,
-      "mean": 78.68,
+      "latest": 79.9,
+      "mean": 79.03,
       "min": 38.9,
       "max": 99.9,
-      "std": 16.72,
-      "trend": "stable",
-      "trend_value": 0.0,
-      "arrow": "→"
+      "std": 16.73,
+      "trend": "down",
+      "trend_value": -20.0,
+      "arrow": "↓"
     },
     "battery_voltage_v": {
       "label": "Batterij",
@@ -42,7 +42,7 @@
       "max": 3.05,
       "std": 0.01,
       "trend": "stable",
-      "trend_value": -0.0,
+      "trend_value": 0.0,
       "arrow": "↑"
     },
     "dew_point_c": {
@@ -50,32 +50,32 @@
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 6.47,
-      "mean": 5.91,
+      "latest": 9.44,
+      "mean": 5.94,
       "min": 0.86,
       "max": 12.2,
-      "std": 1.9,
-      "trend": "down",
-      "trend_value": -0.26,
-      "arrow": "↑"
+      "std": 1.95,
+      "trend": "up",
+      "trend_value": 3.38,
+      "arrow": "↓"
     },
     "wbgt_c": {
       "label": "WBGT",
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 6.48,
-      "mean": 8.35,
+      "latest": 12.56,
+      "mean": 8.34,
       "min": 1.53,
       "max": 15.68,
-      "std": 3.41,
-      "trend": "down",
-      "trend_value": -0.2,
+      "std": 3.42,
+      "trend": "up",
+      "trend_value": 6.55,
       "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-03-01 10:59",
-    "end": "2026-03-08 08:17"
+    "start": "2026-03-01 12:39",
+    "end": "2026-03-08 11:57"
   }
 }
