@@ -1,35 +1,35 @@
 {
-  "generated_utc": "2026-03-16 15:10 UTC",
+  "generated_utc": "2026-03-16 16:57 UTC",
   "window_days": 7,
-  "record_count": 133,
+  "record_count": 135,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 10.65,
-      "mean": 8.41,
+      "latest": 8.99,
+      "mean": 8.28,
       "min": -0.28,
-      "max": 18.01,
-      "std": 3.44,
-      "trend": "up",
-      "trend_value": 1.04,
-      "arrow": "↑"
+      "max": 17.69,
+      "std": 3.18,
+      "trend": "down",
+      "trend_value": -0.62,
+      "arrow": "↓"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 61.6,
-      "mean": 84.02,
+      "latest": 67.8,
+      "mean": 83.69,
       "min": 46.8,
       "max": 99.7,
-      "std": 13.9,
-      "trend": "down",
-      "trend_value": -2.3,
-      "arrow": "↓"
+      "std": 14.06,
+      "trend": "up",
+      "trend_value": 3.9,
+      "arrow": "↑"
     },
     "battery_voltage_v": {
       "label": "Batterij",
@@ -50,32 +50,32 @@
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 3.57,
-      "mean": 5.62,
+      "latest": 3.35,
+      "mean": 5.44,
       "min": -0.38,
       "max": 12.99,
-      "std": 2.72,
+      "std": 2.66,
       "trend": "up",
-      "trend_value": 0.47,
-      "arrow": "↓"
+      "trend_value": 0.25,
+      "arrow": "↑"
     },
     "wbgt_c": {
       "label": "WBGT",
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 8.86,
-      "mean": 7.21,
+      "latest": 6.71,
+      "mean": 7.09,
       "min": -0.39,
-      "max": 15.43,
-      "std": 2.9,
-      "trend": "up",
-      "trend_value": 1.68,
-      "arrow": "↑"
+      "max": 14.01,
+      "std": 2.68,
+      "trend": "down",
+      "trend_value": -0.47,
+      "arrow": "↓"
     }
   },
   "date_range": {
-    "start": "2026-03-09 15:16",
-    "end": "2026-03-16 14:34"
+    "start": "2026-03-09 17:16",
+    "end": "2026-03-16 16:54"
   }
 }
