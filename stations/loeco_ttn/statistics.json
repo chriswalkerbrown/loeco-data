@@ -1,20 +1,20 @@
 {
-  "generated_utc": "2026-03-16 12:57 UTC",
+  "generated_utc": "2026-03-16 15:10 UTC",
   "window_days": 7,
-  "record_count": 131,
+  "record_count": 133,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 9.61,
-      "mean": 8.44,
+      "latest": 10.65,
+      "mean": 8.41,
       "min": -0.28,
-      "max": 18.24,
-      "std": 3.56,
+      "max": 18.01,
+      "std": 3.44,
       "trend": "up",
-      "trend_value": 3.85,
+      "trend_value": 1.04,
       "arrow": "↑"
     },
     "humidity_pct": {
@@ -22,13 +22,13 @@
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 63.9,
-      "mean": 84.26,
+      "latest": 61.6,
+      "mean": 84.02,
       "min": 46.8,
       "max": 99.7,
-      "std": 13.89,
+      "std": 13.9,
       "trend": "down",
-      "trend_value": -19.5,
+      "trend_value": -2.3,
       "arrow": "↓"
     },
     "battery_voltage_v": {
@@ -50,13 +50,13 @@
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 3.1,
-      "mean": 5.69,
+      "latest": 3.57,
+      "mean": 5.62,
       "min": -0.38,
       "max": 12.99,
-      "std": 2.74,
-      "trend": "down",
-      "trend_value": -0.06,
+      "std": 2.72,
+      "trend": "up",
+      "trend_value": 0.47,
       "arrow": "↓"
     },
     "wbgt_c": {
@@ -64,18 +64,18 @@
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 7.18,
-      "mean": 7.24,
+      "latest": 8.86,
+      "mean": 7.21,
       "min": -0.39,
       "max": 15.43,
-      "std": 3.0,
+      "std": 2.9,
       "trend": "up",
-      "trend_value": 2.61,
+      "trend_value": 1.68,
       "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-03-09 13:36",
-    "end": "2026-03-16 12:14"
+    "start": "2026-03-09 15:16",
+    "end": "2026-03-16 14:34"
   }
 }
