@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-18 06:55 UTC",
+  "generated_utc": "2026-03-18 08:41 UTC",
   "window_days": 7,
   "record_count": 141,
   "metrics": {
@@ -8,13 +8,13 @@
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 7.82,
-      "mean": 8.23,
+      "latest": 11.19,
+      "mean": 8.24,
       "min": -0.28,
       "max": 17.69,
-      "std": 3.22,
-      "trend": "down",
-      "trend_value": -1.69,
+      "std": 3.23,
+      "trend": "up",
+      "trend_value": 3.58,
       "arrow": "↑"
     },
     "humidity_pct": {
@@ -22,13 +22,13 @@
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 87.7,
-      "mean": 81.53,
+      "latest": 65.8,
+      "mean": 81.33,
       "min": 46.8,
       "max": 99.7,
-      "std": 13.12,
-      "trend": "up",
-      "trend_value": 1.1,
+      "std": 13.14,
+      "trend": "down",
+      "trend_value": -25.6,
       "arrow": "↓"
     },
     "battery_voltage_v": {
@@ -43,20 +43,20 @@
       "std": 0.0,
       "trend": "stable",
       "trend_value": 0.0,
-      "arrow": "↑"
+      "arrow": "→"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 5.91,
-      "mean": 5.03,
+      "latest": 5.02,
+      "mean": 5.0,
       "min": -0.38,
       "max": 12.99,
-      "std": 2.34,
+      "std": 2.31,
       "trend": "down",
-      "trend_value": -1.47,
+      "trend_value": -1.28,
       "arrow": "↓"
     },
     "wbgt_c": {
@@ -64,18 +64,18 @@
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 6.79,
+      "latest": 9.04,
       "mean": 6.88,
       "min": -0.39,
       "max": 13.41,
-      "std": 2.66,
-      "trend": "down",
-      "trend_value": -1.58,
+      "std": 2.65,
+      "trend": "up",
+      "trend_value": 2.23,
       "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-03-11 08:36",
-    "end": "2026-03-18 04:53"
+    "start": "2026-03-11 12:15",
+    "end": "2026-03-18 08:13"
   }
 }
