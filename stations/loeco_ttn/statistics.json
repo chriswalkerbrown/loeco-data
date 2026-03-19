@@ -1,20 +1,20 @@
 {
-  "generated_utc": "2026-03-19 10:34 UTC",
+  "generated_utc": "2026-03-19 12:47 UTC",
   "window_days": 7,
-  "record_count": 149,
+  "record_count": 150,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 12.86,
-      "mean": 8.07,
+      "latest": 17.64,
+      "mean": 8.2,
       "min": -0.28,
-      "max": 16.27,
-      "std": 3.63,
+      "max": 17.64,
+      "std": 3.81,
       "trend": "up",
-      "trend_value": 10.97,
+      "trend_value": 15.12,
       "arrow": "↑"
     },
     "humidity_pct": {
@@ -22,13 +22,13 @@
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 61.8,
-      "mean": 78.23,
+      "latest": 38.9,
+      "mean": 77.69,
       "min": 36.7,
       "max": 99.7,
-      "std": 14.74,
+      "std": 15.47,
       "trend": "down",
-      "trend_value": -26.2,
+      "trend_value": -57.9,
       "arrow": "↓"
     },
     "battery_voltage_v": {
@@ -43,39 +43,39 @@
       "std": 0.0,
       "trend": "stable",
       "trend_value": 0.0,
-      "arrow": "↑"
+      "arrow": "→"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 5.7,
-      "mean": 4.19,
+      "latest": 3.47,
+      "mean": 4.17,
       "min": -0.38,
       "max": 9.79,
-      "std": 2.44,
+      "std": 2.43,
       "trend": "up",
-      "trend_value": 5.59,
-      "arrow": "↑"
+      "trend_value": 1.41,
+      "arrow": "↓"
     },
     "wbgt_c": {
       "label": "WBGT",
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 10.88,
-      "mean": 6.58,
+      "latest": 13.72,
+      "mean": 6.67,
       "min": -0.39,
-      "max": 13.41,
-      "std": 3.06,
+      "max": 13.72,
+      "std": 3.17,
       "trend": "up",
-      "trend_value": 9.98,
+      "trend_value": 11.12,
       "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-03-12 11:15",
-    "end": "2026-03-19 09:33"
+    "start": "2026-03-12 15:15",
+    "end": "2026-03-19 12:33"
   }
 }
