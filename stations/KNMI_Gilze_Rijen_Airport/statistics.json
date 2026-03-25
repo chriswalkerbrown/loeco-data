@@ -1,34 +1,34 @@
 {
-  "generated_utc": "2026-03-25 16:23 UTC",
+  "generated_utc": "2026-03-25 16:43 UTC",
   "window_days": 7,
-  "record_count": 53,
+  "record_count": 55,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 5.5,
-      "mean": 7.01,
+      "latest": 6.1,
+      "mean": 6.97,
       "min": 5.0,
       "max": 9.8,
-      "std": 1.38,
+      "std": 1.37,
       "trend": "down",
-      "trend_value": -1.0,
-      "arrow": "↑"
+      "trend_value": -0.2,
+      "arrow": "→"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 80.0,
-      "mean": 79.11,
+      "latest": 77.0,
+      "mean": 79.02,
       "min": 59.0,
       "max": 91.0,
-      "std": 10.36,
+      "std": 10.18,
       "trend": "down",
-      "trend_value": -10.0,
+      "trend_value": -9.0,
       "arrow": "↑"
     },
     "pressure_hpa": {
@@ -36,27 +36,27 @@
       "unit": "hPa",
       "color": "#45b7d1",
       "accent": "#2ea8e6",
-      "latest": 1006.46,
-      "mean": 1004.05,
+      "latest": 1006.76,
+      "mean": 1004.15,
       "min": 1001.23,
-      "max": 1006.65,
-      "std": 1.37,
+      "max": 1006.76,
+      "std": 1.44,
       "trend": "up",
-      "trend_value": 3.02,
-      "arrow": "↓"
+      "trend_value": 3.12,
+      "arrow": "↑"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 2.4,
-      "mean": 3.6,
+      "latest": 2.5,
+      "mean": 3.56,
       "min": 1.1,
       "max": 6.2,
       "std": 1.19,
       "trend": "down",
-      "trend_value": -2.7,
+      "trend_value": -1.6,
       "arrow": "↑"
     },
     "wind_speed_ms": {
@@ -64,27 +64,27 @@
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 3.63,
-      "mean": 5.64,
+      "latest": 4.72,
+      "mean": 5.61,
       "min": 2.35,
       "max": 9.69,
-      "std": 2.1,
+      "std": 2.07,
       "trend": "up",
-      "trend_value": 0.71,
-      "arrow": "↓"
+      "trend_value": 1.51,
+      "arrow": "↑"
     },
     "wind_dir_deg": {
       "label": "Windrichting",
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 316.1,
-      "mean": 293.76,
+      "latest": 300.6,
+      "mean": 294.29,
       "min": 19.8,
       "max": 337.1,
-      "std": 42.23,
-      "trend": "up",
-      "trend_value": 34.7,
+      "std": 41.56,
+      "trend": "down",
+      "trend_value": -36.5,
       "arrow": "↓"
     },
     "solar_wm2": {
@@ -92,46 +92,46 @@
       "unit": "W/m²",
       "color": "#ffeaa7",
       "accent": "#ffe082",
-      "latest": 97.0,
-      "mean": 217.64,
+      "latest": 118.0,
+      "mean": 214.55,
       "min": 15.0,
       "max": 762.0,
-      "std": 169.49,
+      "std": 167.12,
       "trend": "down",
-      "trend_value": -169.0,
-      "arrow": "↑"
+      "trend_value": -30.0,
+      "arrow": "↓"
     },
     "wbgt_c": {
       "label": "WBGT",
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 6.49,
-      "mean": 7.68,
+      "latest": 6.65,
+      "mean": 7.65,
       "min": 4.62,
       "max": 11.05,
-      "std": 1.41,
+      "std": 1.39,
       "trend": "down",
-      "trend_value": -2.61,
-      "arrow": "↑"
+      "trend_value": -1.33,
+      "arrow": "↓"
     },
     "globe_temp_c": {
       "label": "Globe Temp",
       "unit": "°C",
       "color": "#d63031",
       "accent": "#ff7675",
-      "latest": 11.61,
-      "mean": 13.45,
+      "latest": 11.72,
+      "mean": 13.4,
       "min": 8.37,
       "max": 19.84,
-      "std": 2.69,
+      "std": 2.66,
       "trend": "down",
-      "trend_value": -5.44,
-      "arrow": "↑"
+      "trend_value": -2.35,
+      "arrow": "↓"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-25 16:10"
+    "end": "2026-03-25 16:30"
   }
 }
