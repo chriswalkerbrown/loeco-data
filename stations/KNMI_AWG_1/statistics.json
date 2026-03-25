@@ -1,0 +1,109 @@
+{
+  "generated_utc": "2026-03-25 10:24 UTC",
+  "window_days": 7,
+  "record_count": 17,
+  "metrics": {
+    "temperature_c": {
+      "label": "Temperatuur",
+      "unit": "°C",
+      "color": "#ff6b6b",
+      "accent": "#ff4d8d",
+      "latest": 6.4,
+      "mean": 7.06,
+      "min": 6.2,
+      "max": 7.3,
+      "std": 0.31,
+      "trend": "down",
+      "trend_value": -0.9,
+      "arrow": "↑"
+    },
+    "humidity_pct": {
+      "label": "Rel.vochtigheid",
+      "unit": "%",
+      "color": "#4ecdc4",
+      "accent": "#2dd4bf",
+      "latest": 73.0,
+      "mean": 69.88,
+      "min": 67.0,
+      "max": 75.0,
+      "std": 2.09,
+      "trend": "up",
+      "trend_value": 2.0,
+      "arrow": "→"
+    },
+    "pressure_hpa": {
+      "label": "Luchtdruk",
+      "unit": "hPa",
+      "color": "#45b7d1",
+      "accent": "#2ea8e6",
+      "latest": 997.89,
+      "mean": 996.14,
+      "min": 994.28,
+      "max": 997.89,
+      "std": 1.05,
+      "trend": "up",
+      "trend_value": 3.62,
+      "arrow": "↑"
+    },
+    "dew_point_c": {
+      "label": "Dauwpunt",
+      "unit": "°C",
+      "color": "#a29bfe",
+      "accent": "#8f86ff",
+      "latest": 2.1,
+      "mean": 2.05,
+      "min": 1.7,
+      "max": 2.9,
+      "std": 0.31,
+      "trend": "down",
+      "trend_value": -0.4,
+      "arrow": "↑"
+    },
+    "wind_speed_ms": {
+      "label": "Windsnelheid",
+      "unit": "m/s",
+      "color": "#74b9ff",
+      "accent": "#5aa9ff",
+      "latest": 14.42,
+      "mean": 15.2,
+      "min": 14.08,
+      "max": 16.6,
+      "std": 0.66,
+      "trend": "down",
+      "trend_value": -1.4,
+      "arrow": "↓"
+    },
+    "wind_dir_deg": {
+      "label": "Windrichting",
+      "unit": "°",
+      "color": "#81ecec",
+      "accent": "#63e6e2",
+      "latest": 318.0,
+      "mean": 307.06,
+      "min": 302.9,
+      "max": 318.0,
+      "std": 3.9,
+      "trend": "up",
+      "trend_value": 12.9,
+      "arrow": "↑"
+    },
+    "wbgt_c": {
+      "label": "WBGT",
+      "unit": "°C",
+      "color": "#e84393",
+      "accent": "#fd79a8",
+      "latest": 5.03,
+      "mean": 5.47,
+      "min": 4.83,
+      "max": 5.77,
+      "std": 0.23,
+      "trend": "down",
+      "trend_value": -0.74,
+      "arrow": "↑"
+    }
+  },
+  "date_range": {
+    "start": "2026-03-25 07:30",
+    "end": "2026-03-25 10:10"
+  }
+}

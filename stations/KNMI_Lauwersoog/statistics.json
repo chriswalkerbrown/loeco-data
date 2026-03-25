@@ -1,0 +1,95 @@
+{
+  "generated_utc": "2026-03-25 10:25 UTC",
+  "window_days": 7,
+  "record_count": 17,
+  "metrics": {
+    "temperature_c": {
+      "label": "Temperatuur",
+      "unit": "°C",
+      "color": "#ff6b6b",
+      "accent": "#ff4d8d",
+      "latest": 7.7,
+      "mean": 7.6,
+      "min": 7.0,
+      "max": 7.9,
+      "std": 0.21,
+      "trend": "up",
+      "trend_value": 0.2,
+      "arrow": "↓"
+    },
+    "humidity_pct": {
+      "label": "Rel.vochtigheid",
+      "unit": "%",
+      "color": "#4ecdc4",
+      "accent": "#2dd4bf",
+      "latest": 70.0,
+      "mean": 71.47,
+      "min": 69.0,
+      "max": 77.0,
+      "std": 2.32,
+      "trend": "down",
+      "trend_value": -4.0,
+      "arrow": "→"
+    },
+    "dew_point_c": {
+      "label": "Dauwpunt",
+      "unit": "°C",
+      "color": "#a29bfe",
+      "accent": "#8f86ff",
+      "latest": 2.6,
+      "mean": 2.84,
+      "min": 2.3,
+      "max": 3.7,
+      "std": 0.36,
+      "trend": "down",
+      "trend_value": -0.7,
+      "arrow": "↓"
+    },
+    "wind_speed_ms": {
+      "label": "Windsnelheid",
+      "unit": "m/s",
+      "color": "#74b9ff",
+      "accent": "#5aa9ff",
+      "latest": 14.97,
+      "mean": 14.91,
+      "min": 14.0,
+      "max": 16.04,
+      "std": 0.68,
+      "trend": "down",
+      "trend_value": -1.07,
+      "arrow": "↑"
+    },
+    "wind_dir_deg": {
+      "label": "Windrichting",
+      "unit": "°",
+      "color": "#81ecec",
+      "accent": "#63e6e2",
+      "latest": 303.3,
+      "mean": 301.92,
+      "min": 296.2,
+      "max": 306.6,
+      "std": 2.41,
+      "trend": "up",
+      "trend_value": 5.3,
+      "arrow": "↑"
+    },
+    "solar_wm2": {
+      "label": "Zonnestraling",
+      "unit": "W/m²",
+      "color": "#ffeaa7",
+      "accent": "#ffe082",
+      "latest": 427.0,
+      "mean": 274.0,
+      "min": 75.0,
+      "max": 485.0,
+      "std": 125.18,
+      "trend": "up",
+      "trend_value": 352.0,
+      "arrow": "↓"
+    }
+  },
+  "date_range": {
+    "start": "2026-03-25 07:30",
+    "end": "2026-03-25 10:10"
+  }
+}
