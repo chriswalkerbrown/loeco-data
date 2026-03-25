@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-25 14:48 UTC",
+  "generated_utc": "2026-03-25 15:23 UTC",
   "window_days": 7,
   "record_count": 133,
   "metrics": {
@@ -8,28 +8,28 @@
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 9.54,
-      "mean": 8.94,
+      "latest": 9.45,
+      "mean": 8.89,
       "min": 0.71,
       "max": 18.38,
-      "std": 4.55,
+      "std": 4.51,
       "trend": "up",
-      "trend_value": 3.79,
-      "arrow": "↑"
+      "trend_value": 3.7,
+      "arrow": "↓"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 61.5,
-      "mean": 73.36,
-      "min": 37.5,
+      "latest": 68.5,
+      "mean": 73.59,
+      "min": 38.9,
       "max": 98.3,
-      "std": 16.43,
+      "std": 16.13,
       "trend": "down",
-      "trend_value": -23.8,
-      "arrow": "↓"
+      "trend_value": -16.8,
+      "arrow": "↑"
     },
     "battery_voltage_v": {
       "label": "Batterij",
@@ -43,39 +43,39 @@
       "std": 0.0,
       "trend": "stable",
       "trend_value": 0.0,
-      "arrow": "↑"
+      "arrow": "↓"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 2.5,
-      "mean": 3.98,
+      "latest": 3.94,
+      "mean": 3.99,
       "min": -0.05,
       "max": 8.13,
-      "std": 1.99,
-      "trend": "down",
-      "trend_value": -0.97,
-      "arrow": "↓"
+      "std": 1.98,
+      "trend": "up",
+      "trend_value": 0.47,
+      "arrow": "↑"
     },
     "wbgt_c": {
       "label": "WBGT",
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 6.89,
-      "mean": 7.07,
+      "latest": 7.44,
+      "mean": 7.03,
       "min": 0.21,
       "max": 15.05,
-      "std": 3.64,
+      "std": 3.62,
       "trend": "up",
-      "trend_value": 2.23,
+      "trend_value": 2.78,
       "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-03-18 15:13",
-    "end": "2026-03-25 14:30"
+    "start": "2026-03-18 16:13",
+    "end": "2026-03-25 15:10"
   }
 }
