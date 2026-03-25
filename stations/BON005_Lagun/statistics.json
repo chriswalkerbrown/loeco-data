@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-25 14:33 UTC",
+  "generated_utc": "2026-03-25 14:48 UTC",
   "window_days": 7,
   "record_count": 656,
   "metrics": {
@@ -9,12 +9,12 @@
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
       "latest": 29.1,
-      "mean": 27.2,
+      "mean": 27.21,
       "min": 24.8,
       "max": 29.9,
       "std": 1.29,
       "trend": "up",
-      "trend_value": 3.0,
+      "trend_value": 2.9,
       "arrow": "↑"
     },
     "humidity_pct": {
@@ -37,13 +37,13 @@
       "color": "#45b7d1",
       "accent": "#2ea8e6",
       "latest": 1012.9,
-      "mean": 1011.45,
+      "mean": 1011.44,
       "min": 1008.7,
-      "max": 1014.8,
-      "std": 1.32,
+      "max": 1014.7,
+      "std": 1.31,
       "trend": "up",
       "trend_value": 2.4,
-      "arrow": "↑"
+      "arrow": "→"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
@@ -51,13 +51,13 @@
       "color": "#a29bfe",
       "accent": "#8f86ff",
       "latest": 23.8,
-      "mean": 22.3,
+      "mean": 22.31,
       "min": 21.1,
       "max": 23.8,
       "std": 0.64,
       "trend": "up",
-      "trend_value": 0.5,
-      "arrow": "→"
+      "trend_value": 0.4,
+      "arrow": "↑"
     },
     "feels_like_c": {
       "label": "Gevoelstemperatuur",
@@ -65,12 +65,12 @@
       "color": "#fd79a8",
       "accent": "#ff5c9e",
       "latest": 33.5,
-      "mean": 28.81,
+      "mean": 28.82,
       "min": 24.8,
       "max": 33.5,
-      "std": 2.73,
+      "std": 2.74,
       "trend": "up",
-      "trend_value": 7.4,
+      "trend_value": 7.3,
       "arrow": "↑"
     },
     "wind_speed_ms": {
@@ -78,13 +78,13 @@
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 14.1,
-      "mean": 11.53,
+      "latest": 12.8,
+      "mean": 11.5,
       "min": 0.0,
       "max": 27.0,
-      "std": 5.73,
+      "std": 5.7,
       "trend": "up",
-      "trend_value": 12.4,
+      "trend_value": 12.6,
       "arrow": "↑"
     },
     "wind_gust_ms": {
@@ -93,12 +93,12 @@
       "color": "#e17055",
       "accent": "#f06543",
       "latest": 22.0,
-      "mean": 20.69,
+      "mean": 20.63,
       "min": 0.0,
       "max": 42.1,
-      "std": 7.16,
+      "std": 7.11,
       "trend": "up",
-      "trend_value": 12.6,
+      "trend_value": 18.4,
       "arrow": "↑"
     },
     "wind_dir_deg": {
@@ -106,13 +106,13 @@
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 129.0,
-      "mean": 103.88,
+      "latest": 130.0,
+      "mean": 103.91,
       "min": 75.0,
       "max": 176.0,
-      "std": 16.77,
+      "std": 16.84,
       "trend": "up",
-      "trend_value": 30.0,
+      "trend_value": 20.0,
       "arrow": "↑"
     },
     "solar_wm2": {
@@ -120,14 +120,14 @@
       "unit": "W/m²",
       "color": "#ffeaa7",
       "accent": "#ffe082",
-      "latest": 681.4,
-      "mean": 322.93,
+      "latest": 684.0,
+      "mean": 322.74,
       "min": 0.0,
       "max": 1036.4,
-      "std": 344.89,
+      "std": 344.68,
       "trend": "up",
-      "trend_value": 681.4,
-      "arrow": "↑"
+      "trend_value": 684.0,
+      "arrow": "↓"
     },
     "rain_daily_mm": {
       "label": "Totale regen",
@@ -162,13 +162,13 @@
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 25.9,
-      "mean": 24.63,
+      "latest": 26.34,
+      "mean": 24.64,
       "min": 19.58,
       "max": 30.54,
       "std": 1.97,
       "trend": "down",
-      "trend_value": -2.36,
+      "trend_value": -4.2,
       "arrow": "↓"
     },
     "globe_temp_c": {
@@ -176,18 +176,18 @@
       "unit": "°C",
       "color": "#d63031",
       "accent": "#ff7675",
-      "latest": 34.12,
-      "mean": 31.93,
+      "latest": 34.55,
+      "mean": 31.94,
       "min": 27.77,
       "max": 44.35,
       "std": 2.8,
       "trend": "down",
-      "trend_value": -0.06,
-      "arrow": "↓"
+      "trend_value": -8.72,
+      "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-03-18 14:35",
-    "end": "2026-03-25 14:20"
+    "start": "2026-03-18 14:50",
+    "end": "2026-03-25 14:35"
   }
 }
