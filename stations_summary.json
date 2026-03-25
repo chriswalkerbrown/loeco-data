@@ -6,15 +6,15 @@
     "sensor_type": "ttn-node",
     "latitude": 52.1234,
     "longitude": 5.1334,
-    "temperature": 3.65,
+    "temperature": 3.51,
     "metrics": {
-      "temperature_c": 3.65,
-      "humidity_pct": 93.8,
+      "temperature_c": 3.51,
+      "humidity_pct": 93.1,
       "battery_voltage_v": 3.03,
-      "dew_point_c": 2.74,
-      "wbgt_c": 3.12
+      "dew_point_c": 2.5,
+      "wbgt_c": 2.84
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "ecowitt_home",
@@ -34,13 +34,13 @@
     "sensor_type": "ecowitt-Temponly",
     "latitude": 53.1284,
     "longitude": 6.5848,
-    "temperature": 3.1,
+    "temperature": 2.5,
     "metrics": {
-      "temperature_c": 3.1,
-      "humidity_pct": 89.0,
-      "pressure_hpa": 1006.6
+      "temperature_c": 2.5,
+      "humidity_pct": 88.0,
+      "pressure_hpa": 1006.7
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "AMS_VU_Roof_Top",
@@ -49,23 +49,23 @@
     "sensor_type": "ecowitt-Wittboy",
     "latitude": 52.3343,
     "longitude": 4.86683,
-    "temperature": 5.1,
+    "temperature": 5.2,
     "metrics": {
-      "temperature_c": 5.1,
-      "humidity_pct": 82.0,
-      "pressure_hpa": 1002.7,
-      "dew_point_c": 2.3,
-      "feels_like_c": 2.8,
-      "wind_speed_ms": 9.7,
-      "wind_gust_ms": 12.2,
-      "wind_dir_deg": 319.0,
+      "temperature_c": 5.2,
+      "humidity_pct": 74.0,
+      "pressure_hpa": 1002.8,
+      "dew_point_c": 0.9,
+      "feels_like_c": 2.3,
+      "wind_speed_ms": 13.3,
+      "wind_gust_ms": 27.4,
+      "wind_dir_deg": 331.0,
       "solar_wm2": 0.0,
       "rain_daily_mm": 6.5,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 3.09,
-      "globe_temp_c": 6.91
+      "wbgt_c": 1.6,
+      "globe_temp_c": 6.69
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "BON006_Kralendijk_Haven",
@@ -74,23 +74,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.148319,
     "longitude": -68.276546,
-    "temperature": 26.9,
+    "temperature": 26.7,
     "metrics": {
-      "temperature_c": 26.9,
-      "humidity_pct": 76.0,
-      "pressure_hpa": 1009.5,
-      "dew_point_c": 22.3,
-      "feels_like_c": 29.1,
-      "wind_speed_ms": 27.0,
-      "wind_gust_ms": 36.7,
-      "wind_dir_deg": 101.0,
-      "solar_wm2": 11.9,
+      "temperature_c": 26.7,
+      "humidity_pct": 78.0,
+      "pressure_hpa": 1009.6,
+      "dew_point_c": 22.5,
+      "feels_like_c": 29.0,
+      "wind_speed_ms": 21.3,
+      "wind_gust_ms": 25.6,
+      "wind_dir_deg": 113.0,
+      "solar_wm2": 2.0,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 18.99,
-      "globe_temp_c": 28.62
+      "wbgt_c": 20.8,
+      "globe_temp_c": 28.57
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "BON003_Rincon",
@@ -99,23 +99,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.233157,
     "longitude": -68.331587,
-    "temperature": 26.9,
+    "temperature": 26.6,
     "metrics": {
-      "temperature_c": 26.9,
-      "humidity_pct": 78.0,
-      "pressure_hpa": 1010.5,
-      "dew_point_c": 22.8,
-      "feels_like_c": 29.4,
-      "wind_speed_ms": 4.1,
-      "wind_gust_ms": 7.2,
-      "wind_dir_deg": 107.0,
-      "solar_wm2": 19.0,
+      "temperature_c": 26.6,
+      "humidity_pct": 80.0,
+      "pressure_hpa": 1010.7,
+      "dew_point_c": 22.9,
+      "feels_like_c": 26.6,
+      "wind_speed_ms": 5.3,
+      "wind_gust_ms": 9.4,
+      "wind_dir_deg": 50.0,
+      "solar_wm2": 1.9,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 26.91,
-      "globe_temp_c": 32.08
+      "wbgt_c": 26.31,
+      "globe_temp_c": 30.79
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "BON002_Washington_Slagbaai",
@@ -124,23 +124,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.269665,
     "longitude": -68.345604,
-    "temperature": 27.3,
+    "temperature": 26.9,
     "metrics": {
-      "temperature_c": 27.3,
-      "humidity_pct": 78.0,
+      "temperature_c": 26.9,
+      "humidity_pct": 79.0,
       "pressure_hpa": 1010.0,
-      "dew_point_c": 23.2,
-      "feels_like_c": 30.3,
-      "wind_speed_ms": 9.3,
-      "wind_gust_ms": 20.2,
-      "wind_dir_deg": 84.0,
-      "solar_wm2": 21.8,
+      "dew_point_c": 23.0,
+      "feels_like_c": 29.5,
+      "wind_speed_ms": 12.6,
+      "wind_gust_ms": 23.8,
+      "wind_dir_deg": 87.0,
+      "solar_wm2": 2.6,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 25.38,
-      "globe_temp_c": 30.6
+      "wbgt_c": 23.96,
+      "globe_temp_c": 29.45
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "BON004_Bonaire_Galileo",
@@ -149,23 +149,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.213874,
     "longitude": -68.323051,
-    "temperature": 27.0,
+    "temperature": 26.8,
     "metrics": {
-      "temperature_c": 27.0,
-      "humidity_pct": 75.0,
-      "pressure_hpa": 1011.8,
-      "dew_point_c": 22.2,
-      "feels_like_c": 29.3,
-      "wind_speed_ms": 17.1,
-      "wind_gust_ms": 22.0,
-      "wind_dir_deg": 109.0,
-      "solar_wm2": 22.6,
+      "temperature_c": 26.8,
+      "humidity_pct": 77.0,
+      "pressure_hpa": 1011.9,
+      "dew_point_c": 22.4,
+      "feels_like_c": 29.0,
+      "wind_speed_ms": 10.5,
+      "wind_gust_ms": 16.6,
+      "wind_dir_deg": 93.0,
+      "solar_wm2": 2.3,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 22.06,
-      "globe_temp_c": 29.3
+      "wbgt_c": 24.21,
+      "globe_temp_c": 29.61
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "BON007_Sur",
@@ -185,23 +185,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 12.17686,
     "longitude": -68.227141,
-    "temperature": 27.3,
+    "temperature": 27.0,
     "metrics": {
-      "temperature_c": 27.3,
-      "humidity_pct": 76.0,
+      "temperature_c": 27.0,
+      "humidity_pct": 78.0,
       "pressure_hpa": 1010.3,
-      "dew_point_c": 22.8,
-      "feels_like_c": 30.0,
-      "wind_speed_ms": 15.7,
-      "wind_gust_ms": 23.8,
-      "wind_dir_deg": 96.0,
-      "solar_wm2": 17.2,
+      "dew_point_c": 22.9,
+      "feels_like_c": 29.6,
+      "wind_speed_ms": 18.3,
+      "wind_gust_ms": 25.6,
+      "wind_dir_deg": 81.0,
+      "solar_wm2": 1.6,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 23.0,
-      "globe_temp_c": 29.67
+      "wbgt_c": 22.11,
+      "globe_temp_c": 29.05
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "SAB006_The_Harbor",
@@ -225,19 +225,19 @@
     "metrics": {
       "temperature_c": 24.2,
       "humidity_pct": 84.0,
-      "pressure_hpa": 1012.8,
-      "dew_point_c": 21.3,
+      "pressure_hpa": 1013.0,
+      "dew_point_c": 21.4,
       "feels_like_c": 24.2,
-      "wind_speed_ms": 6.1,
+      "wind_speed_ms": 5.5,
       "wind_gust_ms": 11.2,
-      "wind_dir_deg": 67.0,
-      "solar_wm2": 1.9,
+      "wind_dir_deg": 68.0,
+      "solar_wm2": 0.0,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 24.0,
-      "globe_temp_c": 27.89
+      "wbgt_c": 24.29,
+      "globe_temp_c": 28.12
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "SAB004_Julianas_Hotel",
@@ -261,19 +261,19 @@
     "metrics": {
       "temperature_c": 24.1,
       "humidity_pct": 87.0,
-      "pressure_hpa": 1012.1,
-      "dew_point_c": 21.8,
+      "pressure_hpa": 1012.3,
+      "dew_point_c": 21.9,
       "feels_like_c": 24.1,
-      "wind_speed_ms": 25.9,
-      "wind_gust_ms": 33.1,
-      "wind_dir_deg": 123.0,
-      "solar_wm2": 1.6,
+      "wind_speed_ms": 13.2,
+      "wind_gust_ms": 20.2,
+      "wind_dir_deg": 165.0,
+      "solar_wm2": 0.0,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 17.9,
-      "globe_temp_c": 25.7
+      "wbgt_c": 21.95,
+      "globe_temp_c": 26.47
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "SAB002_The_Church",
@@ -282,23 +282,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.638941,
     "longitude": -63.229518,
-    "temperature": 22.4,
+    "temperature": 22.5,
     "metrics": {
-      "temperature_c": 22.4,
+      "temperature_c": 22.5,
       "humidity_pct": 94.0,
-      "pressure_hpa": 1012.5,
-      "dew_point_c": 21.4,
-      "feels_like_c": 22.4,
-      "wind_speed_ms": 9.2,
+      "pressure_hpa": 1012.8,
+      "dew_point_c": 21.5,
+      "feels_like_c": 22.5,
+      "wind_speed_ms": 8.1,
       "wind_gust_ms": 14.8,
-      "wind_dir_deg": 151.0,
-      "solar_wm2": 1.2,
+      "wind_dir_deg": 160.0,
+      "solar_wm2": 0.3,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 22.22,
-      "globe_temp_c": 25.25
+      "wbgt_c": 22.7,
+      "globe_temp_c": 25.57
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "SAB003_The_Level",
@@ -311,19 +311,19 @@
     "metrics": {
       "temperature_c": 21.7,
       "humidity_pct": 98.0,
-      "pressure_hpa": 1012.5,
+      "pressure_hpa": 1012.7,
       "dew_point_c": 21.3,
       "feels_like_c": 21.7,
-      "wind_speed_ms": 4.8,
-      "wind_gust_ms": 11.2,
+      "wind_speed_ms": 3.2,
+      "wind_gust_ms": 5.4,
       "wind_dir_deg": 165.0,
-      "solar_wm2": 0.3,
+      "solar_wm2": 0.0,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 23.43,
-      "globe_temp_c": 25.81
+      "wbgt_c": 24.13,
+      "globe_temp_c": 26.9
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "EUX001_The_Harbor",
@@ -332,23 +332,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.47798,
     "longitude": -62.985968,
-    "temperature": 26.2,
+    "temperature": 26.1,
     "metrics": {
-      "temperature_c": 26.2,
+      "temperature_c": 26.1,
       "humidity_pct": 76.0,
-      "pressure_hpa": 1015.6,
+      "pressure_hpa": 1015.5,
       "dew_point_c": 21.6,
-      "feels_like_c": 26.2,
-      "wind_speed_ms": 5.1,
-      "wind_gust_ms": 11.2,
-      "wind_dir_deg": 174.0,
-      "solar_wm2": 1.8,
+      "feels_like_c": 26.1,
+      "wind_speed_ms": 6.9,
+      "wind_gust_ms": 14.8,
+      "wind_dir_deg": 119.0,
+      "solar_wm2": 0.0,
       "rain_daily_mm": 1.3,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 25.37,
-      "globe_temp_c": 30.41
+      "wbgt_c": 24.65,
+      "globe_temp_c": 29.63
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:01 UTC"
   },
   {
     "id": "EUX002_Upper_Town",
@@ -357,23 +357,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.485321,
     "longitude": -62.983726,
-    "temperature": 25.0,
+    "temperature": 24.9,
     "metrics": {
-      "temperature_c": 25.0,
+      "temperature_c": 24.9,
       "humidity_pct": 83.0,
       "pressure_hpa": 1013.0,
       "dew_point_c": 21.9,
-      "feels_like_c": 25.0,
-      "wind_speed_ms": 5.5,
-      "wind_gust_ms": 9.4,
-      "wind_dir_deg": 317.0,
-      "solar_wm2": 1.6,
+      "feels_like_c": 24.9,
+      "wind_speed_ms": 6.5,
+      "wind_gust_ms": 11.2,
+      "wind_dir_deg": 319.0,
+      "solar_wm2": 0.0,
       "rain_daily_mm": 2.3,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 24.94,
-      "globe_temp_c": 28.98
+      "wbgt_c": 24.53,
+      "globe_temp_c": 28.51
     },
-    "last_update": "2026-03-25 22:41 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "EUX003_The_Quill_Garden",
@@ -382,23 +382,23 @@
     "sensor_type": "ecowitt-ws2910",
     "latitude": 17.487301,
     "longitude": -62.96904,
-    "temperature": 24.3,
+    "temperature": 24.2,
     "metrics": {
-      "temperature_c": 24.3,
+      "temperature_c": 24.2,
       "humidity_pct": 86.0,
-      "pressure_hpa": 1012.0,
-      "dew_point_c": 21.8,
-      "feels_like_c": 24.3,
-      "wind_speed_ms": 0.7,
-      "wind_gust_ms": 3.6,
-      "wind_dir_deg": 92.0,
-      "solar_wm2": 1.8,
+      "pressure_hpa": 1011.9,
+      "dew_point_c": 21.7,
+      "feels_like_c": 24.2,
+      "wind_speed_ms": 2.6,
+      "wind_gust_ms": 7.2,
+      "wind_dir_deg": 93.0,
+      "solar_wm2": 0.0,
       "rain_daily_mm": 0.5,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 27.86,
-      "globe_temp_c": 37.33
+      "wbgt_c": 25.79,
+      "globe_temp_c": 30.28
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "EUX004_EOC",
@@ -410,20 +410,20 @@
     "temperature": 25.1,
     "metrics": {
       "temperature_c": 25.1,
-      "humidity_pct": 81.0,
-      "pressure_hpa": 1012.1,
-      "dew_point_c": 21.5,
+      "humidity_pct": 80.0,
+      "pressure_hpa": 1012.2,
+      "dew_point_c": 21.4,
       "feels_like_c": 25.1,
-      "wind_speed_ms": 17.7,
-      "wind_gust_ms": 23.8,
-      "wind_dir_deg": 97.0,
-      "solar_wm2": 1.8,
+      "wind_speed_ms": 17.2,
+      "wind_gust_ms": 33.1,
+      "wind_dir_deg": 95.0,
+      "solar_wm2": 0.0,
       "rain_daily_mm": 0.0,
       "rain_rate_mmhr": 0.0,
-      "wbgt_c": 20.65,
-      "globe_temp_c": 27.12
+      "wbgt_c": 20.75,
+      "globe_temp_c": 27.15
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "EUX005_Drop_off",
@@ -443,19 +443,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.1008,
     "longitude": 5.1775,
-    "temperature": 4.0,
+    "temperature": 3.9,
     "metrics": {
-      "temperature_c": 4.0,
-      "humidity_pct": 88.0,
-      "pressure_hpa": 1009.93,
-      "dew_point_c": 2.2,
-      "wind_speed_ms": 1.93,
-      "wind_dir_deg": 274.5,
+      "temperature_c": 3.9,
+      "humidity_pct": 90.0,
+      "pressure_hpa": 1010.03,
+      "dew_point_c": 2.4,
+      "wind_speed_ms": 1.75,
+      "wind_dir_deg": 268.3,
       "solar_wm2": 0.0,
-      "wbgt_c": 5.18,
-      "globe_temp_c": 8.55
+      "wbgt_c": 5.28,
+      "globe_temp_c": 8.72
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Schiphol",
@@ -464,17 +464,17 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.3086,
     "longitude": 4.7639,
-    "temperature": 5.3,
+    "temperature": 4.3,
     "metrics": {
-      "temperature_c": 5.3,
-      "humidity_pct": 77.0,
-      "pressure_hpa": 1009.7,
-      "dew_point_c": 1.6,
-      "wind_speed_ms": 3.85,
-      "wind_dir_deg": 313.1,
+      "temperature_c": 4.3,
+      "humidity_pct": 76.0,
+      "pressure_hpa": 1009.9,
+      "dew_point_c": 0.5,
+      "wind_speed_ms": 3.87,
+      "wind_dir_deg": 340.6,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Rotterdam",
@@ -483,17 +483,17 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.9625,
     "longitude": 4.4472,
-    "temperature": 3.8,
+    "temperature": 4.3,
     "metrics": {
-      "temperature_c": 3.8,
-      "humidity_pct": 90.0,
-      "pressure_hpa": 1010.64,
-      "dew_point_c": 2.4,
-      "wind_speed_ms": 3.36,
-      "wind_dir_deg": 292.0,
+      "temperature_c": 4.3,
+      "humidity_pct": 88.0,
+      "pressure_hpa": 1011.04,
+      "dew_point_c": 2.5,
+      "wind_speed_ms": 3.87,
+      "wind_dir_deg": 12.2,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_D15_FA_1",
@@ -502,17 +502,17 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 54.3256,
     "longitude": 2.9358,
-    "temperature": 5.7,
+    "temperature": 5.8,
     "metrics": {
-      "temperature_c": 5.7,
+      "temperature_c": 5.8,
       "humidity_pct": 62.0,
-      "pressure_hpa": 1008.97,
+      "pressure_hpa": 1009.37,
       "dew_point_c": -0.8,
-      "wind_speed_ms": 15.67,
-      "wind_dir_deg": 325.9,
-      "wbgt_c": 3.73
+      "wind_speed_ms": 15.07,
+      "wind_dir_deg": 331.3,
+      "wbgt_c": 3.82
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_P11_B",
@@ -524,14 +524,14 @@
     "temperature": 7.2,
     "metrics": {
       "temperature_c": 7.2,
-      "humidity_pct": 60.0,
-      "pressure_hpa": 1011.22,
-      "dew_point_c": 0.1,
-      "wind_speed_ms": 10.16,
-      "wind_dir_deg": 345.8,
-      "wbgt_c": 5.02
+      "humidity_pct": 58.0,
+      "pressure_hpa": 1011.42,
+      "dew_point_c": -0.4,
+      "wind_speed_ms": 10.73,
+      "wind_dir_deg": 344.0,
+      "wbgt_c": 4.9
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_K14_FA_1C",
@@ -540,17 +540,17 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 53.2694,
     "longitude": 3.6278,
-    "temperature": 5.4,
+    "temperature": 6.3,
     "metrics": {
-      "temperature_c": 5.4,
-      "humidity_pct": 74.0,
-      "pressure_hpa": 1010.28,
-      "dew_point_c": 1.2,
-      "wind_speed_ms": 11.36,
-      "wind_dir_deg": 344.9,
-      "wbgt_c": 4.12
+      "temperature_c": 6.3,
+      "humidity_pct": 65.0,
+      "pressure_hpa": 1010.18,
+      "dew_point_c": 0.3,
+      "wind_speed_ms": 11.0,
+      "wind_dir_deg": 333.7,
+      "wbgt_c": 4.46
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_A12_CPP",
@@ -559,17 +559,17 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 55.3992,
     "longitude": 3.8103,
-    "temperature": 4.3,
+    "temperature": 5.1,
     "metrics": {
-      "temperature_c": 4.3,
-      "humidity_pct": 73.0,
-      "pressure_hpa": 1005.36,
-      "dew_point_c": 0.0,
-      "wind_speed_ms": 15.06,
-      "wind_dir_deg": 343.7,
-      "wbgt_c": 3.01
+      "temperature_c": 5.1,
+      "humidity_pct": 71.0,
+      "pressure_hpa": 1005.45,
+      "dew_point_c": 0.3,
+      "wind_speed_ms": 14.39,
+      "wind_dir_deg": 340.4,
+      "wbgt_c": 3.67
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_L9_FF_1",
@@ -581,14 +581,14 @@
     "temperature": 6.3,
     "metrics": {
       "temperature_c": 6.3,
-      "humidity_pct": 62.0,
-      "pressure_hpa": 1007.94,
-      "dew_point_c": -0.3,
-      "wind_speed_ms": 12.59,
-      "wind_dir_deg": 310.7,
-      "wbgt_c": 4.29
+      "humidity_pct": 65.0,
+      "pressure_hpa": 1008.44,
+      "dew_point_c": 0.4,
+      "wind_speed_ms": 13.32,
+      "wind_dir_deg": 314.0,
+      "wbgt_c": 4.46
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_AWG_1",
@@ -600,14 +600,14 @@
     "temperature": 5.2,
     "metrics": {
       "temperature_c": 5.2,
-      "humidity_pct": 76.0,
-      "pressure_hpa": 1006.65,
-      "dew_point_c": 1.3,
-      "wind_speed_ms": 9.73,
-      "wind_dir_deg": 331.9,
-      "wbgt_c": 4.05
+      "humidity_pct": 77.0,
+      "pressure_hpa": 1006.85,
+      "dew_point_c": 1.5,
+      "wind_speed_ms": 11.31,
+      "wind_dir_deg": 339.1,
+      "wbgt_c": 4.11
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_IJmond",
@@ -618,10 +618,10 @@
     "longitude": 4.5175,
     "temperature": null,
     "metrics": {
-      "wind_speed_ms": 10.2,
-      "wind_dir_deg": 341.3
+      "wind_speed_ms": 10.23,
+      "wind_dir_deg": 347.8
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_J6_A",
@@ -630,17 +630,17 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 53.8242,
     "longitude": 2.9453,
-    "temperature": 6.1,
+    "temperature": 3.8,
     "metrics": {
-      "temperature_c": 6.1,
-      "humidity_pct": 59.0,
-      "pressure_hpa": 1010.01,
-      "dew_point_c": -1.2,
-      "wind_speed_ms": 13.86,
-      "wind_dir_deg": 325.7,
-      "wbgt_c": 3.94
+      "temperature_c": 3.8,
+      "humidity_pct": 79.0,
+      "pressure_hpa": 1010.63,
+      "dew_point_c": 0.6,
+      "wind_speed_ms": 14.58,
+      "wind_dir_deg": 327.1,
+      "wbgt_c": 2.87
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Hollandse_Kust_Noord",
@@ -649,17 +649,17 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 52.6978,
     "longitude": 4.2933,
-    "temperature": 6.8,
+    "temperature": 6.2,
     "metrics": {
-      "temperature_c": 6.8,
-      "humidity_pct": 67.0,
-      "pressure_hpa": 1009.77,
-      "dew_point_c": 1.2,
-      "wind_speed_ms": 10.6,
-      "wind_dir_deg": 329.7,
-      "wbgt_c": 5.05
+      "temperature_c": 6.2,
+      "humidity_pct": 65.0,
+      "pressure_hpa": 1010.18,
+      "dew_point_c": 0.2,
+      "wind_speed_ms": 12.46,
+      "wind_dir_deg": 326.6,
+      "wbgt_c": 4.37
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Buitengaats_BG_OHVS2",
@@ -668,16 +668,16 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 54.0369,
     "longitude": 6.0417,
-    "temperature": 5.5,
+    "temperature": 5.6,
     "metrics": {
-      "temperature_c": 5.5,
-      "humidity_pct": 67.0,
-      "pressure_hpa": 1005.52,
-      "dew_point_c": 0.0,
-      "wind_speed_ms": 11.31,
-      "wbgt_c": 3.82
+      "temperature_c": 5.6,
+      "humidity_pct": 69.0,
+      "pressure_hpa": 1005.91,
+      "dew_point_c": 0.5,
+      "wind_speed_ms": 9.76,
+      "wbgt_c": 4.03
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Voorschoten",
@@ -686,17 +686,17 @@
     "sensor_type": "knmi-mistpost",
     "latitude": 52.1397,
     "longitude": 4.4364,
-    "temperature": 3.1,
+    "temperature": 3.9,
     "metrics": {
-      "temperature_c": 3.1,
-      "humidity_pct": 91.0,
+      "temperature_c": 3.9,
+      "humidity_pct": 86.0,
       "pressure_hpa": 1010.45,
-      "dew_point_c": 1.7,
-      "wind_speed_ms": 2.59,
-      "wind_dir_deg": 269.0,
+      "dew_point_c": 1.8,
+      "wind_speed_ms": 3.83,
+      "wind_dir_deg": 286.9,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Hollandse_Kust_Zuid_Alpha",
@@ -708,14 +708,14 @@
     "temperature": 6.9,
     "metrics": {
       "temperature_c": 6.9,
-      "humidity_pct": 71.0,
-      "pressure_hpa": 1009.91,
-      "dew_point_c": 2.1,
-      "wind_speed_ms": 7.78,
-      "wind_dir_deg": 339.6,
-      "wbgt_c": 5.38
+      "humidity_pct": 61.0,
+      "pressure_hpa": 1010.21,
+      "dew_point_c": 0.1,
+      "wind_speed_ms": 10.78,
+      "wind_dir_deg": 340.9,
+      "wbgt_c": 4.79
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Hollandse_Kust_West_Alpha",
@@ -724,17 +724,17 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 52.6797,
     "longitude": 3.8044,
-    "temperature": 6.7,
+    "temperature": 6.5,
     "metrics": {
-      "temperature_c": 6.7,
-      "humidity_pct": 64.0,
-      "pressure_hpa": 1010.21,
-      "dew_point_c": 0.5,
-      "wind_speed_ms": 10.6,
-      "wind_dir_deg": 329.8,
-      "wbgt_c": 4.78
+      "temperature_c": 6.5,
+      "humidity_pct": 73.0,
+      "pressure_hpa": 1010.62,
+      "dew_point_c": 2.1,
+      "wind_speed_ms": 10.16,
+      "wind_dir_deg": 348.9,
+      "wbgt_c": 5.12
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_IJmuiden",
@@ -745,10 +745,10 @@
     "longitude": 4.555,
     "temperature": null,
     "metrics": {
-      "wind_speed_ms": 10.08,
-      "wind_dir_deg": 335.6
+      "wind_speed_ms": 9.9,
+      "wind_dir_deg": 334.7
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_De_Kooy_Airport",
@@ -757,19 +757,19 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 52.9269,
     "longitude": 4.7811,
-    "temperature": 5.9,
+    "temperature": 5.5,
     "metrics": {
-      "temperature_c": 5.9,
-      "humidity_pct": 70.0,
-      "pressure_hpa": 1009.04,
-      "dew_point_c": 1.0,
-      "wind_speed_ms": 6.95,
-      "wind_dir_deg": 323.9,
+      "temperature_c": 5.5,
+      "humidity_pct": 64.0,
+      "pressure_hpa": 1009.34,
+      "dew_point_c": -0.7,
+      "wind_speed_ms": 7.48,
+      "wind_dir_deg": 326.0,
       "solar_wm2": 0.0,
-      "wbgt_c": 2.54,
-      "globe_temp_c": 7.5
+      "wbgt_c": 1.51,
+      "globe_temp_c": 7.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_F3_FB_1",
@@ -778,17 +778,17 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 54.8539,
     "longitude": 4.6961,
-    "temperature": 5.7,
+    "temperature": 5.5,
     "metrics": {
-      "temperature_c": 5.7,
+      "temperature_c": 5.5,
       "humidity_pct": 64.0,
-      "pressure_hpa": 1005.27,
+      "pressure_hpa": 1005.57,
       "dew_point_c": -0.6,
-      "wind_speed_ms": 15.28,
-      "wind_dir_deg": 311.8,
-      "wbgt_c": 3.84
+      "wind_speed_ms": 13.91,
+      "wind_dir_deg": 316.5,
+      "wbgt_c": 3.65
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Vlieland_Vliehors",
@@ -797,17 +797,17 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 53.24,
     "longitude": 4.9208,
-    "temperature": 5.9,
+    "temperature": 6.0,
     "metrics": {
-      "temperature_c": 5.9,
-      "humidity_pct": 73.0,
-      "pressure_hpa": 1008.48,
-      "dew_point_c": 1.6,
-      "wind_speed_ms": 12.49,
-      "wind_dir_deg": 321.8,
-      "wbgt_c": 4.55
+      "temperature_c": 6.0,
+      "humidity_pct": 72.0,
+      "pressure_hpa": 1008.58,
+      "dew_point_c": 1.5,
+      "wind_speed_ms": 12.6,
+      "wind_dir_deg": 320.1,
+      "wbgt_c": 4.58
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Wijdenes",
@@ -818,10 +818,10 @@
     "longitude": 5.1736,
     "temperature": null,
     "metrics": {
-      "wind_speed_ms": 3.44,
-      "wind_dir_deg": 287.1
+      "wind_speed_ms": 3.3,
+      "wind_dir_deg": 293.1
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Berkhout",
@@ -830,14 +830,14 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.6428,
     "longitude": 4.9789,
-    "temperature": 3.0,
+    "temperature": 4.3,
     "metrics": {
-      "temperature_c": 3.0,
-      "wind_speed_ms": 2.83,
-      "wind_dir_deg": 304.6,
+      "temperature_c": 4.3,
+      "wind_speed_ms": 5.14,
+      "wind_dir_deg": 316.6,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Hoorn_Terschelling",
@@ -846,19 +846,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 53.3911,
     "longitude": 5.3458,
-    "temperature": 5.4,
+    "temperature": 5.5,
     "metrics": {
-      "temperature_c": 5.4,
-      "humidity_pct": 71.0,
-      "pressure_hpa": 1007.68,
-      "dew_point_c": 0.7,
-      "wind_speed_ms": 8.82,
-      "wind_dir_deg": 317.3,
+      "temperature_c": 5.5,
+      "humidity_pct": 66.0,
+      "pressure_hpa": 1007.88,
+      "dew_point_c": -0.2,
+      "wind_speed_ms": 9.13,
+      "wind_dir_deg": 316.5,
       "solar_wm2": 0.0,
-      "wbgt_c": 1.69,
-      "globe_temp_c": 6.89
+      "wbgt_c": 1.36,
+      "globe_temp_c": 6.95
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Wijk_aan_Zee",
@@ -867,14 +867,14 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.5053,
     "longitude": 4.6031,
-    "temperature": 6.3,
+    "temperature": 6.4,
     "metrics": {
-      "temperature_c": 6.3,
-      "humidity_pct": 72.0,
-      "dew_point_c": 1.7,
+      "temperature_c": 6.4,
+      "humidity_pct": 70.0,
+      "dew_point_c": 1.4,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Houtribdijk",
@@ -885,10 +885,10 @@
     "longitude": 5.4006,
     "temperature": null,
     "metrics": {
-      "wind_speed_ms": 7.11,
-      "wind_dir_deg": 289.3
+      "wind_speed_ms": 6.2,
+      "wind_dir_deg": 287.6
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Stavoren",
@@ -897,16 +897,16 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.8967,
     "longitude": 5.3833,
-    "temperature": 6.2,
+    "temperature": 5.5,
     "metrics": {
-      "temperature_c": 6.2,
-      "humidity_pct": 71.0,
-      "dew_point_c": 1.5,
-      "wind_speed_ms": 9.71,
-      "wind_dir_deg": 327.2,
+      "temperature_c": 5.5,
+      "humidity_pct": 76.0,
+      "dew_point_c": 1.7,
+      "wind_speed_ms": 8.91,
+      "wind_dir_deg": 332.5,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Lelystad_Airport",
@@ -915,17 +915,17 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 52.4483,
     "longitude": 5.5081,
-    "temperature": 3.9,
+    "temperature": 4.3,
     "metrics": {
-      "temperature_c": 3.9,
+      "temperature_c": 4.3,
       "humidity_pct": 80.0,
-      "pressure_hpa": 1008.82,
-      "dew_point_c": 0.9,
-      "wind_speed_ms": 2.53,
-      "wind_dir_deg": 285.7,
+      "pressure_hpa": 1009.13,
+      "dew_point_c": 1.3,
+      "wind_speed_ms": 3.01,
+      "wind_dir_deg": 282.8,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Leeuwarden_Airport",
@@ -934,19 +934,19 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 53.2231,
     "longitude": 5.7517,
-    "temperature": 4.3,
+    "temperature": 4.6,
     "metrics": {
-      "temperature_c": 4.3,
-      "humidity_pct": 78.0,
-      "pressure_hpa": 1007.42,
-      "dew_point_c": 0.9,
-      "wind_speed_ms": 6.39,
-      "wind_dir_deg": 315.9,
+      "temperature_c": 4.6,
+      "humidity_pct": 71.0,
+      "pressure_hpa": 1007.82,
+      "dew_point_c": -0.1,
+      "wind_speed_ms": 8.49,
+      "wind_dir_deg": 321.2,
       "solar_wm2": 0.0,
-      "wbgt_c": -0.88,
-      "globe_temp_c": 5.49
+      "wbgt_c": -2.89,
+      "globe_temp_c": 5.6
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Marknesse",
@@ -955,16 +955,16 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.7019,
     "longitude": 5.8875,
-    "temperature": 4.4,
+    "temperature": 4.2,
     "metrics": {
-      "temperature_c": 4.4,
-      "humidity_pct": 87.0,
-      "dew_point_c": 2.4,
-      "wind_speed_ms": 4.33,
-      "wind_dir_deg": 303.8,
+      "temperature_c": 4.2,
+      "humidity_pct": 83.0,
+      "dew_point_c": 1.5,
+      "wind_speed_ms": 5.71,
+      "wind_dir_deg": 324.2,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Deelen_Airport",
@@ -976,16 +976,16 @@
     "temperature": 2.9,
     "metrics": {
       "temperature_c": 2.9,
-      "humidity_pct": 88.0,
-      "pressure_hpa": 1009.38,
-      "dew_point_c": 1.2,
-      "wind_speed_ms": 3.85,
-      "wind_dir_deg": 283.8,
+      "humidity_pct": 90.0,
+      "pressure_hpa": 1009.58,
+      "dew_point_c": 1.5,
+      "wind_speed_ms": 3.44,
+      "wind_dir_deg": 279.1,
       "solar_wm2": 0.0,
-      "wbgt_c": 4.1,
-      "globe_temp_c": 7.39
+      "wbgt_c": 4.32,
+      "globe_temp_c": 7.71
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Lauwersoog",
@@ -994,16 +994,16 @@
     "sensor_type": "knmi-aws",
     "latitude": 53.4117,
     "longitude": 6.1992,
-    "temperature": 6.2,
+    "temperature": 4.6,
     "metrics": {
-      "temperature_c": 6.2,
-      "humidity_pct": 69.0,
-      "dew_point_c": 1.1,
-      "wind_speed_ms": 11.65,
-      "wind_dir_deg": 318.7,
+      "temperature_c": 4.6,
+      "humidity_pct": 84.0,
+      "dew_point_c": 2.3,
+      "wind_speed_ms": 9.05,
+      "wind_dir_deg": 336.0,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Heino",
@@ -1012,16 +1012,16 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.4344,
     "longitude": 6.2589,
-    "temperature": 3.2,
+    "temperature": 3.0,
     "metrics": {
-      "temperature_c": 3.2,
+      "temperature_c": 3.0,
       "humidity_pct": 94.0,
-      "dew_point_c": 2.4,
-      "wind_speed_ms": 2.9,
-      "wind_dir_deg": 243.3,
+      "dew_point_c": 2.1,
+      "wind_speed_ms": 2.53,
+      "wind_dir_deg": 242.0,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Hoogeveen",
@@ -1030,19 +1030,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.7489,
     "longitude": 6.5731,
-    "temperature": 2.5,
+    "temperature": 2.8,
     "metrics": {
-      "temperature_c": 2.5,
+      "temperature_c": 2.8,
       "humidity_pct": 91.0,
-      "pressure_hpa": 1007.65,
-      "dew_point_c": 1.3,
-      "wind_speed_ms": 3.71,
-      "wind_dir_deg": 255.9,
+      "pressure_hpa": 1007.95,
+      "dew_point_c": 1.5,
+      "wind_speed_ms": 3.65,
+      "wind_dir_deg": 253.1,
       "solar_wm2": 0.0,
-      "wbgt_c": 3.67,
-      "globe_temp_c": 6.6
+      "wbgt_c": 3.97,
+      "globe_temp_c": 6.96
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Groningen_Airport_Eelde",
@@ -1051,19 +1051,19 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 53.1236,
     "longitude": 6.5847,
-    "temperature": 3.7,
+    "temperature": 3.3,
     "metrics": {
-      "temperature_c": 3.7,
-      "humidity_pct": 88.0,
-      "pressure_hpa": 1006.99,
-      "dew_point_c": 2.1,
-      "wind_speed_ms": 2.66,
-      "wind_dir_deg": 289.4,
+      "temperature_c": 3.3,
+      "humidity_pct": 90.0,
+      "pressure_hpa": 1007.19,
+      "dew_point_c": 1.8,
+      "wind_speed_ms": 2.7,
+      "wind_dir_deg": 289.1,
       "solar_wm2": 0.0,
-      "wbgt_c": 4.74,
-      "globe_temp_c": 7.8
+      "wbgt_c": 4.34,
+      "globe_temp_c": 7.33
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:02 UTC"
   },
   {
     "id": "KNMI_Hupsel",
@@ -1075,13 +1075,13 @@
     "temperature": 2.3,
     "metrics": {
       "temperature_c": 2.3,
-      "humidity_pct": 91.0,
-      "dew_point_c": 1.1,
-      "wind_speed_ms": 1.89,
-      "wind_dir_deg": 250.7,
+      "humidity_pct": 93.0,
+      "dew_point_c": 1.4,
+      "wind_speed_ms": 2.33,
+      "wind_dir_deg": 240.7,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Nieuw_Beerta",
@@ -1090,16 +1090,16 @@
     "sensor_type": "knmi-aws",
     "latitude": 53.1944,
     "longitude": 7.1492,
-    "temperature": 3.9,
+    "temperature": 4.0,
     "metrics": {
-      "temperature_c": 3.9,
-      "humidity_pct": 86.0,
-      "dew_point_c": 1.8,
-      "wind_speed_ms": 6.7,
-      "wind_dir_deg": 266.9,
+      "temperature_c": 4.0,
+      "humidity_pct": 88.0,
+      "dew_point_c": 2.2,
+      "wind_speed_ms": 4.53,
+      "wind_dir_deg": 269.7,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:42 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Twenthe_Airport",
@@ -1108,19 +1108,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 52.2731,
     "longitude": 6.8908,
-    "temperature": 2.0,
+    "temperature": 2.1,
     "metrics": {
-      "temperature_c": 2.0,
+      "temperature_c": 2.1,
       "humidity_pct": 98.0,
-      "pressure_hpa": 1008.18,
-      "dew_point_c": 1.7,
-      "wind_speed_ms": 2.28,
-      "wind_dir_deg": 238.4,
+      "pressure_hpa": 1008.68,
+      "dew_point_c": 1.9,
+      "wind_speed_ms": 2.26,
+      "wind_dir_deg": 259.9,
       "solar_wm2": 0.0,
-      "wbgt_c": 4.09,
-      "globe_temp_c": 7.86
+      "wbgt_c": 4.24,
+      "globe_temp_c": 8.01
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Vlissingen",
@@ -1129,19 +1129,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.4414,
     "longitude": 3.5958,
-    "temperature": 4.2,
+    "temperature": 4.4,
     "metrics": {
-      "temperature_c": 4.2,
-      "humidity_pct": 85.0,
-      "pressure_hpa": 1012.19,
-      "dew_point_c": 2.1,
-      "wind_speed_ms": 8.72,
-      "wind_dir_deg": 332.8,
+      "temperature_c": 4.4,
+      "humidity_pct": 84.0,
+      "pressure_hpa": 1012.29,
+      "dew_point_c": 2.0,
+      "wind_speed_ms": 3.54,
+      "wind_dir_deg": 324.1,
       "solar_wm2": 0.0,
-      "wbgt_c": 3.64,
-      "globe_temp_c": 6.57
+      "wbgt_c": 5.14,
+      "globe_temp_c": 8.41
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Oosterschelde",
@@ -1152,10 +1152,10 @@
     "longitude": 3.6217,
     "temperature": null,
     "metrics": {
-      "wind_speed_ms": 10.53,
-      "wind_dir_deg": 301.9
+      "wind_speed_ms": 14.0,
+      "wind_dir_deg": 339.9
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Borssele_Alpha",
@@ -1164,17 +1164,17 @@
     "sensor_type": "knmi-aws-platform",
     "latitude": 51.7,
     "longitude": 3.0567,
-    "temperature": 5.0,
+    "temperature": 5.5,
     "metrics": {
-      "temperature_c": 5.0,
-      "humidity_pct": 83.0,
-      "pressure_hpa": 1013.08,
-      "dew_point_c": 2.4,
-      "wind_speed_ms": 9.55,
-      "wind_dir_deg": 299.3,
-      "wbgt_c": 4.27
+      "temperature_c": 5.5,
+      "humidity_pct": 78.0,
+      "pressure_hpa": 1013.37,
+      "dew_point_c": 2.1,
+      "wind_speed_ms": 8.97,
+      "wind_dir_deg": 309.6,
+      "wbgt_c": 4.46
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Westdorpe",
@@ -1183,19 +1183,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.2247,
     "longitude": 3.8611,
-    "temperature": 4.7,
+    "temperature": 4.3,
     "metrics": {
-      "temperature_c": 4.7,
-      "humidity_pct": 82.0,
-      "pressure_hpa": 1012.18,
-      "dew_point_c": 2.0,
-      "wind_speed_ms": 4.88,
-      "wind_dir_deg": 286.9,
+      "temperature_c": 4.3,
+      "humidity_pct": 91.0,
+      "pressure_hpa": 1012.58,
+      "dew_point_c": 3.0,
+      "wind_speed_ms": 7.73,
+      "wind_dir_deg": 309.5,
       "solar_wm2": 0.0,
-      "wbgt_c": 4.24,
-      "globe_temp_c": 7.29
+      "wbgt_c": 3.23,
+      "globe_temp_c": 6.29
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Wilhelminadorp",
@@ -1204,19 +1204,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.5258,
     "longitude": 3.8836,
-    "temperature": 4.3,
+    "temperature": 4.2,
     "metrics": {
-      "temperature_c": 4.3,
-      "humidity_pct": 84.0,
-      "pressure_hpa": 1011.5,
-      "dew_point_c": 2.0,
-      "wind_speed_ms": 6.16,
-      "wind_dir_deg": 313.8,
+      "temperature_c": 4.2,
+      "humidity_pct": 85.0,
+      "pressure_hpa": 1011.8,
+      "dew_point_c": 1.9,
+      "wind_speed_ms": 4.7,
+      "wind_dir_deg": 296.3,
       "solar_wm2": 0.0,
-      "wbgt_c": 3.46,
-      "globe_temp_c": 6.54
+      "wbgt_c": 3.91,
+      "globe_temp_c": 6.81
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Hoek_van_Holland",
@@ -1225,19 +1225,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.9911,
     "longitude": 4.1217,
-    "temperature": 5.6,
+    "temperature": 6.0,
     "metrics": {
-      "temperature_c": 5.6,
-      "humidity_pct": 78.0,
-      "pressure_hpa": 1010.64,
-      "dew_point_c": 2.1,
-      "wind_speed_ms": 6.74,
-      "wind_dir_deg": 310.9,
+      "temperature_c": 6.0,
+      "humidity_pct": 83.0,
+      "pressure_hpa": 1010.74,
+      "dew_point_c": 3.4,
+      "wind_speed_ms": 11.83,
+      "wind_dir_deg": 301.0,
       "solar_wm2": 0.0,
-      "wbgt_c": 5.25,
-      "globe_temp_c": 8.55
+      "wbgt_c": 4.8,
+      "globe_temp_c": 8.17
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Woensdrecht_Airport",
@@ -1249,14 +1249,14 @@
     "temperature": 2.0,
     "metrics": {
       "temperature_c": 2.0,
-      "humidity_pct": 93.0,
-      "pressure_hpa": 1011.33,
-      "dew_point_c": 1.1,
-      "wind_speed_ms": 4.1,
-      "wind_dir_deg": 260.3,
-      "wbgt_c": 1.9
+      "humidity_pct": 94.0,
+      "pressure_hpa": 1011.63,
+      "dew_point_c": 1.2,
+      "wind_speed_ms": 2.12,
+      "wind_dir_deg": 282.4,
+      "wbgt_c": 1.96
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Cabauw",
@@ -1265,17 +1265,17 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.9692,
     "longitude": 4.9258,
-    "temperature": 3.5,
+    "temperature": 4.1,
     "metrics": {
-      "temperature_c": 3.5,
-      "humidity_pct": 87.0,
-      "pressure_hpa": 1010.11,
-      "dew_point_c": 1.6,
-      "wind_speed_ms": 3.31,
-      "wind_dir_deg": 258.2,
+      "temperature_c": 4.1,
+      "humidity_pct": 85.0,
+      "pressure_hpa": 1010.31,
+      "dew_point_c": 1.9,
+      "wind_speed_ms": 4.26,
+      "wind_dir_deg": 279.3,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Gilze_Rijen_Airport",
@@ -1287,16 +1287,16 @@
     "temperature": 2.5,
     "metrics": {
       "temperature_c": 2.5,
-      "humidity_pct": 89.0,
-      "pressure_hpa": 1010.88,
-      "dew_point_c": 1.0,
-      "wind_speed_ms": 3.19,
-      "wind_dir_deg": 244.0,
+      "humidity_pct": 90.0,
+      "pressure_hpa": 1011.18,
+      "dew_point_c": 1.2,
+      "wind_speed_ms": 3.36,
+      "wind_dir_deg": 249.1,
       "solar_wm2": 0.0,
       "wbgt_c": 3.69,
-      "globe_temp_c": 6.81
+      "globe_temp_c": 6.69
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Herwijnen",
@@ -1305,19 +1305,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.8578,
     "longitude": 5.1453,
-    "temperature": 1.5,
+    "temperature": 2.6,
     "metrics": {
-      "temperature_c": 1.5,
-      "humidity_pct": 87.0,
-      "pressure_hpa": 1010.22,
-      "dew_point_c": -0.5,
-      "wind_speed_ms": 2.23,
-      "wind_dir_deg": 253.0,
+      "temperature_c": 2.6,
+      "humidity_pct": 88.0,
+      "pressure_hpa": 1010.42,
+      "dew_point_c": 0.7,
+      "wind_speed_ms": 3.33,
+      "wind_dir_deg": 260.0,
       "solar_wm2": 0.0,
-      "wbgt_c": 1.83,
-      "globe_temp_c": 4.5
+      "wbgt_c": 2.31,
+      "globe_temp_c": 5.05
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Eindhoven_Airport",
@@ -1326,19 +1326,19 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 51.4497,
     "longitude": 5.3769,
-    "temperature": 2.1,
+    "temperature": 2.0,
     "metrics": {
-      "temperature_c": 2.1,
-      "humidity_pct": 90.0,
-      "pressure_hpa": 1010.58,
-      "dew_point_c": 0.7,
-      "wind_speed_ms": 1.38,
-      "wind_dir_deg": 250.2,
+      "temperature_c": 2.0,
+      "humidity_pct": 89.0,
+      "pressure_hpa": 1010.88,
+      "dew_point_c": 0.5,
+      "wind_speed_ms": 1.52,
+      "wind_dir_deg": 247.8,
       "solar_wm2": 0.0,
-      "wbgt_c": 4.3,
-      "globe_temp_c": 9.5
+      "wbgt_c": 4.07,
+      "globe_temp_c": 8.97
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Volkel_Airport",
@@ -1347,19 +1347,19 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 51.6586,
     "longitude": 5.7067,
-    "temperature": 2.9,
+    "temperature": 3.1,
     "metrics": {
-      "temperature_c": 2.9,
-      "humidity_pct": 89.0,
-      "pressure_hpa": 1009.96,
-      "dew_point_c": 1.3,
-      "wind_speed_ms": 2.16,
-      "wind_dir_deg": 271.0,
+      "temperature_c": 3.1,
+      "humidity_pct": 87.0,
+      "pressure_hpa": 1010.26,
+      "dew_point_c": 1.2,
+      "wind_speed_ms": 2.43,
+      "wind_dir_deg": 261.6,
       "solar_wm2": 0.0,
-      "wbgt_c": 4.59,
-      "globe_temp_c": 8.68
+      "wbgt_c": 4.58,
+      "globe_temp_c": 8.51
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Ell",
@@ -1368,16 +1368,16 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.1967,
     "longitude": 5.7625,
-    "temperature": 3.1,
+    "temperature": 3.2,
     "metrics": {
-      "temperature_c": 3.1,
-      "humidity_pct": 85.0,
-      "dew_point_c": 0.9,
-      "wind_speed_ms": 3.73,
-      "wind_dir_deg": 276.7,
+      "temperature_c": 3.2,
+      "humidity_pct": 84.0,
+      "dew_point_c": 0.8,
+      "wind_speed_ms": 4.29,
+      "wind_dir_deg": 270.6,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Maastricht_Airport",
@@ -1386,19 +1386,19 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 50.9053,
     "longitude": 5.7619,
-    "temperature": 1.7,
+    "temperature": 2.4,
     "metrics": {
-      "temperature_c": 1.7,
-      "humidity_pct": 91.0,
-      "pressure_hpa": 1010.87,
-      "dew_point_c": 0.5,
-      "wind_speed_ms": 2.88,
-      "wind_dir_deg": 220.8,
+      "temperature_c": 2.4,
+      "humidity_pct": 90.0,
+      "pressure_hpa": 1011.17,
+      "dew_point_c": 1.1,
+      "wind_speed_ms": 2.94,
+      "wind_dir_deg": 239.3,
       "solar_wm2": 0.0,
-      "wbgt_c": 3.47,
-      "globe_temp_c": 7.32
+      "wbgt_c": 4.14,
+      "globe_temp_c": 8.05
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Horst",
@@ -1407,16 +1407,16 @@
     "sensor_type": "knmi-aws",
     "latitude": 51.4869,
     "longitude": 6.0561,
-    "temperature": 3.7,
+    "temperature": 3.4,
     "metrics": {
-      "temperature_c": 3.7,
+      "temperature_c": 3.4,
       "humidity_pct": 86.0,
-      "dew_point_c": 1.7,
-      "wind_speed_ms": 3.36,
-      "wind_dir_deg": 277.5,
+      "dew_point_c": 1.4,
+      "wind_speed_ms": 3.17,
+      "wind_dir_deg": 272.5,
       "solar_wm2": 0.0
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Saba_Airport",
@@ -1429,15 +1429,15 @@
     "metrics": {
       "temperature_c": 25.9,
       "humidity_pct": 81.0,
-      "pressure_hpa": 1014.3,
+      "pressure_hpa": 1014.4,
       "dew_point_c": 22.5,
-      "wind_speed_ms": 7.11,
-      "wind_dir_deg": 103.9,
-      "solar_wm2": 2.0,
-      "wbgt_c": 26.44,
-      "globe_temp_c": 30.99
+      "wind_speed_ms": 7.34,
+      "wind_dir_deg": 107.0,
+      "solar_wm2": 0.0,
+      "wbgt_c": 26.39,
+      "globe_temp_c": 30.89
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Sint_Eustatius_Airport",
@@ -1446,19 +1446,19 @@
     "sensor_type": "knmi-aws",
     "latitude": 17.4956,
     "longitude": -62.9828,
-    "temperature": 25.0,
+    "temperature": 24.9,
     "metrics": {
-      "temperature_c": 25.0,
-      "humidity_pct": 84.0,
+      "temperature_c": 24.9,
+      "humidity_pct": 85.0,
       "pressure_hpa": 1014.86,
       "dew_point_c": 22.2,
-      "wind_speed_ms": 4.29,
-      "wind_dir_deg": 92.5,
-      "solar_wm2": 2.0,
-      "wbgt_c": 26.71,
-      "globe_temp_c": 31.83
+      "wind_speed_ms": 3.93,
+      "wind_dir_deg": 88.9,
+      "solar_wm2": 0.0,
+      "wbgt_c": 26.79,
+      "globe_temp_c": 32.07
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   },
   {
     "id": "KNMI_Bonaire_Airport",
@@ -1467,18 +1467,18 @@
     "sensor_type": "knmi-aws-aerodrome",
     "latitude": 12.13,
     "longitude": -68.2758,
-    "temperature": 27.1,
+    "temperature": 26.8,
     "metrics": {
-      "temperature_c": 27.1,
-      "humidity_pct": 72.0,
-      "pressure_hpa": 1010.61,
-      "dew_point_c": 21.9,
-      "wind_speed_ms": 7.79,
-      "wind_dir_deg": 84.6,
-      "solar_wm2": 42.0,
-      "wbgt_c": 25.26,
-      "globe_temp_c": 31.8
+      "temperature_c": 26.8,
+      "humidity_pct": 74.0,
+      "pressure_hpa": 1010.81,
+      "dew_point_c": 21.8,
+      "wind_speed_ms": 7.69,
+      "wind_dir_deg": 83.0,
+      "solar_wm2": 4.0,
+      "wbgt_c": 24.82,
+      "globe_temp_c": 30.18
     },
-    "last_update": "2026-03-25 22:43 UTC"
+    "last_update": "2026-03-25 23:03 UTC"
   }
 ]
