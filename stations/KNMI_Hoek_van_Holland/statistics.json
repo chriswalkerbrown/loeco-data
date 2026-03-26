@@ -1,91 +1,91 @@
 {
-  "generated_utc": "2026-03-26 02:43 UTC",
+  "generated_utc": "2026-03-26 03:03 UTC",
   "window_days": 7,
-  "record_count": 115,
+  "record_count": 117,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 5.9,
-      "mean": 6.82,
+      "latest": 5.6,
+      "mean": 6.8,
       "min": 3.6,
       "max": 9.3,
       "std": 1.33,
       "trend": "up",
-      "trend_value": 1.9,
-      "arrow": "↓"
+      "trend_value": 0.6,
+      "arrow": "↑"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 73.0,
-      "mean": 75.71,
+      "latest": 72.0,
+      "mean": 75.68,
       "min": 61.0,
       "max": 92.0,
-      "std": 6.77,
+      "std": 6.72,
       "trend": "down",
-      "trend_value": -17.0,
-      "arrow": "↑"
+      "trend_value": -13.0,
+      "arrow": "↓"
     },
     "pressure_hpa": {
       "label": "Luchtdruk",
       "unit": "hPa",
       "color": "#45b7d1",
       "accent": "#2ea8e6",
-      "latest": 1013.45,
-      "mean": 1007.28,
+      "latest": 1013.64,
+      "mean": 1007.39,
       "min": 1001.22,
-      "max": 1013.45,
-      "std": 3.58,
+      "max": 1013.65,
+      "std": 3.64,
       "trend": "up",
-      "trend_value": 3.91,
-      "arrow": "↑"
+      "trend_value": 3.9,
+      "arrow": "↓"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 1.4,
-      "mean": 2.87,
+      "latest": 1.1,
+      "mean": 2.85,
       "min": -0.3,
       "max": 5.1,
-      "std": 1.29,
+      "std": 1.3,
       "trend": "down",
-      "trend_value": -1.1,
-      "arrow": "↑"
+      "trend_value": -1.7,
+      "arrow": "↓"
     },
     "wind_speed_ms": {
       "label": "Windsnelheid",
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 13.57,
-      "mean": 11.26,
+      "latest": 12.06,
+      "mean": 11.28,
       "min": 4.74,
       "max": 17.84,
-      "std": 2.56,
+      "std": 2.54,
       "trend": "up",
-      "trend_value": 8.52,
-      "arrow": "↑"
+      "trend_value": 6.6,
+      "arrow": "↓"
     },
     "wind_dir_deg": {
       "label": "Windrichting",
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 344.3,
-      "mean": 313.35,
+      "latest": 340.4,
+      "mean": 313.86,
       "min": 274.7,
       "max": 354.3,
-      "std": 17.63,
+      "std": 17.9,
       "trend": "up",
-      "trend_value": 69.6,
-      "arrow": "↑"
+      "trend_value": 29.7,
+      "arrow": "↓"
     },
     "solar_wm2": {
       "label": "Zonnestraling",
@@ -93,10 +93,10 @@
       "color": "#ffeaa7",
       "accent": "#ffe082",
       "latest": 0.0,
-      "mean": 133.48,
+      "mean": 131.2,
       "min": 0.0,
       "max": 726.0,
-      "std": 191.41,
+      "std": 190.54,
       "trend": "stable",
       "trend_value": 0.0,
       "arrow": "→"
@@ -106,32 +106,32 @@
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 3.76,
-      "mean": 5.62,
+      "latest": 3.78,
+      "mean": 5.58,
       "min": 2.52,
       "max": 8.75,
-      "std": 1.39,
+      "std": 1.41,
       "trend": "down",
-      "trend_value": -0.91,
-      "arrow": "↓"
+      "trend_value": -1.59,
+      "arrow": "↑"
     },
     "globe_temp_c": {
       "label": "Globe Temp",
       "unit": "°C",
       "color": "#d63031",
       "accent": "#ff7675",
-      "latest": 7.86,
-      "mean": 10.08,
+      "latest": 7.68,
+      "mean": 10.04,
       "min": 5.64,
       "max": 14.78,
-      "std": 2.23,
-      "trend": "up",
-      "trend_value": 0.44,
-      "arrow": "↓"
+      "std": 2.24,
+      "trend": "down",
+      "trend_value": -0.65,
+      "arrow": "↑"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-26 02:30"
+    "end": "2026-03-26 02:50"
   }
 }
