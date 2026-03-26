@@ -1,34 +1,34 @@
 {
-  "generated_utc": "2026-03-26 14:22 UTC",
+  "generated_utc": "2026-03-26 14:42 UTC",
   "window_days": 7,
-  "record_count": 185,
+  "record_count": 187,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 5.8,
+      "latest": 5.3,
       "mean": 4.61,
       "min": 1.7,
       "max": 8.8,
-      "std": 1.69,
-      "trend": "up",
-      "trend_value": 1.3,
-      "arrow": "↓"
+      "std": 1.68,
+      "trend": "down",
+      "trend_value": -0.1,
+      "arrow": "↑"
     },
     "wind_speed_ms": {
       "label": "Windsnelheid",
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 7.9,
-      "mean": 7.13,
+      "latest": 4.11,
+      "mean": 7.11,
       "min": 2.12,
       "max": 11.26,
       "std": 2.32,
-      "trend": "up",
-      "trend_value": 5.68,
+      "trend": "down",
+      "trend_value": -1.23,
       "arrow": "↓"
     },
     "wind_dir_deg": {
@@ -36,32 +36,32 @@
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 355.8,
-      "mean": 300.19,
+      "latest": 319.6,
+      "mean": 300.44,
       "min": 0.7,
       "max": 358.7,
-      "std": 60.95,
-      "trend": "up",
-      "trend_value": 7.4,
-      "arrow": "↑"
+      "std": 60.67,
+      "trend": "down",
+      "trend_value": -13.5,
+      "arrow": "↓"
     },
     "solar_wm2": {
       "label": "Zonnestraling",
       "unit": "W/m²",
       "color": "#ffeaa7",
       "accent": "#ffe082",
-      "latest": 293.0,
-      "mean": 191.64,
+      "latest": 517.0,
+      "mean": 192.69,
       "min": 0.0,
       "max": 742.0,
-      "std": 226.34,
-      "trend": "down",
-      "trend_value": -79.0,
-      "arrow": "↓"
+      "std": 226.59,
+      "trend": "up",
+      "trend_value": 358.0,
+      "arrow": "↑"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-26 14:10"
+    "end": "2026-03-26 14:30"
   }
 }
