@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-26 08:40 UTC",
+  "generated_utc": "2026-03-26 09:00 UTC",
   "window_days": 7,
   "record_count": 671,
   "metrics": {
@@ -8,14 +8,14 @@
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 25.4,
+      "latest": 25.3,
       "mean": 27.31,
       "min": 24.2,
       "max": 30.9,
       "std": 2.11,
       "trend": "down",
-      "trend_value": -0.6,
-      "arrow": "→"
+      "trend_value": -0.7,
+      "arrow": "↓"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
@@ -23,10 +23,10 @@
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
       "latest": 79.0,
-      "mean": 72.64,
+      "mean": 72.63,
       "min": 49.0,
       "max": 89.0,
-      "std": 10.31,
+      "std": 10.3,
       "trend": "down",
       "trend_value": -1.0,
       "arrow": "→"
@@ -36,55 +36,55 @@
       "unit": "hPa",
       "color": "#45b7d1",
       "accent": "#2ea8e6",
-      "latest": 1012.2,
-      "mean": 1012.75,
+      "latest": 1012.4,
+      "mean": 1012.74,
       "min": 1010.2,
       "max": 1015.1,
       "std": 1.18,
       "trend": "down",
-      "trend_value": -2.2,
-      "arrow": "→"
+      "trend_value": -2.0,
+      "arrow": "↑"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 21.6,
+      "latest": 21.5,
       "mean": 21.78,
       "min": 18.1,
       "max": 23.2,
       "std": 0.89,
       "trend": "down",
-      "trend_value": -0.7,
-      "arrow": "↑"
+      "trend_value": -0.8,
+      "arrow": "→"
     },
     "feels_like_c": {
       "label": "Gevoelstemperatuur",
       "unit": "°C",
       "color": "#fd79a8",
       "accent": "#ff5c9e",
-      "latest": 25.4,
+      "latest": 25.3,
       "mean": 28.8,
       "min": 24.2,
       "max": 35.1,
       "std": 3.47,
       "trend": "down",
-      "trend_value": -0.6,
-      "arrow": "→"
+      "trend_value": -0.7,
+      "arrow": "↓"
     },
     "wind_speed_ms": {
       "label": "Windsnelheid",
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 7.9,
-      "mean": 13.41,
+      "latest": 6.6,
+      "mean": 13.4,
       "min": 1.8,
       "max": 26.2,
       "std": 5.53,
       "trend": "down",
-      "trend_value": -3.7,
+      "trend_value": -5.0,
       "arrow": "↓"
     },
     "wind_gust_ms": {
@@ -92,13 +92,13 @@
       "unit": "m/s",
       "color": "#e17055",
       "accent": "#f06543",
-      "latest": 11.2,
-      "mean": 19.89,
+      "latest": 9.4,
+      "mean": 19.88,
       "min": 3.6,
       "max": 36.7,
       "std": 8.09,
       "trend": "down",
-      "trend_value": -7.2,
+      "trend_value": -9.0,
       "arrow": "↓"
     },
     "wind_dir_deg": {
@@ -106,13 +106,13 @@
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 116.0,
-      "mean": 109.42,
+      "latest": 113.0,
+      "mean": 109.45,
       "min": 67.0,
       "max": 153.0,
       "std": 14.45,
       "trend": "up",
-      "trend_value": 22.0,
+      "trend_value": 19.0,
       "arrow": "↑"
     },
     "solar_wm2": {
@@ -162,13 +162,13 @@
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": 24.03,
+      "latest": 24.38,
       "mean": 23.78,
       "min": 20.53,
       "max": 27.36,
       "std": 1.22,
       "trend": "up",
-      "trend_value": 0.55,
+      "trend_value": 0.91,
       "arrow": "↑"
     },
     "globe_temp_c": {
@@ -176,18 +176,18 @@
       "unit": "°C",
       "color": "#d63031",
       "accent": "#ff7675",
-      "latest": 28.64,
+      "latest": 28.88,
       "mean": 31.04,
       "min": 27.28,
       "max": 35.27,
-      "std": 2.34,
-      "trend": "stable",
-      "trend_value": 0.01,
+      "std": 2.33,
+      "trend": "up",
+      "trend_value": 0.26,
       "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-03-19 08:45",
-    "end": "2026-03-26 08:30"
+    "start": "2026-03-19 09:05",
+    "end": "2026-03-26 08:50"
   }
 }
