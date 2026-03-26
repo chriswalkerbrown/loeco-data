@@ -1,48 +1,48 @@
 {
-  "generated_utc": "2026-03-26 16:02 UTC",
+  "generated_utc": "2026-03-26 16:22 UTC",
   "window_days": 7,
-  "record_count": 195,
+  "record_count": 197,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 5.9,
-      "mean": 4.68,
+      "latest": 3.4,
+      "mean": 4.67,
       "min": 1.7,
       "max": 8.8,
-      "std": 1.67,
-      "trend": "up",
-      "trend_value": 0.2,
-      "arrow": "→"
+      "std": 1.66,
+      "trend": "down",
+      "trend_value": -0.6,
+      "arrow": "↓"
     },
     "wind_speed_ms": {
       "label": "Windsnelheid",
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 8.48,
-      "mean": 7.16,
+      "latest": 10.77,
+      "mean": 7.19,
       "min": 2.12,
       "max": 11.26,
-      "std": 2.29,
-      "trend": "down",
-      "trend_value": -1.55,
-      "arrow": "↓"
+      "std": 2.3,
+      "trend": "up",
+      "trend_value": 2.47,
+      "arrow": "↑"
     },
     "wind_dir_deg": {
       "label": "Windrichting",
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 324.2,
-      "mean": 301.44,
+      "latest": 314.4,
+      "mean": 301.6,
       "min": 0.7,
       "max": 358.7,
-      "std": 59.6,
+      "std": 59.31,
       "trend": "down",
-      "trend_value": -23.6,
+      "trend_value": -19.1,
       "arrow": "↓"
     },
     "solar_wm2": {
@@ -50,18 +50,18 @@
       "unit": "W/m²",
       "color": "#ffeaa7",
       "accent": "#ffe082",
-      "latest": 231.0,
-      "mean": 197.19,
+      "latest": 149.0,
+      "mean": 196.37,
       "min": 0.0,
       "max": 742.0,
-      "std": 223.83,
-      "trend": "down",
-      "trend_value": -192.0,
+      "std": 222.84,
+      "trend": "up",
+      "trend_value": 81.0,
       "arrow": "↑"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-26 15:50"
+    "end": "2026-03-26 16:10"
   }
 }
