@@ -1,67 +1,67 @@
 {
-  "generated_utc": "2026-03-26 09:43 UTC",
+  "generated_utc": "2026-03-26 10:03 UTC",
   "window_days": 7,
-  "record_count": 157,
+  "record_count": 159,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 5.8,
-      "mean": 6.3,
+      "latest": 3.4,
+      "mean": 6.26,
       "min": 2.4,
       "max": 9.7,
-      "std": 1.62,
-      "trend": "up",
-      "trend_value": 1.4,
-      "arrow": "↑"
+      "std": 1.64,
+      "trend": "down",
+      "trend_value": -1.7,
+      "arrow": "↓"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 70.0,
-      "mean": 71.16,
+      "latest": 81.0,
+      "mean": 71.25,
       "min": 59.0,
       "max": 88.0,
-      "std": 6.99,
-      "trend": "down",
-      "trend_value": -6.0,
-      "arrow": "↓"
+      "std": 7.0,
+      "trend": "up",
+      "trend_value": 9.0,
+      "arrow": "↑"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 0.8,
-      "mean": 1.49,
+      "latest": 0.5,
+      "mean": 1.47,
       "min": -1.2,
       "max": 4.8,
       "std": 1.38,
-      "trend": "up",
-      "trend_value": 0.2,
-      "arrow": "↓"
+      "trend": "stable",
+      "trend_value": 0.0,
+      "arrow": "↑"
     },
     "solar_wm2": {
       "label": "Zonnestraling",
       "unit": "W/m²",
       "color": "#ffeaa7",
       "accent": "#ffe082",
-      "latest": 195.0,
-      "mean": 134.5,
+      "latest": 69.0,
+      "mean": 133.73,
       "min": 0.0,
       "max": 715.0,
-      "std": 189.72,
+      "std": 188.64,
       "trend": "up",
-      "trend_value": 195.0,
+      "trend_value": 69.0,
       "arrow": "↓"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-26 09:30"
+    "end": "2026-03-26 09:50"
   }
 }
