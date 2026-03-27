@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-03-27 03:01 UTC",
+  "generated_utc": "2026-03-27 03:21 UTC",
   "window_days": 7,
-  "record_count": 261,
+  "record_count": 263,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
@@ -13,8 +13,8 @@
       "min": 2.7,
       "max": 7.5,
       "std": 1.01,
-      "trend": "stable",
-      "trend_value": 0.0,
+      "trend": "down",
+      "trend_value": -0.1,
       "arrow": "→"
     },
     "humidity_pct": {
@@ -23,13 +23,13 @@
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
       "latest": 58.0,
-      "mean": 66.81,
+      "mean": 66.74,
       "min": 49.0,
       "max": 80.0,
-      "std": 5.76,
+      "std": 5.79,
       "trend": "down",
-      "trend_value": -5.0,
-      "arrow": "↓"
+      "trend_value": -8.0,
+      "arrow": "→"
     },
     "pressure_hpa": {
       "label": "Luchtdruk",
@@ -37,26 +37,26 @@
       "color": "#45b7d1",
       "accent": "#2ea8e6",
       "latest": 1019.51,
-      "mean": 1009.02,
+      "mean": 1009.1,
       "min": 992.63,
-      "max": 1019.51,
-      "std": 7.69,
+      "max": 1019.61,
+      "std": 7.71,
       "trend": "up",
-      "trend_value": 1.42,
-      "arrow": "↑"
+      "trend_value": 1.32,
+      "arrow": "↓"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": -1.8,
-      "mean": -0.02,
+      "latest": -2.0,
+      "mean": -0.03,
       "min": -4.3,
       "max": 3.0,
       "std": 1.56,
       "trend": "down",
-      "trend_value": -1.0,
+      "trend_value": -1.9,
       "arrow": "↓"
     },
     "wind_speed_ms": {
@@ -64,13 +64,13 @@
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 4.26,
-      "mean": 10.28,
+      "latest": 4.66,
+      "mean": 10.24,
       "min": 4.26,
       "max": 16.91,
-      "std": 2.57,
+      "std": 2.6,
       "trend": "down",
-      "trend_value": -4.29,
+      "trend_value": -2.8,
       "arrow": "↓"
     },
     "wbgt_c": {
@@ -79,17 +79,17 @@
       "color": "#e84393",
       "accent": "#fd79a8",
       "latest": 3.42,
-      "mean": 3.94,
+      "mean": 3.93,
       "min": 1.85,
       "max": 5.86,
       "std": 1.01,
       "trend": "down",
-      "trend_value": -0.27,
-      "arrow": "↓"
+      "trend_value": -0.53,
+      "arrow": "→"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-27 02:50"
+    "end": "2026-03-27 03:10"
   }
 }
