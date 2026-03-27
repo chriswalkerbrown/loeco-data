@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-27 04:00 UTC",
+  "generated_utc": "2026-03-27 04:20 UTC",
   "window_days": 7,
   "record_count": 135,
   "metrics": {
@@ -8,27 +8,27 @@
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": -0.18,
-      "mean": 7.49,
+      "latest": -0.1,
+      "mean": 7.44,
       "min": -0.18,
       "max": 17.03,
-      "std": 4.43,
+      "std": 4.48,
       "trend": "down",
-      "trend_value": -1.87,
-      "arrow": "→"
+      "trend_value": -1.59,
+      "arrow": "↑"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 97.5,
-      "mean": 76.4,
+      "latest": 98.3,
+      "mean": 76.44,
       "min": 45.1,
       "max": 98.3,
-      "std": 14.9,
+      "std": 14.95,
       "trend": "up",
-      "trend_value": 3.3,
+      "trend_value": 3.1,
       "arrow": "↑"
     },
     "battery_voltage_v": {
@@ -42,21 +42,21 @@
       "max": 3.06,
       "std": 0.0,
       "trend": "stable",
-      "trend_value": 0.0,
-      "arrow": "↑"
+      "trend_value": -0.0,
+      "arrow": "↓"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": -0.53,
-      "mean": 3.26,
+      "latest": -0.34,
+      "mean": 3.22,
       "min": -2.48,
       "max": 10.31,
-      "std": 2.41,
+      "std": 2.42,
       "trend": "down",
-      "trend_value": -1.39,
+      "trend_value": -1.14,
       "arrow": "↑"
     },
     "wbgt_c": {
@@ -64,18 +64,18 @@
       "unit": "°C",
       "color": "#e84393",
       "accent": "#fd79a8",
-      "latest": -0.53,
-      "mean": 5.74,
+      "latest": -0.41,
+      "mean": 5.7,
       "min": -0.58,
       "max": 11.89,
-      "std": 3.5,
+      "std": 3.54,
       "trend": "down",
-      "trend_value": -1.52,
+      "trend_value": -1.36,
       "arrow": "↑"
     }
   },
   "date_range": {
-    "start": "2026-03-20 04:12",
-    "end": "2026-03-27 03:30"
+    "start": "2026-03-20 04:32",
+    "end": "2026-03-27 04:10"
   }
 }
