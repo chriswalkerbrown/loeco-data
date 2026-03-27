@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-03-27 02:02 UTC",
+  "generated_utc": "2026-03-27 02:22 UTC",
   "window_days": 7,
-  "record_count": 255,
+  "record_count": 257,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
@@ -9,40 +9,40 @@
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
       "latest": -1.0,
-      "mean": 4.24,
-      "min": -1.1,
+      "mean": 4.19,
+      "min": -1.4,
       "max": 9.9,
-      "std": 2.82,
+      "std": 2.85,
       "trend": "down",
-      "trend_value": -1.8,
-      "arrow": "↓"
+      "trend_value": -1.9,
+      "arrow": "↑"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 96.0,
-      "mean": 79.34,
+      "latest": 94.0,
+      "mean": 79.46,
       "min": 54.0,
       "max": 96.0,
-      "std": 10.68,
+      "std": 10.72,
       "trend": "up",
-      "trend_value": 12.0,
-      "arrow": "↑"
+      "trend_value": 9.0,
+      "arrow": "↓"
     },
     "dew_point_c": {
       "label": "Dauwpunt",
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": -1.5,
-      "mean": 0.91,
+      "latest": -1.7,
+      "mean": 0.89,
       "min": -2.6,
       "max": 4.8,
-      "std": 1.81,
-      "trend": "stable",
-      "trend_value": 0.0,
+      "std": 1.82,
+      "trend": "down",
+      "trend_value": -0.4,
       "arrow": "↑"
     },
     "wind_speed_ms": {
@@ -50,27 +50,27 @@
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 1.48,
-      "mean": 4.42,
-      "min": 1.32,
+      "latest": 1.73,
+      "mean": 4.4,
+      "min": 1.15,
       "max": 10.47,
-      "std": 1.84,
+      "std": 1.85,
       "trend": "down",
-      "trend_value": -0.7,
-      "arrow": "↓"
+      "trend_value": -1.59,
+      "arrow": "↑"
     },
     "wind_dir_deg": {
       "label": "Windrichting",
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 243.0,
-      "mean": 280.14,
+      "latest": 241.9,
+      "mean": 279.85,
       "min": 0.6,
       "max": 359.0,
-      "std": 47.11,
+      "std": 47.04,
       "trend": "down",
-      "trend_value": -27.5,
+      "trend_value": -33.1,
       "arrow": "↓"
     },
     "solar_wm2": {
@@ -79,10 +79,10 @@
       "color": "#ffeaa7",
       "accent": "#ffe082",
       "latest": 0.0,
-      "mean": 138.02,
+      "mean": 136.95,
       "min": 0.0,
       "max": 779.0,
-      "std": 186.5,
+      "std": 186.17,
       "trend": "stable",
       "trend_value": 0.0,
       "arrow": "→"
@@ -90,6 +90,6 @@
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-27 01:50"
+    "end": "2026-03-27 02:10"
   }
 }
