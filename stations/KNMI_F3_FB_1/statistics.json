@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-03-27 13:42 UTC",
+  "generated_utc": "2026-03-27 14:02 UTC",
   "window_days": 7,
-  "record_count": 325,
+  "record_count": 327,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
@@ -14,7 +14,7 @@
       "max": 7.3,
       "std": 1.13,
       "trend": "up",
-      "trend_value": 0.4,
+      "trend_value": 0.3,
       "arrow": "↓"
     },
     "humidity_pct": {
@@ -36,13 +36,13 @@
       "unit": "hPa",
       "color": "#45b7d1",
       "accent": "#2ea8e6",
-      "latest": 1014.01,
-      "mean": 1010.55,
+      "latest": 1013.91,
+      "mean": 1010.58,
       "min": 992.72,
       "max": 1019.14,
-      "std": 7.72,
+      "std": 7.7,
       "trend": "down",
-      "trend_value": -3.7,
+      "trend_value": -3.8,
       "arrow": "→"
     },
     "dew_point_c": {
@@ -56,7 +56,7 @@
       "max": 5.5,
       "std": 1.84,
       "trend": "up",
-      "trend_value": 2.6,
+      "trend_value": 2.7,
       "arrow": "↑"
     },
     "wind_speed_ms": {
@@ -64,28 +64,28 @@
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 11.63,
+      "latest": 12.08,
       "mean": 11.71,
       "min": 5.18,
       "max": 18.43,
-      "std": 2.83,
+      "std": 2.82,
       "trend": "up",
-      "trend_value": 2.37,
-      "arrow": "↓"
+      "trend_value": 2.5,
+      "arrow": "↑"
     },
     "wind_dir_deg": {
       "label": "Windrichting",
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 212.2,
-      "mean": 290.14,
+      "latest": 215.4,
+      "mean": 289.68,
       "min": 190.3,
       "max": 333.3,
-      "std": 39.98,
+      "std": 40.28,
       "trend": "up",
-      "trend_value": 6.1,
-      "arrow": "↓"
+      "trend_value": 12.6,
+      "arrow": "↑"
     },
     "wbgt_c": {
       "label": "WBGT",
@@ -98,12 +98,12 @@
       "max": 6.51,
       "std": 1.2,
       "trend": "up",
-      "trend_value": 1.28,
+      "trend_value": 1.18,
       "arrow": "↑"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-27 13:30"
+    "end": "2026-03-27 13:50"
   }
 }
