@@ -1,39 +1,39 @@
 {
-  "generated_utc": "2026-03-27 01:01 UTC",
+  "generated_utc": "2026-03-27 01:21 UTC",
   "window_days": 7,
-  "record_count": 249,
+  "record_count": 251,
   "metrics": {
     "wind_speed_ms": {
       "label": "Windsnelheid",
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 4.0,
-      "mean": 10.37,
-      "min": 4.0,
+      "latest": 4.06,
+      "mean": 10.31,
+      "min": 3.87,
       "max": 14.76,
-      "std": 2.15,
+      "std": 2.22,
       "trend": "down",
-      "trend_value": -6.14,
-      "arrow": "↓"
+      "trend_value": -6.56,
+      "arrow": "↑"
     },
     "wind_dir_deg": {
       "label": "Windrichting",
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 316.0,
-      "mean": 311.68,
+      "latest": 309.9,
+      "mean": 311.67,
       "min": 0.3,
       "max": 358.4,
-      "std": 57.18,
+      "std": 56.95,
       "trend": "down",
-      "trend_value": -6.7,
+      "trend_value": -24.3,
       "arrow": "↓"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-27 00:50"
+    "end": "2026-03-27 01:10"
   }
 }
