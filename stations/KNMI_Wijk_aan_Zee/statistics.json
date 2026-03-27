@@ -1,20 +1,20 @@
 {
-  "generated_utc": "2026-03-27 11:02 UTC",
+  "generated_utc": "2026-03-27 11:24 UTC",
   "window_days": 7,
-  "record_count": 309,
+  "record_count": 311,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 8.8,
-      "mean": 5.79,
+      "latest": 8.7,
+      "mean": 5.81,
       "min": 0.3,
       "max": 9.7,
-      "std": 1.66,
+      "std": 1.67,
       "trend": "up",
-      "trend_value": 3.3,
+      "trend_value": 3.1,
       "arrow": "→"
     },
     "humidity_pct": {
@@ -23,10 +23,10 @@
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
       "latest": 56.0,
-      "mean": 69.21,
+      "mean": 69.13,
       "min": 50.0,
       "max": 88.0,
-      "std": 7.72,
+      "std": 7.76,
       "trend": "down",
       "trend_value": -16.0,
       "arrow": "↓"
@@ -36,13 +36,13 @@
       "unit": "°C",
       "color": "#a29bfe",
       "accent": "#8f86ff",
-      "latest": 0.7,
+      "latest": 0.4,
       "mean": 0.6,
       "min": -3.1,
       "max": 4.8,
       "std": 1.63,
       "trend": "down",
-      "trend_value": -0.1,
+      "trend_value": -0.7,
       "arrow": "↓"
     },
     "solar_wm2": {
@@ -50,18 +50,18 @@
       "unit": "W/m²",
       "color": "#ffeaa7",
       "accent": "#ffe082",
-      "latest": 367.0,
-      "mean": 147.83,
+      "latest": 413.0,
+      "mean": 149.39,
       "min": 0.0,
       "max": 715.0,
-      "std": 201.06,
+      "std": 201.34,
       "trend": "up",
-      "trend_value": 367.0,
-      "arrow": "↓"
+      "trend_value": 413.0,
+      "arrow": "↑"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-27 10:50"
+    "end": "2026-03-27 11:10"
   }
 }
