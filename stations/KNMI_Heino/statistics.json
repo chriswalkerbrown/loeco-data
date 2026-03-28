@@ -1,34 +1,34 @@
 {
-  "generated_utc": "2026-03-28 11:42 UTC",
+  "generated_utc": "2026-03-28 12:02 UTC",
   "window_days": 7,
-  "record_count": 457,
+  "record_count": 459,
   "metrics": {
     "temperature_c": {
       "label": "Temperatuur",
       "unit": "°C",
       "color": "#ff6b6b",
       "accent": "#ff4d8d",
-      "latest": 7.9,
-      "mean": 4.86,
+      "latest": 8.6,
+      "mean": 4.88,
       "min": -3.1,
       "max": 9.7,
       "std": 3.15,
       "trend": "up",
-      "trend_value": 2.0,
-      "arrow": "↓"
+      "trend_value": 2.5,
+      "arrow": "↑"
     },
     "humidity_pct": {
       "label": "Rel.vochtigheid",
       "unit": "%",
       "color": "#4ecdc4",
       "accent": "#2dd4bf",
-      "latest": 66.0,
-      "mean": 79.79,
+      "latest": 63.0,
+      "mean": 79.72,
       "min": 48.0,
       "max": 100.0,
-      "std": 14.89,
+      "std": 14.9,
       "trend": "down",
-      "trend_value": -31.0,
+      "trend_value": -34.0,
       "arrow": "↓"
     },
     "dew_point_c": {
@@ -42,21 +42,21 @@
       "max": 6.2,
       "std": 2.13,
       "trend": "down",
-      "trend_value": -3.6,
-      "arrow": "↓"
+      "trend_value": -3.7,
+      "arrow": "→"
     },
     "wind_speed_ms": {
       "label": "Windsnelheid",
       "unit": "m/s",
       "color": "#74b9ff",
       "accent": "#5aa9ff",
-      "latest": 5.55,
+      "latest": 5.27,
       "mean": 3.53,
       "min": 0.77,
       "max": 8.36,
       "std": 1.49,
       "trend": "up",
-      "trend_value": 3.53,
+      "trend_value": 3.03,
       "arrow": "↓"
     },
     "wind_dir_deg": {
@@ -64,32 +64,32 @@
       "unit": "°",
       "color": "#81ecec",
       "accent": "#63e6e2",
-      "latest": 309.2,
-      "mean": 257.53,
+      "latest": 297.0,
+      "mean": 257.72,
       "min": 182.3,
       "max": 351.8,
-      "std": 41.34,
+      "std": 41.35,
       "trend": "up",
-      "trend_value": 72.9,
-      "arrow": "↑"
+      "trend_value": 39.6,
+      "arrow": "↓"
     },
     "solar_wm2": {
       "label": "Zonnestraling",
       "unit": "W/m²",
       "color": "#ffeaa7",
       "accent": "#ffe082",
-      "latest": 426.0,
-      "mean": 137.91,
+      "latest": 479.0,
+      "mean": 139.46,
       "min": 0.0,
       "max": 707.0,
-      "std": 193.66,
+      "std": 194.65,
       "trend": "up",
-      "trend_value": 424.0,
+      "trend_value": 473.0,
       "arrow": "↓"
     }
   },
   "date_range": {
     "start": "2026-03-25 07:30",
-    "end": "2026-03-28 11:30"
+    "end": "2026-03-28 11:50"
   }
 }
