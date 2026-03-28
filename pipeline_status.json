@@ -1,8 +1,8 @@
 {
-  "run_id":    "20260327T162001Z",
-  "timestamp": "2026-03-27T16:23:18Z",
+  "run_id":    "20260328T092003Z",
+  "timestamp": "2026-03-28T09:23:28Z",
   "runner":    "local",
-  "status":    "ok",
-  "warnings":  [""],
-  "errors":    [""]
+  "status":    "error",
+  "warnings":  ["STEP 3 (report_data_v3.py) failed — quality report skipped"],
+  "errors":    ["STEP 2 (validate_data_v3.py) CRITICAL — data quality check failed"]
 }

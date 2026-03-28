@@ -9,7 +9,6 @@
   <style>
     /* ===========================================================
        LoEco Dashboard — DivumWX-inspired dark theme
-       Designed after Ian Millard's DivumWX / Weather34 skin
        =========================================================== */
     :root {
       --bg-primary:   #0a0a1a;
@@ -38,7 +37,6 @@
       line-height: 1.5;
     }
 
-    /* Subtle animated background */
     body::before {
       content: '';
       position: fixed;
@@ -51,7 +49,6 @@
       z-index: 0;
     }
 
-    /* -- Header ------------------------------------------------ */
     .header {
       position: relative;
       z-index: 1;
@@ -62,7 +59,7 @@
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 1rem;
     }
 
     .header-left {
@@ -71,622 +68,545 @@
       gap: 1rem;
     }
 
-    .back-link {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      padding: 0.3rem 0.6rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-    .back-link:hover {
-      color: var(--text-primary);
-      border-color: var(--accent-blue);
-      background: rgba(69, 183, 209, 0.06);
-    }
-    .back-link svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    .station-badge {
+    .logo-badge {
       background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
       color: #000;
       font-family: 'JetBrains Mono', monospace;
       font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      padding: 0.35rem 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      padding: 0.3rem 0.65rem;
       border-radius: 6px;
       text-transform: uppercase;
     }
 
-    .station-name {
-      font-size: 1.35rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-    .station-name span {
-      color: var(--text-muted);
-      font-weight: 300;
+    .nav-breadcrumb {
+      font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
-      margin-left: 0.5rem;
+      font-weight: 500;
+      color: var(--text-primary);
     }
+    .nav-breadcrumb a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-breadcrumb a:hover { opacity: 0.7; }
+    .nav-breadcrumb span { color: var(--text-muted); margin: 0 0.4rem; }
 
     .header-right {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
-      font-size: 0.8rem;
+      gap: 1rem;
       color: var(--text-muted);
       font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
     }
 
-    .header-stat {
+    .last-update {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
+      gap: 0.3rem;
     }
-    .header-stat .label {
-      font-size: 0.65rem;
+
+    /* -- Time range toggle -------------------------------------- */
+    .time-range-toggle {
+      display: flex;
+      gap: 0.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.3rem;
+    }
+    .time-range-toggle button {
+      padding: 0.3rem 0.8rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
+      letter-spacing: 0.04em;
     }
-    .header-stat .value {
+    .time-range-toggle button:hover {
       color: var(--text-primary);
-      font-weight: 500;
+    }
+    .time-range-toggle button.active {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
+      color: #000;
+      font-weight: 700;
     }
 
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent-green);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-      display: inline-block;
-      margin-right: 0.4rem;
+    /* -- Stale data warning banner ------------------------------ */
+    .stale-data-banner {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 2rem;
+      display: none;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      gap: 0.8rem;
+    }
+    .stale-data-banner.active {
+      display: flex;
+    }
+    .stale-data-banner.warning {
+      background: rgba(249, 202, 36, 0.08);
+      border-top-color: #f9ca24;
+      border-bottom-color: #f9ca24;
+      color: #f9ca24;
+    }
+    .stale-data-banner.critical {
+      background: rgba(255, 107, 107, 0.08);
+      border-top-color: var(--accent-red);
+      border-bottom-color: var(--accent-red);
+      color: var(--accent-red);
+    }
+    .stale-data-banner .icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .stale-data-banner .message {
+      flex: 1;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.5; transform: scale(0.85); }
-    }
-
-    /* -- Main content ------------------------------------------ */
+    /* -- Main content ------------------------------------------- */
     .container {
       position: relative;
       z-index: 1;
       max-width: 1400px;
       margin: 0 auto;
-      padding: 1.5rem;
+      padding: 2rem;
     }
 
-    /* -- Metric card grid -------------------------------------- */
-    .card-grid {
+    .metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    .card {
+    .metric-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.25rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.3s;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
     }
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: var(--card-accent, var(--border));
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--card-accent, var(--accent-blue));
-      opacity: 0.7;
-      border-radius: var(--radius) var(--radius) 0 0;
+    .metric-card:hover {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 20px rgba(69, 183, 209, 0.15);
     }
 
-    .card-header {
+    .metric-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+    .metric-label {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .card-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .card-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2.5rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--card-accent, var(--text-primary));
-      margin-bottom: 0.5rem;
-    }
-    .card-unit {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--text-muted);
-      margin-left: 0.15rem;
-    }
-
-    .card-trend { margin-bottom: 0.75rem; }
-
-    .trend {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-    .trend-label {
-      font-size: 0.6rem;
-      color: var(--text-dim);
-      margin-left: 0.25rem;
-      text-transform: uppercase;
-    }
-
-    .card-stats {
-      display: flex;
-      justify-content: space-between;
-      padding-top: 0.65rem;
-      border-top: 1px solid var(--border);
-    }
-    .stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex: 1;
-    }
-    .stat-label {
-      font-size: 0.6rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
-    }
-    .stat-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .metric-icon {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-green);
     }
 
-    /* -- Chart cards ------------------------------------------- */
-    .chart-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .metric-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 0.4rem;
     }
-    .chart-card {
+    .metric-unit {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-left: 0.3rem;
+    }
+
+    .metric-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+    .metric-meta-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+
+    /* -- WBGT Heat Stress Flags --------------------------------- */
+    .wbgt-flag {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 0.5rem;
+      color: #000;
+    }
+    .wbgt-flag.safe {
+      background: #4ecdc4;
+    }
+    .wbgt-flag.limited {
+      background: #f9ca24;
+    }
+    .wbgt-flag.caution {
+      background: #ff9800;
+    }
+    .wbgt-flag.danger {
+      background: #ff6b6b;
+    }
+    .wbgt-flag.extreme {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    /* -- Chart section ------------------------------------------ */
+    .chart-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      overflow: hidden;
+      padding: 2rem;
+      margin-bottom: 2rem;
     }
-    .chart-header {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 1.25rem 0.5rem;
-    }
-    .chart-title {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-    .chart-container {
-      width: 100%;
-      height: 300px;
-      padding: 0 0.5rem 0.5rem;
+    .chart-section h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
     }
 
-    /* -- Footer ------------------------------------------------ */
+    #chart {
+      width: 100%;
+      height: 400px;
+    }
+
+    /* -- Footer ------------------------------------------------- */
     .footer {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-      border-top: 1px solid var(--border);
-      color: var(--text-dim);
+      padding: 2rem;
       font-size: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
     }
     .footer a {
       color: var(--accent-blue);
       text-decoration: none;
     }
-    .footer a:hover { text-decoration: underline; }
-    .footer-brand {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    /* -- Loading skeleton -------------------------------------- */
-    .skeleton-pulse {
-      background: linear-gradient(90deg,
-        var(--bg-card) 25%,
-        var(--bg-card-alt) 50%,
-        var(--bg-card) 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .loading-message {
-      text-align: center;
-      padding: 4rem 2rem;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
-    }
-
-    /* -- Responsive -------------------------------------------- */
-    @media (max-width: 768px) {
-      .header {
-        padding: 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .header-right { flex-wrap: wrap; gap: 0.75rem; }
-      .card-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-      .card-value { font-size: 2rem; }
-      .container { padding: 1rem; }
-      .chart-container { height: 250px; }
-    }
-    @media (max-width: 480px) {
-      .card-grid { grid-template-columns: 1fr 1fr; }
-      .station-name { font-size: 1.1rem; }
-      .station-name span { display: block; margin-left: 0; }
-    }
+    .footer a:hover { opacity: 0.7; }
   </style>
 </head>
 <body>
 
-  <!-- ====== HEADER ====== -->
+  <!-- Stale data warning banner -->
+  <div class="stale-data-banner" id="stale-banner">
+    <span class="icon">⚠</span>
+    <span class="message" id="stale-message">No data for 90+ minutes</span>
+  </div>
+
+  <!-- Header -->
   <header class="header">
     <div class="header-left">
-      <a class="back-link" href="../../index.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M15 18l-6-6 6-6"/>
-        </svg>
-        Map
-      </a>
-      <div class="station-badge" id="owner-badge">MeteoA</div>
-      <div class="station-name" id="station-title">
-        Loading…
-        <span id="station-subtitle">Fetching station data</span>
-      </div>
+      <div class="logo-badge">LoEco</div>
+      <nav class="nav-breadcrumb">
+        <a href="../index.html">Dashboard</a>
+        <span>›</span>
+        <span id="station-name">—</span>
+      </nav>
     </div>
     <div class="header-right">
-      <div class="header-stat">
-        <span class="label">Last update</span>
-        <span class="value"><span class="live-dot"></span><span id="last-update">—</span></span>
+      <div class="time-range-toggle">
+        <button class="btn-range active" data-range="24h">24H</button>
+        <button class="btn-range" data-range="3d">3D</button>
+        <button class="btn-range" data-range="7d">7D</button>
       </div>
-      <div class="header-stat">
-        <span class="label">Date range</span>
-        <span class="value" id="date-range">—</span>
-      </div>
+      <span class="last-update" id="last-update">Updated: —</span>
     </div>
   </header>
 
-  <!-- ====== MAIN ====== -->
-  <main class="container">
-    <section class="card-grid" id="card-grid">
-      <div class="loading-message">Loading station data…</div>
-    </section>
-    <section class="chart-grid" id="chart-grid"></section>
-  </main>
-
-  <!-- ====== FOOTER ====== -->
-  <footer class="footer">
-    <div class="footer-brand">LoEco Weather Dashboard</div>
-    <div>
-      <a href="https://www.meteoa.com" target="_blank">MeteoA</a> —
-      Smarter decisions through local weather intelligence
+  <!-- Main content -->
+  <div class="container">
+    <!-- Metrics grid -->
+    <div class="metrics-grid" id="metrics-grid">
+      <!-- Filled by JavaScript -->
     </div>
+
+    <!-- Chart section -->
+    <div class="chart-section">
+      <h2>Temperature Trend (Selected Range)</h2>
+      <div id="chart"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    LoEco Weather Station Network | <a href="https://github.com/chriswalkerbrown/LoEco" target="_blank">GitHub</a>
   </footer>
 
-  <!-- ====== PLOTLY.JS ====== -->
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+  <!-- Chart library (Chart.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
   <script>
-    // ===========================================================
-    // LoEco Dashboard — Dynamic data loader
-    // Loads statistics.json and chart_data.json from same directory
-    // ===========================================================
+    // =========================================================
+    // LoEco Dashboard — Station detail page
+    // =========================================================
 
-    // Card display order
-    const CARD_ORDER = [
-      'temperature_c', 'wbgt_c', 'dew_point_c', 'humidity_pct', 'feels_like_c',
-      'globe_temp_c', 'pressure_hpa', 'rain_rate_mmhr', 'wind_gust_ms', 'battery_voltage_v',
-    ];
+    const BASE_URL = '../..';
+    let currentChart = null;
 
-    // Chart display order
-    const CHART_ORDER = [
-      'temperature_c', 'wbgt_c', 'globe_temp_c', 'humidity_pct', 'pressure_hpa',
-      'wind_speed_ms', 'wind_gust_ms', 'wind_dir_deg',
-      'solar_wm2', 'rain_daily_mm',
-    ];
-
-    const WIND_DIR_KEYS = ['wind_dir_deg'];
-    const RAIN_KEYS     = ['rain_daily_mm'];
-
-    const COMPASS_TICKS = {
-      vals:   [0, 45, 90, 135, 180, 225, 270, 315, 360],
-      labels: ['N','NE','E','SE','S','SW','W','NW','N'],
-    };
-
-    // Station display names (override from stations_summary or fallback)
-    const STATION_NAMES = {
-      ecowitt_home: { title: 'EcoWitt WS2910', subtitle: 'Hoofdkantoor — Real-time monitoring', owner: 'MeteoA' },
-      loeco_ttn:    { title: 'LoRa TTN Node',   subtitle: 'Field test — LoRaWAN telemetry',    owner: 'MeteoA' },
-    };
-
-    function fmt(val, unit = '', precision = 1) {
-      if (val == null) return 'N/A';
-      try { return parseFloat(val).toFixed(precision) + unit; }
-      catch { return 'N/A'; }
+    // Parse station ID from URL
+    const stationId = window.location.pathname.match(/stations\/([^\/]+)/)?.[1] || null;
+    if (!stationId) {
+      document.body.innerHTML = '<div style="padding:2rem;">Error: No station ID found in URL</div>';
     }
 
-    function trendArrow(trend, trendValue, unit) {
-      let arrow, sign;
-      if (trend === 'up')        { arrow = '&#9650;'; sign = '+'; }
-      else if (trend === 'down') { arrow = '&#9660;'; sign = ''; }
-      else                       { arrow = '&#9654;'; sign = ''; }
-      return `<span class="trend">${arrow} ${sign}${fmt(trendValue, unit, 1)}<span class="trend-label">6h</span></span>`;
-    }
-
-    function buildCard(key, m) {
-      const prec = key === 'battery_voltage_v' ? 2 : 1;
-      return `
-        <div class="card" style="--card-accent: ${m.color}">
-          <div class="card-header">
-            <span class="card-title">${m.label}</span>
-          </div>
-          <div class="card-value">${fmt(m.latest, '', prec)}<span class="card-unit">${m.unit}</span></div>
-          <div class="card-trend">${trendArrow(m.trend, m.trend_value, m.unit)}</div>
-          <div class="card-stats">
-            <div class="stat"><span class="stat-label">Min</span><span class="stat-value">${fmt(m.min, '', prec)}</span></div>
-            <div class="stat"><span class="stat-label">Avg</span><span class="stat-value">${fmt(m.mean, '', prec)}</span></div>
-            <div class="stat"><span class="stat-label">Max</span><span class="stat-value">${fmt(m.max, '', prec)}</span></div>
-          </div>
-        </div>`;
-    }
-
-    function buildChartDiv(key, meta) {
-      return `
-        <div class="chart-card">
-          <div class="chart-header">
-            <span class="chart-title">${meta.label || key} — Last 7 days</span>
-          </div>
-          <div class="chart-container" id="chart-${key}"></div>
-        </div>`;
-    }
-
-    // Plotly theme
-    const LAYOUT_BASE = {
-      paper_bgcolor: 'rgba(0,0,0,0)',
-      plot_bgcolor: '#111128',
-      font: { family: 'JetBrains Mono, monospace', size: 11, color: '#8888aa' },
-      margin: { l: 50, r: 20, t: 10, b: 40 },
-      xaxis: { gridcolor: '#252555', linecolor: '#252555', zerolinecolor: '#252555', type: 'date' },
-      yaxis: { gridcolor: '#252555', linecolor: '#252555', zerolinecolor: '#252555' },
-      legend: {
-        bgcolor: 'rgba(22,22,55,0.8)', bordercolor: '#252555', borderwidth: 1,
-        font: { size: 10, color: '#8888aa' }, orientation: 'h', y: -0.15,
-      },
-      hovermode: 'x unified',
-      hoverlabel: {
-        bgcolor: '#161637', bordercolor: '#252555',
-        font: { family: 'JetBrains Mono', size: 11, color: '#e8e8f0' },
-      },
-    };
-    const PLOTLY_CONFIG = { displayModeBar: false, responsive: true };
-
-    function renderCharts(chartData) {
-      CHART_ORDER.forEach(key => {
-        const el = document.getElementById('chart-' + key);
-        const d = chartData[key];
-        if (!el || !d) return;
-
-        const traces = [];
-
-        // Wind direction: scatter dots
-        if (WIND_DIR_KEYS.includes(key)) {
-          traces.push({
-            x: d.timestamps, y: d.raw, type: 'scatter', mode: 'markers',
-            name: 'Raw', marker: { color: d.color, size: 3, opacity: 0.6 },
-            hovertemplate: '%{y:.0f}°<extra></extra>',
-          });
-          if (d.avg_3h) {
-            traces.push({
-              x: d.timestamps, y: d.avg_3h, type: 'scatter', mode: 'lines',
-              name: '3h avg', line: { color: d.color, width: 2 },
-              hovertemplate: '%{y:.1f} ' + d.unit + '<extra>3h avg</extra>',
-            });
-          }
-          Plotly.newPlot(el, traces, {
-            ...LAYOUT_BASE,
-            yaxis: {
-              ...LAYOUT_BASE.yaxis,
-              title: { text: 'Direction', font: { size: 11 } },
-              range: [-10, 370],
-              tickmode: 'array',
-              tickvals: COMPASS_TICKS.vals,
-              ticktext: COMPASS_TICKS.labels,
-            },
-          }, PLOTLY_CONFIG);
-          return;
-        }
-
-        // Rainfall: bar chart
-        if (RAIN_KEYS.includes(key)) {
-          traces.push({
-            x: d.timestamps, y: d.raw, type: 'bar', name: d.label,
-            marker: { color: d.color, opacity: 0.7 },
-            hovertemplate: '%{y:.1f} ' + d.unit + '<extra></extra>',
-          });
-          Plotly.newPlot(el, traces, {
-            ...LAYOUT_BASE,
-            yaxis: { ...LAYOUT_BASE.yaxis, title: { text: d.label + ' (' + d.unit + ')', font: { size: 11 } } },
-            bargap: 0.05,
-          }, PLOTLY_CONFIG);
-          return;
-        }
-
-        // Standard line chart
-        traces.push({
-          x: d.timestamps, y: d.raw, type: 'scatter', mode: 'lines',
-          name: 'Raw', line: { color: d.color, width: 1.25 }, opacity: 0.8,
-          hovertemplate: '%{y:.1f} ' + d.unit + '<extra>Raw</extra>',
-        });
-        if (d.avg_3h) {
-          traces.push({
-            x: d.timestamps, y: d.avg_3h, type: 'scatter', mode: 'lines',
-            name: '3h avg', line: { color: d.accent, width: 1 },
-            hovertemplate: '%{y:.1f} ' + d.unit + '<extra>3h avg</extra>',
-          });
-        }
-        if (d.avg_24h) {
-          traces.push({
-            x: d.timestamps, y: d.avg_24h, type: 'scatter', mode: 'lines',
-            name: '24h avg', line: { color: d.color, width: 1, dash: 'dot' }, opacity: 0.5,
-            hovertemplate: '%{y:.1f} ' + d.unit + '<extra>24h avg</extra>',
-          });
-        }
-        Plotly.newPlot(el, traces, {
-          ...LAYOUT_BASE,
-          yaxis: { ...LAYOUT_BASE.yaxis, title: { text: d.label + ' (' + d.unit + ')', font: { size: 11 } } },
-        }, PLOTLY_CONFIG);
-      });
-
-      // Combined normalised chart
-      const combEl = document.getElementById('chart-combined');
-      if (!combEl) return;
-      const combTraces = [];
-      Object.keys(chartData).forEach(key => {
-        const d = chartData[key];
-        if (!d || !d.raw) return;
-        const vals = d.raw.map(v => v === null ? NaN : v);
-        const valid = vals.filter(v => !isNaN(v));
-        if (valid.length < 2) return;
-        const lo = Math.min(...valid), hi = Math.max(...valid);
-        if (hi === lo) return;
-        const normed = vals.map(v => isNaN(v) ? null : (v - lo) / (hi - lo));
-        combTraces.push({
-          x: d.timestamps, y: normed, type: 'scatter', mode: 'lines',
-          name: d.label, line: { color: d.color, width: 2 },
-          hovertemplate: d.label + ': %{y:.2f}<extra></extra>',
-        });
-      });
-      if (combTraces.length > 0) {
-        Plotly.newPlot(combEl, combTraces, {
-          ...LAYOUT_BASE,
-          yaxis: { ...LAYOUT_BASE.yaxis, title: { text: 'Normalised (0–1)', font: { size: 11 } }, range: [-0.05, 1.05] },
-        }, PLOTLY_CONFIG);
-      }
-    }
-
-    // Main init
-    async function init() {
-      // Detect station ID from URL path
-      const pathParts = window.location.pathname.split('/').filter(Boolean);
-      const stationsIdx = pathParts.indexOf('stations');
-      const stationId = stationsIdx >= 0 ? pathParts[stationsIdx + 1] : 'unknown';
-
-      // Set station header info
-      const stationInfo = STATION_NAMES[stationId] || {
-        title: stationId,
-        subtitle: 'Weather station dashboard',
-        owner: 'LoEco',
-      };
-      document.getElementById('station-title').innerHTML =
-        `${stationInfo.title} <span>${stationInfo.subtitle}</span>`;
-      document.getElementById('owner-badge').textContent = stationInfo.owner;
-      document.title = `LoEco — ${stationInfo.title}`;
-
+    // ---- Time helpers ----------------------------------------
+    function parseGeneratedUtc(str) {
+      if (!str || str === '—') return null;
       try {
-        // Load statistics and chart data from same directory
-        const [statsRes, chartRes] = await Promise.all([
-          fetch('./statistics.json'),
-          fetch('./chart_data.json'),
-        ]);
+        return new Date(str.replace(' UTC', 'Z').replace(' ', 'T'));
+      } catch { return null; }
+    }
 
-        if (!statsRes.ok) throw new Error(`statistics.json: ${statsRes.status}`);
-        if (!chartRes.ok) throw new Error(`chart_data.json: ${chartRes.status}`);
+    function relativeTime(date) {
+      const diffMs = Date.now() - date.getTime();
+      const diffMin = Math.round(diffMs / 60000);
+      if (diffMin < 2)  return 'just now';
+      if (diffMin < 60) return `${diffMin} min ago`;
+      const diffH = Math.round(diffMin / 60);
+      if (diffH < 24)   return `${diffH}h ago`;
+      return `${Math.round(diffH / 24)}d ago`;
+    }
 
-        const stats = await statsRes.json();
-        const chartData = await chartRes.json();
+    // ---- WBGT Heat Stress Classification ----------------------
+    function wbgtFlag(wbgt) {
+      if (wbgt == null) return { text: '—', class: 'limited' };
+      if (wbgt < 21)   return { text: 'Safe', class: 'safe' };
+      if (wbgt < 26)   return { text: 'Limited', class: 'limited' };
+      if (wbgt < 29)   return { text: 'Caution', class: 'caution' };
+      if (wbgt < 32)   return { text: 'Danger', class: 'danger' };
+      return { text: 'Extreme', class: 'extreme' };
+    }
+
+    // ---- SVG metric icons --------------------------------
+    function createMetricIcon(metricType) {
+      const icons = {
+        'temperature': '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C10.9 2 10 2.9 10 4v9c0 1.66-1.34 3-3 3s-3-1.34-3-3V4c0-1.1-.9-2-2-2S0 2.9 0 4v9c0 3.86 3.14 7 7 7s7-3.14 7-7V4c0-1.1-.9-2-2-2zm0 0h0z"/></svg>',
+        'humidity': '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0z"/></svg>',
+        'pressure': '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>',
+        'wind': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11.42 6.5H5a2 2 0 0 0 0 4h6.5a2 2 0 0 1 0 4H9.5a2 2 0 0 0-1.5 3.5 2 2 0 0 0 2 .5h8"/></svg>',
+        'rain': '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>',
+        'battery': '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="10" y1="10" x2="10" y2="14"/><line x1="14" y1="10" x2="14" y2="14"/></svg>',
+        'wbgt': '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>',
+      };
+      return icons[metricType] || icons['temperature'];
+    }
+
+    // ---- Load dashboard data --------------------------------
+    async function loadDashboard() {
+      try {
+        // Fetch station data
+        const res = await fetch(`${BASE_URL}/stations/${stationId}/data.json`);
+        if (!res.ok) throw new Error(`Failed to load station data (${res.status})`);
+        const station = await res.json();
 
         // Update header
-        document.getElementById('last-update').textContent = stats.generated_utc || '—';
-        const dr = stats.date_range || {};
-        document.getElementById('date-range').textContent =
-          `${dr.start || '—'} → ${dr.end || '—'}`;
+        document.getElementById('station-name').textContent = station.display_name || stationId;
+        document.title = `${station.display_name || stationId} — LoEco Dashboard`;
 
-        // Build metric cards
-        const metrics = stats.metrics || {};
-        let cardsHtml = '';
-        CARD_ORDER.forEach(key => {
-          if (metrics[key]) cardsHtml += buildCard(key, metrics[key]);
-        });
-        document.getElementById('card-grid').innerHTML = cardsHtml;
-
-        // Build chart containers
-        let chartsHtml = '';
-        CHART_ORDER.forEach(key => {
-          if (chartData[key]) chartsHtml += buildChartDiv(key, chartData[key]);
-        });
-        // Combined overview
-        if (Object.keys(chartData).length > 1) {
-          chartsHtml += `
-            <div class="chart-card">
-              <div class="chart-header">
-                <span class="chart-title">Combined Overview — Normalised</span>
-              </div>
-              <div class="chart-container" id="chart-combined"></div>
-            </div>`;
+        // ---- Check for stale data (>90 min) ----
+        const lastUpdateDate = parseGeneratedUtc(station.last_update);
+        if (lastUpdateDate) {
+          const diffMs = Date.now() - lastUpdateDate.getTime();
+          const diffMin = diffMs / 60000;
+          const staleBanner = document.getElementById('stale-banner');
+          const staleMsg = document.getElementById('stale-message');
+          if (diffMin > 90) {
+            staleBanner.classList.add('active');
+            if (diffMin > 180) {
+              staleBanner.classList.add('critical');
+              staleMsg.textContent = `Data missing for ${Math.round(diffMin / 60)}+ hours`;
+            } else {
+              staleBanner.classList.add('warning');
+              staleMsg.textContent = `No data for ${Math.round(diffMin)} minutes`;
+            }
+          }
         }
-        document.getElementById('chart-grid').innerHTML = chartsHtml;
 
-        // Render charts
-        renderCharts(chartData);
+        // Update last update time
+        if (lastUpdateDate) {
+          document.getElementById('last-update').textContent = `Updated: ${relativeTime(lastUpdateDate)}`;
+        }
+
+        // ---- Render metric cards ----
+        const metrics = station.metrics || {};
+        const metricsGrid = document.getElementById('metrics-grid');
+        const metricsList = [
+          { key: 'temperature_c', label: 'Temperature', unit: '°C', icon: 'temperature' },
+          { key: 'wbgt_c', label: 'WBGT', unit: '°C', icon: 'wbgt', special: 'wbgt' },
+          { key: 'humidity_pct', label: 'Humidity', unit: '%', icon: 'humidity' },
+          { key: 'pressure_hpa', label: 'Pressure', unit: 'hPa', icon: 'pressure' },
+          { key: 'wind_speed_ms', label: 'Wind', unit: 'm/s', icon: 'wind' },
+          { key: 'rain_rate_mmhr', label: 'Rain rate', unit: 'mm/h', icon: 'rain' },
+          { key: 'battery_voltage_v', label: 'Battery', unit: 'V', icon: 'battery', precision: 2 },
+        ];
+
+        metricsList.forEach(m => {
+          const value = metrics[m.key];
+          if (value == null) return;
+
+          const card = document.createElement('div');
+          card.className = 'metric-card';
+          const iconHtml = createMetricIcon(m.icon);
+          const precision = m.precision || 1;
+          const displayValue = parseFloat(value).toFixed(precision);
+          let flagHtml = '';
+          if (m.special === 'wbgt') {
+            const flag = wbgtFlag(value);
+            flagHtml = `<div class="wbgt-flag ${flag.class}">${flag.text}</div>`;
+          }
+          card.innerHTML = `
+            <div class="metric-header">
+              <span class="metric-label">
+                <span class="metric-icon">${iconHtml}</span>
+                ${m.label}
+              </span>
+            </div>
+            <div class="metric-value">${displayValue}<span class="metric-unit">${m.unit}</span></div>
+            ${flagHtml}
+          `;
+          metricsGrid.appendChild(card);
+        });
+
+        // ---- Load time-series data and render chart ----
+        const histRes = await fetch(`${BASE_URL}/stations/${stationId}/history.json`);
+        if (!histRes.ok) throw new Error(`Failed to load history data (${histRes.status})`);
+        const history = await histRes.json();
+
+        // Prepare chart data
+        function filterDataByRange(range) {
+          const now = Date.now();
+          let cutoff;
+          if (range === '24h') cutoff = 24 * 60;
+          else if (range === '3d') cutoff = 72 * 60;
+          else if (range === '7d') cutoff = 7 * 24 * 60;
+          else cutoff = 24 * 60;
+
+          const filtered = [];
+          (history.readings || []).forEach(reading => {
+            const readingDate = parseGeneratedUtc(reading.generated_utc);
+            if (readingDate) {
+              const diffMs = now - readingDate.getTime();
+              const diffMin = diffMs / 60000;
+              if (diffMin <= cutoff) {
+                filtered.push(reading);
+              }
+            }
+          });
+          return filtered.reverse();
+        }
+
+        function renderChart(range) {
+          const data = filterDataByRange(range);
+          const labels = data.map(r => {
+            const d = parseGeneratedUtc(r.generated_utc);
+            return d ? d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '—';
+          });
+          const temps = data.map(r => r.temperature_c != null ? parseFloat(r.temperature_c) : null);
+
+          const ctx = document.getElementById('chart').getContext('2d');
+          if (currentChart) currentChart.destroy();
+          currentChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'Temperature (°C)',
+                data: temps,
+                borderColor: '#45b7d1',
+                backgroundColor: 'rgba(69, 183, 209, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 3,
+                pointBackgroundColor: '#45b7d1',
+                pointBorderColor: '#45b7d1',
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                legend: {
+                  labels: { color: '#8888aa', font: { family: "'JetBrains Mono'" } }
+                }
+              },
+              scales: {
+                y: {
+                  beginAtZero: false,
+                  ticks: { color: '#8888aa' },
+                  grid: { color: 'rgba(37, 37, 85, 0.3)' }
+                },
+                x: {
+                  ticks: { color: '#8888aa' },
+                  grid: { color: 'rgba(37, 37, 85, 0.3)' }
+                }
+              }
+            }
+          });
+        }
+
+        // Initial render
+        renderChart('24h');
+
+        // ---- Time range toggle event listener ----
+        document.querySelectorAll('.btn-range').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.btn-range').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            renderChart(e.target.dataset.range);
+          });
+        });
 
       } catch (err) {
-        console.error('Dashboard load error:', err);
-        document.getElementById('card-grid').innerHTML = `
-          <div class="loading-message">
-            ⚠ Failed to load station data: ${err.message}<br>
-            <small style="color: var(--text-dim)">Ensure statistics.json and chart_data.json exist in this directory.</small>
-          </div>`;
+        console.error('Dashboard error:', err);
+        document.getElementById('metrics-grid').innerHTML = `<div style="color:var(--accent-red);">Error loading dashboard: ${err.message}</div>`;
       }
     }
 
-    init();
+    loadDashboard();
   </script>
 </body>
 </html>

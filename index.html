@@ -410,7 +410,7 @@
     // Loads stations_summary.json and creates temperature markers
     // =========================================================
 
-    const BASE_URL = '.';  // relative to gh-pages root
+    const BASE_URL = '.';
 
     // Temperature → color class
     function tempClass(t) {
@@ -434,7 +434,7 @@
       const windStr = windMs != null ? windMs.toFixed(1) + ' m/s' : null;
 
       const icon = L.divIcon({
-        className: '',  // no default leaflet styling
+        className: '',
         html: `
           <div class="temp-marker ${tc}">
             <div class="temp-bubble">
@@ -452,6 +452,24 @@
       });
 
       return icon;
+    }
+
+    // ---- Relative time helpers --------------------------------
+    function parseGeneratedUtc(str) {
+      if (!str || str === '—') return null;
+      try {
+        return new Date(str.replace(' UTC', 'Z').replace(' ', 'T'));
+      } catch { return null; }
+    }
+
+    function relativeTime(date) {
+      const diffMs = Date.now() - date.getTime();
+      const diffMin = Math.round(diffMs / 60000);
+      if (diffMin < 2)  return 'just now';
+      if (diffMin < 60) return `${diffMin} min ago`;
+      const diffH = Math.round(diffMin / 60);
+      if (diffH < 24)   return `${diffH}h ago`;
+      return `${Math.round(diffH / 24)}d ago`;
     }
 
     // Build popup HTML
@@ -481,9 +499,18 @@
          </div>`
       ).join('');
 
+      // Relative last-update time
+      const lastUpdateDate = s.last_update && s.last_update !== '—'
+        ? parseGeneratedUtc(s.last_update)
+        : null;
+      const lastUpdateHtml = lastUpdateDate
+        ? `<div class="popup-meta" style="margin-top:-0.3rem;opacity:0.75">Updated: ${relativeTime(lastUpdateDate)}</div>`
+        : '';
+
       return `
         <div class="popup-title">${s.display_name}</div>
         <div class="popup-meta">${s.sensor_type} · ${s.owner}</div>
+        ${lastUpdateHtml}
         <div class="popup-stats">${statsHtml}</div>
         <a class="popup-link" href="stations/${s.id}/index.html">Open Dashboard →</a>
       `;
