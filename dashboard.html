@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>LoEco — Station Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:     #0a0a1a;
+      --bg2:    #111128;
+      --card:   #161637;
+      --border: #252555;
+      --txt:    #e8e8f0;
+      --muted:  #8888aa;
+      --dim:    #555577;
+      --blue:   #45b7d1;
+      --green:  #4ecdc4;
+      --red:    #ff6b6b;
+      --amber:  #f9ca24;
+      --r:  12px;
+      --rs:  8px;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(69,183,209,.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(78,205,196,.03) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    .header {
+      position: relative;
+      z-index: 1;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+    }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+    .logo {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #000;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      padding: .3rem .65rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .bc { font-size: .9rem; font-weight: 500; }
+    .bc a { color: var(--blue); text-decoration: none; }
+    .bc a:hover { opacity: .75; }
+    .bc .sep { color: var(--muted); margin: 0 .4rem; }
+    .bc .station-name { color: var(--txt); }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+    }
+
+    /* Freshness badge */
+    .badge {
+      display: none;
+      align-items: center;
+      gap: .4rem;
+      padding: .22rem .7rem;
+      border-radius: 20px;
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .badge.show { display: flex; }
+    .badge.fresh   { background: rgba(78,205,196,.15);  color: var(--green); border: 1px solid rgba(78,205,196,.3);  }
+    .badge.warning { background: rgba(249,202,36,.15);  color: var(--amber); border: 1px solid rgba(249,202,36,.3);  }
+    .badge.stale   { background: rgba(255,107,107,.15); color: var(--red);   border: 1px solid rgba(255,107,107,.3); }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+    .updated-lbl { color: var(--muted); }
+
+    /* ── Layout ────────────────────────────────────── */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* ── Metric grid ───────────────────────────────── */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    @media (max-width: 800px)  { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px)  { .metric-grid { grid-template-columns: 1fr 1fr; } }
+
+    .mc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.2rem 1.4rem 1rem;
+      transition: border-color .25s, box-shadow .25s;
+    }
+    .mc:hover {
+      border-color: rgba(69,183,209,.5);
+      box-shadow: 0 0 18px rgba(69,183,209,.1);
+    }
+    .mc-label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .55rem;
+    }
+    .mc-label svg { flex-shrink: 0; opacity: .75; }
+    .mc-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.95rem;
+      font-weight: 700;
+      color: var(--txt);
+      line-height: 1;
+    }
+    .mc-unit {
+      font-size: .8rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-left: .2rem;
+    }
+    .mc-range {
+      font-size: .68rem;
+      color: var(--dim);
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: .35rem;
+    }
+    .heat-badge {
+      display: inline-block;
+      margin-top: .4rem;
+      padding: .18rem .6rem;
+      border-radius: 5px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .63rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: #000;
+    }
+    .heat-badge.safe    { background: #4ecdc4; }
+    .heat-badge.limited { background: #f9ca24; }
+    .heat-badge.caution { background: #ff9800; }
+    .heat-badge.danger  { background: #ff6b6b; }
+    .heat-badge.extreme { background: #e74c3c; color: #fff; }
+
+    /* ── Chart section ──────────────────────────────── */
+    .chart-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .chart-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+    .chart-title   { font-size: 1rem; font-weight: 600; color: var(--txt); }
+    .chart-sub     { font-size: .72rem; color: var(--muted); margin-top: .15rem; }
+
+    .range-btns {
+      display: flex;
+      gap: .2rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--rs);
+      padding: .22rem;
+      flex-shrink: 0;
+    }
+    .range-btn {
+      padding: .28rem .75rem;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: all .2s;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .range-btn:hover { color: var(--txt); }
+    .range-btn.active {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: #000;
+      font-weight: 700;
+    }
+
+    #chart-wrap {
+      height: 380px;
+      overflow: hidden;
+    }
+
+    .info-state {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 180px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .err { color: var(--red) !important; }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: .75rem;
+      color: var(--dim);
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <div class="logo">LoEco</div>
+    <nav class="bc">
+      <a href="index.html">Dashboard</a>
+      <span class="sep">›</span>
+      <span class="station-name" id="sn">—</span>
+    </nav>
+  </div>
+  <div class="header-right">
+    <div class="badge" id="badge"></div>
+    <span class="updated-lbl" id="lu">—</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="metric-grid" id="mg">
+    <div class="info-state" style="grid-column:1/-1">Loading station data…</div>
+  </div>
+
+  <div class="chart-section">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Temperature</div>
+        <div class="chart-sub">Raw readings &amp; 3-hour running average</div>
+      </div>
+      <div class="range-btns" id="range-btns">
+        <button class="range-btn active" data-h="24">24H</button>
+        <button class="range-btn" data-h="72">3D</button>
+        <button class="range-btn" data-h="168">7D</button>
+      </div>
+    </div>
+    <div id="chart-wrap">
+      <div class="info-state">Loading chart data…</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  LoEco Weather Station Network &nbsp;|&nbsp;
+  <a href="https://github.com/chriswalkerbrown/LoEco" target="_blank" rel="noopener">GitHub</a>
+</footer>
+
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script>
+const sid = new URLSearchParams(location.search).get('station')
+          || location.pathname.match(/\/stations\/([^\/]+)/)?.[1];
+
+if (!sid) {
+  document.getElementById('mg').innerHTML =
+    '<div class="info-state err" style="grid-column:1/-1">No station specified — use ?station=STATION_ID</div>';
+}
+
+function parseUTC(s) {
+  if (!s) return null;
+  try { return new Date(s.replace(' UTC','Z').replace(' ','T')); } catch { return null; }
+}
+
+function relTime(ms) {
+  const m = Math.round((Date.now() - ms) / 60000);
+  if (m < 2)  return 'just now';
+  if (m < 60) return m + ' min ago';
+  const h = Math.round(m / 60);
+  if (h < 24) return h + 'h ago';
+  return Math.round(h / 24) + 'd ago';
+}
+
+function heatBadge(v) {
+  if (v == null)  return { text: '—',       cls: 'limited' };
+  if (v < 21)     return { text: 'Safe',    cls: 'safe'    };
+  if (v < 26)     return { text: 'Limited', cls: 'limited' };
+  if (v < 29)     return { text: 'Caution', cls: 'caution' };
+  if (v < 32)     return { text: 'Danger',  cls: 'danger'  };
+  return            { text: 'Extreme',  cls: 'extreme' };
+}
+
+function rollingAvg(timestamps, values, windowMs) {
+  const out = new Array(values.length).fill(null);
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] == null) continue;
+    const t   = new Date(timestamps[i]).getTime();
+    const cut = t - windowMs;
+    let sum = 0, n = 0;
+    for (let j = i; j >= 0; j--) {
+      if (new Date(timestamps[j]).getTime() < cut) break;
+      if (values[j] != null) { sum += values[j]; n++; }
+    }
+    if (n > 0) out[i] = Math.round(sum / n * 10) / 10;
+  }
+  return out;
+}
+
+function calcWeeklyRain(cd) {
+  const src = cd?.rain_daily_mm;
+  if (!src?.timestamps) return null;
+  const byDay = {};
+  src.timestamps.forEach((t, i) => {
+    const day = t.substring(0, 10);
+    const v   = src.raw[i];
+    if (v != null && (!(day in byDay) || v > byDay[day])) byDay[day] = v;
+  });
+  const total = Object.values(byDay).reduce((a, b) => a + b, 0);
+  return Math.round(total * 10) / 10;
+}
+
+const ICONS = {
+  temp:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0zm-3 5a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>`,
+  wbgt:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
+  humidity: `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0z"/></svg>`,
+  pressure: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`,
+  wind:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>`,
+  rain:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><line x1="8" y1="16" x2="8" y2="21"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="16" y1="16" x2="16" y2="21"/></svg>`,
+  solar:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+  weekrain: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>`,
+};
+
+const METRICS = [
+  { key: 'temperature_c',  label: 'Temperature',      unit: '°C',   icon: 'temp',     dp: 1 },
+  { key: 'wbgt_c',         label: 'WBGT',             unit: '°C',   icon: 'wbgt',     dp: 1, isWbgt: true },
+  { key: 'humidity_pct',   label: 'Humidity',         unit: '%',    icon: 'humidity', dp: 0 },
+  { key: 'pressure_hpa',   label: 'Pressure',         unit: 'hPa',  icon: 'pressure', dp: 1 },
+  { key: 'wind_speed_ms',  label: 'Wind Speed',       unit: 'm/s',  icon: 'wind',     dp: 1 },
+  { key: 'rain_rate_mmhr', label: 'Rain Rate',        unit: 'mm/h', icon: 'rain',     dp: 1 },
+  { key: 'solar_wm2',      label: 'Global Radiation', unit: 'W/m²', icon: 'solar',    dp: 0 },
+  { key: '__weekly_rain',  label: 'Weekly Rainfall',  unit: 'mm',   icon: 'weekrain', dp: 1, computed: true },
+];
+
+function renderBoxes(stats, weeklyRain) {
+  const mg = document.getElementById('mg');
+  mg.innerHTML = '';
+  const mx = stats.metrics || {};
+
+  METRICS.forEach(m => {
+    let val = null, minv = null, maxv = null;
+    if (m.computed) {
+      val = weeklyRain;
+    } else {
+      const md = mx[m.key];
+      if (!md) return;
+      val  = md.latest;
+      minv = md.min;
+      maxv = md.max;
+    }
+
+    const valStr  = val != null ? Number(val).toFixed(m.dp) : '—';
+    const unitStr = val != null ? m.unit : '';
+    const rangeStr = (minv != null && maxv != null)
+      ? `7d: ${Number(minv).toFixed(m.dp)}–${Number(maxv).toFixed(m.dp)} ${m.unit}`
+      : '';
+
+    let extra = '';
+    if (m.isWbgt && val != null) {
+      const b = heatBadge(val);
+      extra = `<div class="heat-badge ${b.cls}">${b.text}</div>`;
+    }
+
+    const card = document.createElement('div');
+    card.className = 'mc';
+    card.innerHTML = `
+      <div class="mc-label">${ICONS[m.icon] || ''}${m.label}</div>
+      <div class="mc-value">${valStr}<span class="mc-unit">${unitStr}</span></div>
+      ${rangeStr ? `<div class="mc-range">${rangeStr}</div>` : ''}
+      ${extra}`;
+    mg.appendChild(card);
+  });
+}
+
+let chartData   = null;
+let activeHours = 24;
+
+function renderChart(hours) {
+  activeHours = hours;
+  const wrap = document.getElementById('chart-wrap');
+  if (!chartData) { wrap.innerHTML = '<div class="info-state">No chart data</div>'; return; }
+
+  const src = chartData.temperature_c;
+  if (!src?.timestamps?.length) {
+    wrap.innerHTML = '<div class="info-state err">No temperature series</div>';
+    return;
+  }
+
+  const now = Date.now(), cutMs = hours * 3600000;
+  const ts = [], raw = [];
+  src.timestamps.forEach((t, i) => {
+    if (now - new Date(t).getTime() <= cutMs) { ts.push(t); raw.push(src.raw[i]); }
+  });
+
+  if (!ts.length) { wrap.innerHTML = '<div class="info-state">No data in range</div>'; return; }
+
+  const avg = rollingAvg(ts, raw, 10800000);
+
+  const layout = {
+    paper_bgcolor: '#161637', plot_bgcolor: '#161637',
+    font: { family: "'JetBrains Mono', monospace", color: '#8888aa', size: 10 },
+    margin: { t: 12, r: 20, b: 46, l: 52 },
+    hovermode: 'x unified',
+    hoverlabel: { bgcolor: '#1e1e40', bordercolor: '#252555', font: { color: '#e8e8f0', size: 11 } },
+    legend: { orientation: 'h', x: 0, y: 1.05, xanchor: 'left', yanchor: 'bottom', font: { size: 10 }, bgcolor: 'rgba(0,0,0,0)' },
+    xaxis: {
+      type: 'date', gridcolor: 'rgba(37,37,85,0.6)', linecolor: '#252555',
+      tickformat: hours <= 24 ? '%H:%M' : hours <= 72 ? '%a %H:%M' : '%d %b',
+      nticks: hours <= 24 ? 12 : 8, tickfont: { size: 10 }, fixedrange: true,
+    },
+    yaxis: {
+      gridcolor: 'rgba(37,37,85,0.6)', linecolor: '#252555',
+      ticksuffix: ' °C', tickfont: { size: 10 }, fixedrange: true,
+    },
+  };
+
+  Plotly.newPlot('chart-wrap',
+    [
+      { x: ts, y: raw,  type: 'scatter', mode: 'lines', name: 'Raw',
+        line: { color: 'rgba(69,183,209,0.3)', width: 1 },
+        hovertemplate: '<b>%{x|%d %b %H:%M}</b><br>%{y:.1f} °C<extra></extra>' },
+      { x: ts, y: avg,  type: 'scatter', mode: 'lines', name: '3h avg',
+        line: { color: '#45b7d1', width: 2.5 },
+        hovertemplate: '<b>%{x|%d %b %H:%M}</b><br>%{y:.1f} °C<extra></extra>' },
+    ],
+    layout,
+    { responsive: true, displayModeBar: false, scrollZoom: false, staticPlot: false }
+  );
+}
+
+async function load() {
+  if (!sid) return;
+  try {
+    const sr = await fetch(`stations/${sid}/statistics.json`);
+    if (!sr.ok) throw new Error(`Statistics: HTTP ${sr.status}`);
+    const stats = await sr.json();
+
+    const name = stats.display_name || sid.replace(/_/g, ' ');
+    document.getElementById('sn').textContent = name;
+    document.title = `${name} — LoEco Dashboard`;
+
+    const genDate = parseUTC(stats.generated_utc);
+    if (genDate) {
+      const ageMin = (Date.now() - genDate.getTime()) / 60000;
+      const badge  = document.getElementById('badge');
+      document.getElementById('lu').textContent = 'Updated ' + relTime(genDate.getTime());
+      badge.classList.add('show');
+      if (ageMin < 30) {
+        badge.className = 'badge show fresh';
+        badge.innerHTML = '<span class="badge-dot"></span>Live';
+      } else if (ageMin < 120) {
+        badge.className = 'badge show warning';
+        badge.innerHTML = `<span class="badge-dot"></span>${Math.round(ageMin)}m old`;
+      } else {
+        badge.className = 'badge show stale';
+        badge.innerHTML = `<span class="badge-dot"></span>${Math.round(ageMin / 60)}h old`;
+      }
+    }
+
+    const cr = await fetch(`stations/${sid}/chart_data.json`);
+    if (!cr.ok) throw new Error(`Chart data: HTTP ${cr.status}`);
+    chartData = await cr.json();
+
+    renderBoxes(stats, calcWeeklyRain(chartData));
+    renderChart(activeHours);
+
+    document.querySelectorAll('.range-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderChart(parseInt(btn.dataset.h, 10));
+      });
+    });
+
+  } catch (err) {
+    console.error(err);
+    document.getElementById('mg').innerHTML =
+      `<div class="info-state err" style="grid-column:1/-1">Failed to load: ${err.message}</div>`;
+    document.getElementById('chart-wrap').innerHTML =
+      `<div class="info-state err">Chart unavailable</div>`;
+  }
+}
+
+load();
+</script>
+</body>
+</html>
