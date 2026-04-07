@@ -1,543 +1,617 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>LoEco — Station Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:     #0a0a1a;
-      --bg2:    #111128;
-      --card:   #161637;
-      --border: #252555;
-      --txt:    #e8e8f0;
-      --muted:  #8888aa;
-      --dim:    #555577;
-      --blue:   #45b7d1;
-      --green:  #4ecdc4;
-      --red:    #ff6b6b;
-      --amber:  #f9ca24;
-      --r:  12px;
-      --rs:  8px;
-    }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MeteoA Station Dashboard</title>
+<script src="https://cdn.plot.ly/plotly-2.35.0.min.js"></script>
+<style>
+  /* ── Reset & Base ─────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b1120; --bg2: #111827; --bg3: #1a2332;
+    --card: #151f2e; --card-hover: #1a2740;
+    --border: #1e2d3d; --border-light: #2a3a4e;
+    --text: #e2e8f0; --text-dim: #8899aa; --text-muted: #5a6a7a;
+    --accent: #38bdf8; --accent2: #818cf8; --accent3: #34d399;
+    --red: #f87171; --amber: #fbbf24; --green: #4ade80;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.5; overflow-x: hidden;
+    min-height: 100vh;
+  }
 
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--txt);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
+  /* ── Layout ───────────────────────────────────────────── */
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 20px 40px; }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(69,183,209,.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(78,205,196,.03) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
-    }
+  /* ── Header ───────────────────────────────────────────── */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0 24px;
+    position: sticky; top: 0; z-index: 100;
+    backdrop-filter: blur(12px);
+  }
+  .header-inner {
+    max-width: 1400px; margin: 0 auto; padding: 0 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .station-info { display: flex; align-items: center; gap: 16px; }
+  .station-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .station-name { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; }
+  .station-meta { font-size: 0.82rem; color: var(--text-dim); margin-top: 2px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 14px; border-radius: 20px; font-size: 0.78rem;
+    font-weight: 600; letter-spacing: 0.02em;
+  }
+  .badge-live { background: rgba(74,222,128,0.12); color: var(--green); }
+  .badge-warn { background: rgba(251,191,36,0.12); color: var(--amber); }
+  .badge-stale { background: rgba(248,113,113,0.12); color: var(--red); }
+  .badge-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: currentColor;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    /* ── Header ─────────────────────────────────────── */
-    .header {
-      position: relative;
-      z-index: 1;
-      background: var(--bg2);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: .75rem;
-    }
-    .header-left { display: flex; align-items: center; gap: 1rem; }
-    .logo {
-      background: linear-gradient(135deg, var(--blue), var(--green));
-      color: #000;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: .7rem;
-      letter-spacing: .12em;
-      padding: .3rem .65rem;
-      border-radius: 6px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .bc { font-size: .9rem; font-weight: 500; }
-    .bc a { color: var(--blue); text-decoration: none; }
-    .bc a:hover { opacity: .75; }
-    .bc .sep { color: var(--muted); margin: 0 .4rem; }
-    .bc .station-name { color: var(--txt); }
+  /* ── WBGT Alert Banner ────────────────────────────────── */
+  .wbgt-banner {
+    margin-top: 20px; padding: 14px 20px; border-radius: var(--radius);
+    display: none; align-items: center; gap: 12px; font-size: 0.9rem;
+    font-weight: 500; border: 1px solid;
+  }
+  .wbgt-banner.safe    { background: rgba(74,222,128,0.06); border-color: rgba(74,222,128,0.2); color: var(--green); }
+  .wbgt-banner.limited { background: rgba(251,191,36,0.06); border-color: rgba(251,191,36,0.2); color: var(--amber); }
+  .wbgt-banner.caution { background: rgba(251,146,60,0.06); border-color: rgba(251,146,60,0.2); color: #fb923c; }
+  .wbgt-banner.danger  { background: rgba(248,113,113,0.06); border-color: rgba(248,113,113,0.2); color: var(--red); }
+  .wbgt-banner.extreme { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: #ef4444; }
+  .wbgt-icon { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: .85rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem;
-    }
+  /* ── Metric Cards ─────────────────────────────────────── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px; margin-top: 24px;
+  }
+  .metric-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 18px 20px;
+    transition: all 0.2s ease; position: relative; overflow: hidden;
+    cursor: pointer;
+  }
+  .metric-card:hover { background: var(--card-hover); border-color: var(--border-light); transform: translateY(-2px); }
+  .metric-card.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 4px 20px rgba(56,189,248,0.1); }
+  .metric-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--metric-color, var(--accent)); opacity: 0.7;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .metric-label {
+    font-size: 0.75rem; color: var(--text-dim); font-weight: 500;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .metric-label .icon { font-size: 0.9rem; }
+  .metric-value-row { display: flex; align-items: baseline; gap: 8px; }
+  .metric-value { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+  .metric-unit { font-size: 0.85rem; color: var(--text-dim); font-weight: 400; }
+  .metric-trend {
+    display: flex; align-items: center; gap: 4px;
+    font-size: 0.75rem; font-weight: 600; margin-top: 8px;
+  }
+  .trend-up { color: var(--red); }
+  .trend-down { color: var(--accent); }
+  .trend-stable { color: var(--text-muted); }
+  .metric-range {
+    font-size: 0.72rem; color: var(--text-muted); margin-top: 6px;
+    display: flex; gap: 10px;
+  }
+  .metric-range span { display: flex; align-items: center; gap: 3px; }
 
-    /* Freshness badge */
-    .badge {
-      display: none;
-      align-items: center;
-      gap: .4rem;
-      padding: .22rem .7rem;
-      border-radius: 20px;
-      font-size: .68rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-    .badge.show { display: flex; }
-    .badge.fresh   { background: rgba(78,205,196,.15);  color: var(--green); border: 1px solid rgba(78,205,196,.3);  }
-    .badge.warning { background: rgba(249,202,36,.15);  color: var(--amber); border: 1px solid rgba(249,202,36,.3);  }
-    .badge.stale   { background: rgba(255,107,107,.15); color: var(--red);   border: 1px solid rgba(255,107,107,.3); }
-    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  /* ── Chart Section ────────────────────────────────────── */
+  .chart-section { margin-top: 28px; }
+  .chart-panel {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .chart-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px; border-bottom: 1px solid var(--border);
+    flex-wrap: wrap; gap: 10px;
+  }
+  .chart-title { font-size: 0.95rem; font-weight: 600; }
+  .range-btns { display: flex; gap: 4px; }
+  .range-btn {
+    padding: 5px 14px; border-radius: 6px; border: 1px solid var(--border);
+    background: transparent; color: var(--text-dim); font-size: 0.78rem;
+    font-weight: 600; cursor: pointer; transition: all 0.15s;
+  }
+  .range-btn:hover { border-color: var(--border-light); color: var(--text); }
+  .range-btn.active { background: var(--accent); border-color: var(--accent); color: #0b1120; }
+  .chart-wrap {
+    height: 380px; overflow: hidden; position: relative;
+    touch-action: pan-x pan-y;
+  }
+  .chart-wrap .js-plotly-plot { pointer-events: auto; }
 
-    .updated-lbl { color: var(--muted); }
+  /* ── PNG Charts Grid ──────────────────────────────────── */
+  .charts-grid-title {
+    font-size: 1.1rem; font-weight: 600; margin-top: 36px; margin-bottom: 14px;
+    color: var(--text); display: flex; align-items: center; gap: 8px;
+  }
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 14px;
+  }
+  .chart-image-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; transition: all 0.2s;
+  }
+  .chart-image-card:hover { border-color: var(--border-light); transform: translateY(-1px); }
+  .chart-image-card .card-header {
+    padding: 12px 16px; font-size: 0.82rem; font-weight: 600;
+    color: var(--text-dim); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .chart-image-card img {
+    width: 100%; height: auto; display: block;
+    background: #0d1525; image-rendering: auto;
+  }
 
-    /* ── Layout ────────────────────────────────────── */
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
+  /* ── Station Selector ─────────────────────────────────── */
+  .station-select {
+    background: var(--bg2); border: 1px solid var(--border);
+    color: var(--text); padding: 7px 12px; border-radius: var(--radius-sm);
+    font-size: 0.85rem; cursor: pointer; min-width: 180px;
+  }
+  .station-select:focus { outline: none; border-color: var(--accent); }
 
-    /* ── Metric grid ───────────────────────────────── */
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-bottom: 1.75rem;
-    }
-    @media (max-width: 800px)  { .metric-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px)  { .metric-grid { grid-template-columns: 1fr 1fr; } }
+  /* ── Loading State ────────────────────────────────────── */
+  .loading { display: flex; align-items: center; justify-content: center; padding: 60px; color: var(--text-dim); }
+  .spinner {
+    width: 28px; height: 28px; border: 3px solid var(--border);
+    border-top-color: var(--accent); border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin-right: 12px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
-    .mc {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 1.2rem 1.4rem 1rem;
-      transition: border-color .25s, box-shadow .25s;
-    }
-    .mc:hover {
-      border-color: rgba(69,183,209,.5);
-      box-shadow: 0 0 18px rgba(69,183,209,.1);
-    }
-    .mc-label {
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-      font-size: .72rem;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-bottom: .55rem;
-    }
-    .mc-label svg { flex-shrink: 0; opacity: .75; }
-    .mc-value {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.95rem;
-      font-weight: 700;
-      color: var(--txt);
-      line-height: 1;
-    }
-    .mc-unit {
-      font-size: .8rem;
-      color: var(--muted);
-      font-weight: 400;
-      margin-left: .2rem;
-    }
-    .mc-range {
-      font-size: .68rem;
-      color: var(--dim);
-      font-family: 'JetBrains Mono', monospace;
-      margin-top: .35rem;
-    }
-    .heat-badge {
-      display: inline-block;
-      margin-top: .4rem;
-      padding: .18rem .6rem;
-      border-radius: 5px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .63rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      color: #000;
-    }
-    .heat-badge.safe    { background: #4ecdc4; }
-    .heat-badge.limited { background: #f9ca24; }
-    .heat-badge.caution { background: #ff9800; }
-    .heat-badge.danger  { background: #ff6b6b; }
-    .heat-badge.extreme { background: #e74c3c; color: #fff; }
+  /* ── Footer ───────────────────────────────────────────── */
+  .footer {
+    margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--border);
+    text-align: center; font-size: 0.78rem; color: var(--text-muted);
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
 
-    /* ── Chart section ──────────────────────────────── */
-    .chart-section {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .chart-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: .75rem;
-      margin-bottom: 1.25rem;
-    }
-    .chart-title   { font-size: 1rem; font-weight: 600; color: var(--txt); }
-    .chart-sub     { font-size: .72rem; color: var(--muted); margin-top: .15rem; }
-
-    .range-btns {
-      display: flex;
-      gap: .2rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: var(--rs);
-      padding: .22rem;
-      flex-shrink: 0;
-    }
-    .range-btn {
-      padding: .28rem .75rem;
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .68rem;
-      font-weight: 600;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: all .2s;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-    .range-btn:hover { color: var(--txt); }
-    .range-btn.active {
-      background: linear-gradient(135deg, var(--blue), var(--green));
-      color: #000;
-      font-weight: 700;
-    }
-
-    #chart-wrap {
-      height: 380px;
-      overflow: hidden;
-    }
-
-    .info-state {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 180px;
-      color: var(--muted);
-      font-size: .9rem;
-    }
-    .err { color: var(--red) !important; }
-
-    .footer {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 1.5rem 2rem;
-      font-size: .75rem;
-      color: var(--dim);
-      border-top: 1px solid var(--border);
-    }
-    .footer a { color: var(--blue); text-decoration: none; }
-  </style>
+  /* ── Responsive ───────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .charts-grid { grid-template-columns: 1fr; }
+    .metric-value { font-size: 1.5rem; }
+    .chart-wrap { height: 300px; }
+    .station-name { font-size: 1.1rem; }
+    .header-inner { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .metrics-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .metric-card { padding: 14px; }
+    .metric-value { font-size: 1.3rem; }
+  }
+</style>
 </head>
 <body>
 
-<header class="header">
-  <div class="header-left">
-    <div class="logo">LoEco</div>
-    <nav class="bc">
-      <a href="index.html">Dashboard</a>
-      <span class="sep">›</span>
-      <span class="station-name" id="sn">—</span>
-    </nav>
-  </div>
-  <div class="header-right">
-    <div class="badge" id="badge"></div>
-    <span class="updated-lbl" id="lu">—</span>
-  </div>
-</header>
-
-<div class="container">
-
-  <div class="metric-grid" id="mg">
-    <div class="info-state" style="grid-column:1/-1">Loading station data…</div>
-  </div>
-
-  <div class="chart-section">
-    <div class="chart-header">
+<!-- ═══ HEADER ═══ -->
+<div class="header">
+  <div class="header-inner">
+    <div class="station-info">
+      <div class="station-icon" style="font-size:15px;font-weight:700;color:#fff;letter-spacing:0.02em">M<span style="font-size:11px">A</span></div>
       <div>
-        <div class="chart-title">Temperature</div>
-        <div class="chart-sub">Raw readings &amp; 3-hour running average</div>
-      </div>
-      <div class="range-btns" id="range-btns">
-        <button class="range-btn active" data-h="24">24H</button>
-        <button class="range-btn" data-h="72">3D</button>
-        <button class="range-btn" data-h="168">7D</button>
+        <div class="station-name" id="station-name">Loading...</div>
+        <div class="station-meta" id="station-meta"></div>
       </div>
     </div>
-    <div id="chart-wrap">
-      <div class="info-state">Loading chart data…</div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <select class="station-select" id="station-select" onchange="loadStation(this.value)">
+        <option value="">Select station...</option>
+      </select>
+      <div class="badge badge-live" id="freshness-badge">
+        <span class="badge-dot"></span> <span id="freshness-text">Loading</span>
+      </div>
     </div>
   </div>
-
 </div>
 
-<footer class="footer">
-  LoEco Weather Station Network &nbsp;|&nbsp;
-  <a href="https://github.com/chriswalkerbrown/LoEco" target="_blank" rel="noopener">GitHub</a>
-</footer>
+<div class="container">
+  <!-- ═══ WBGT ALERT ═══ -->
+  <div class="wbgt-banner" id="wbgt-banner">
+    <span class="wbgt-icon"></span>
+    <span id="wbgt-text"></span>
+  </div>
 
-<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <!-- ═══ METRIC CARDS ═══ -->
+  <div class="metrics-grid" id="metrics-grid"></div>
+
+  <!-- ═══ INTERACTIVE CHART ═══ -->
+  <div class="chart-section">
+    <div class="chart-panel">
+      <div class="chart-toolbar">
+        <div class="chart-title" id="chart-title">Temperature</div>
+        <div class="range-btns">
+          <button class="range-btn active" onclick="setRange(24, this)">24H</button>
+          <button class="range-btn" onclick="setRange(72, this)">3D</button>
+          <button class="range-btn" onclick="setRange(168, this)">7D</button>
+        </div>
+      </div>
+      <div class="chart-wrap" id="chart-wrap">
+        <div class="loading"><div class="spinner"></div> Loading chart data...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PRE-RENDERED CHARTS ═══ -->
+  <div class="charts-grid-title">7-Day Overviews</div>
+  <div class="charts-grid" id="charts-grid"></div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div class="footer">
+    Data updated every 10 minutes &middot; Powered by <a href="https://meteoa.com">MeteoA</a> &middot; &copy; 2026
+  </div>
+</div>
+
 <script>
-const sid = new URLSearchParams(location.search).get('station')
-          || location.pathname.match(/\/stations\/([^\/]+)/)?.[1];
+/* ═══════════════════════════════════════════════════════════
+   CONFIGURATION
+   ═══════════════════════════════════════════════════════════ */
+const BASE = location.origin;
+const DEFAULT_STATION = new URLSearchParams(location.search).get('station') || location.pathname.match(/\/stations\/([^\/]+)/)?.[1] || 'EUX004_EOC';
 
-if (!sid) {
-  document.getElementById('mg').innerHTML =
-    '<div class="info-state err" style="grid-column:1/-1">No station specified — use ?station=STATION_ID</div>';
-}
-
-function parseUTC(s) {
-  if (!s) return null;
-  try { return new Date(s.replace(' UTC','Z').replace(' ','T')); } catch { return null; }
-}
-
-function relTime(ms) {
-  const m = Math.round((Date.now() - ms) / 60000);
-  if (m < 2)  return 'just now';
-  if (m < 60) return m + ' min ago';
-  const h = Math.round(m / 60);
-  if (h < 24) return h + 'h ago';
-  return Math.round(h / 24) + 'd ago';
-}
-
-function heatBadge(v) {
-  if (v == null)  return { text: '—',       cls: 'limited' };
-  if (v < 21)     return { text: 'Safe',    cls: 'safe'    };
-  if (v < 26)     return { text: 'Limited', cls: 'limited' };
-  if (v < 29)     return { text: 'Caution', cls: 'caution' };
-  if (v < 32)     return { text: 'Danger',  cls: 'danger'  };
-  return            { text: 'Extreme',  cls: 'extreme' };
-}
-
-function rollingAvg(timestamps, values, windowMs) {
-  const out = new Array(values.length).fill(null);
-  for (let i = 0; i < values.length; i++) {
-    if (values[i] == null) continue;
-    const t   = new Date(timestamps[i]).getTime();
-    const cut = t - windowMs;
-    let sum = 0, n = 0;
-    for (let j = i; j >= 0; j--) {
-      if (new Date(timestamps[j]).getTime() < cut) break;
-      if (values[j] != null) { sum += values[j]; n++; }
-    }
-    if (n > 0) out[i] = Math.round(sum / n * 10) / 10;
-  }
-  return out;
-}
-
-function calcWeeklyRain(cd) {
-  const src = cd?.rain_daily_mm;
-  if (!src?.timestamps) return null;
-  const byDay = {};
-  src.timestamps.forEach((t, i) => {
-    const day = t.substring(0, 10);
-    const v   = src.raw[i];
-    if (v != null && (!(day in byDay) || v > byDay[day])) byDay[day] = v;
-  });
-  const total = Object.values(byDay).reduce((a, b) => a + b, 0);
-  return Math.round(total * 10) / 10;
-}
-
-const ICONS = {
-  temp:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0zm-3 5a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>`,
-  wbgt:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
-  humidity: `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0z"/></svg>`,
-  pressure: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`,
-  wind:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>`,
-  rain:     `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/><line x1="8" y1="16" x2="8" y2="21"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="16" y1="16" x2="16" y2="21"/></svg>`,
-  solar:    `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
-  weekrain: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>`,
+/* Metric display config: key -> label, unit, color, format */
+const METRIC_DEFS = {
+  temperature_c:   { label: 'Temperature',     unit: '\u00b0C',    color: '#ff6b6b', fmt: v => v?.toFixed(1) },
+  humidity_pct:    { label: 'Humidity',         unit: '%',     color: '#38bdf8', fmt: v => v?.toFixed(0) },
+  pressure_hpa:    { label: 'Pressure',         unit: 'hPa',   color: '#818cf8', fmt: v => v?.toFixed(1) },
+  wind_speed_ms:   { label: 'Wind Speed',       unit: 'm/s',   color: '#34d399', fmt: v => v?.toFixed(1) },
+  rain_rate_mmhr:  { label: 'Rain Rate',        unit: 'mm/hr', color: '#60a5fa', fmt: v => v?.toFixed(1) },
+  solar_wm2:       { label: 'Solar Radiation',  unit: 'W/m\u00b2',  color: '#fbbf24', fmt: v => v?.toFixed(0) },
+  wbgt_c:          { label: 'WBGT',             unit: '\u00b0C',    color: '#f97316', fmt: v => v?.toFixed(1) },
+  dew_point_c:     { label: 'Dew Point',        unit: '\u00b0C',    color: '#a78bfa', fmt: v => v?.toFixed(1) },
+  feels_like_c:    { label: 'Feels Like',       unit: '\u00b0C',    color: '#fb7185', fmt: v => v?.toFixed(1) },
+  wind_gust_ms:    { label: 'Wind Gust',        unit: 'm/s',   color: '#2dd4bf', fmt: v => v?.toFixed(1) },
+  wind_dir_deg:    { label: 'Wind Direction',    unit: '\u00b0',     color: '#94a3b8', fmt: v => v?.toFixed(0) },
+  rain_daily_mm:   { label: 'Daily Rain',       unit: 'mm',    color: '#3b82f6', fmt: v => v?.toFixed(1) },
+  globe_temp_c:    { label: 'Globe Temp',        unit: '\u00b0C',    color: '#e879f9', fmt: v => v?.toFixed(1) },
 };
 
-const METRICS = [
-  { key: 'temperature_c',  label: 'Temperature',      unit: '°C',   icon: 'temp',     dp: 1 },
-  { key: 'wbgt_c',         label: 'WBGT',             unit: '°C',   icon: 'wbgt',     dp: 1, isWbgt: true },
-  { key: 'humidity_pct',   label: 'Humidity',         unit: '%',    icon: 'humidity', dp: 0 },
-  { key: 'pressure_hpa',   label: 'Pressure',         unit: 'hPa',  icon: 'pressure', dp: 1 },
-  { key: 'wind_speed_ms',  label: 'Wind Speed',       unit: 'm/s',  icon: 'wind',     dp: 1 },
-  { key: 'rain_rate_mmhr', label: 'Rain Rate',        unit: 'mm/h', icon: 'rain',     dp: 1 },
-  { key: 'solar_wm2',      label: 'Global Radiation', unit: 'W/m²', icon: 'solar',    dp: 0 },
-  { key: '__weekly_rain',  label: 'Weekly Rainfall',  unit: 'mm',   icon: 'weekrain', dp: 1, computed: true },
+/* Which metrics to show as primary cards (top row) */
+const PRIMARY_METRICS = [
+  'temperature_c', 'humidity_pct', 'pressure_hpa', 'wind_speed_ms',
+  'rain_rate_mmhr', 'solar_wm2', 'wbgt_c', 'feels_like_c'
 ];
 
-function renderBoxes(stats, weeklyRain) {
-  const mg = document.getElementById('mg');
-  mg.innerHTML = '';
-  const mx = stats.metrics || {};
+/* PNG chart images to display */
+const CHART_IMAGES = [
+  { key: 'combined_overview_latest.png', label: 'Combined Overview' },
+  { key: 'temperature_c_latest.png', label: 'Temperature' },
+  { key: 'humidity_pct_latest.png', label: 'Humidity' },
+  { key: 'pressure_hpa_latest.png', label: 'Pressure' },
+  { key: 'wind_speed_ms_latest.png', label: 'Wind Speed' },
+  { key: 'wind_gust_ms_latest.png', label: 'Wind Gust' },
+  { key: 'wind_dir_deg_latest.png', label: 'Wind Direction' },
+  { key: 'solar_wm2_latest.png', label: 'Solar Radiation' },
+  { key: 'rain_daily_mm_latest.png', label: 'Daily Rain' },
+  { key: 'rain_rate_mmhr_latest.png', label: 'Rain Rate' },
+  { key: 'dew_point_c_latest.png', label: 'Dew Point' },
+  { key: 'feels_like_c_latest.png', label: 'Feels Like' },
+  { key: 'wbgt_c_latest.png', label: 'WBGT Heat Stress' },
+  { key: 'globe_temp_c_latest.png', label: 'Globe Temperature' },
+];
 
-  METRICS.forEach(m => {
-    let val = null, minv = null, maxv = null;
-    if (m.computed) {
-      val = weeklyRain;
-    } else {
-      const md = mx[m.key];
-      if (!md) return;
-      val  = md.latest;
-      minv = md.min;
-      maxv = md.max;
-    }
+/* ═══════════════════════════════════════════════════════════
+   STATE
+   ═══════════════════════════════════════════════════════════ */
+let statsData = null;
+let chartData = null;
+let activeMetric = 'temperature_c';
+let currentRange = 24;
+let currentStation = DEFAULT_STATION;
 
-    const valStr  = val != null ? Number(val).toFixed(m.dp) : '—';
-    const unitStr = val != null ? m.unit : '';
-    const rangeStr = (minv != null && maxv != null)
-      ? `7d: ${Number(minv).toFixed(m.dp)}–${Number(maxv).toFixed(m.dp)} ${m.unit}`
-      : '';
+/* ═══════════════════════════════════════════════════════════
+   STATION SELECTOR
+   ═══════════════════════════════════════════════════════════ */
+async function loadStationList() {
+  try {
+    const res = await fetch(`${BASE}/stations_summary.json`);
+    const data = await res.json();
+    const sel = document.getElementById('station-select');
+    const stations = Array.isArray(data) ? data : (data.stations || []);
+    stations.sort((a, b) => (a.name || a.station || '').localeCompare(b.name || b.station || ''));
+    stations.forEach(s => {
+      const id = s.station || s.id || s.name;
+      const label = (s.name || id).replace(/_/g, ' ');
+      const opt = document.createElement('option');
+      opt.value = id; opt.textContent = label;
+      if (id === currentStation) opt.selected = true;
+      sel.appendChild(opt);
+    });
+  } catch (e) { console.warn('Could not load station list:', e); }
+}
 
-    let extra = '';
-    if (m.isWbgt && val != null) {
-      const b = heatBadge(val);
-      extra = `<div class="heat-badge ${b.cls}">${b.text}</div>`;
-    }
+function loadStation(id) {
+  if (!id) return;
+  currentStation = id;
+  const url = new URL(location.href);
+  url.searchParams.set('station', id);
+  history.replaceState(null, '', url);
+  init();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DATA LOADING
+   ═══════════════════════════════════════════════════════════ */
+async function fetchStats() {
+  const res = await fetch(`${BASE}/stations/${currentStation}/statistics.json`);
+  return res.json();
+}
+
+async function fetchChartData() {
+  const res = await fetch(`${BASE}/stations/${currentStation}/chart_data.json`);
+  return res.json();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   FRESHNESS BADGE
+   ═══════════════════════════════════════════════════════════ */
+function updateFreshness(generated_utc) {
+  const badge = document.getElementById('freshness-badge');
+  const text = document.getElementById('freshness-text');
+  if (!generated_utc) { text.textContent = 'Unknown'; return; }
+
+  const gen = new Date(generated_utc.replace(' UTC', 'Z').replace(' ', 'T'));
+  const ageMin = (Date.now() - gen.getTime()) / 60000;
+
+  badge.className = 'badge';
+  if (ageMin < 30) {
+    badge.classList.add('badge-live');
+    text.textContent = `Live \u00b7 ${Math.round(ageMin)}m ago`;
+  } else if (ageMin < 120) {
+    badge.classList.add('badge-warn');
+    text.textContent = `${Math.round(ageMin)}m ago`;
+  } else {
+    badge.classList.add('badge-stale');
+    const hrs = Math.round(ageMin / 60);
+    text.textContent = `Stale \u00b7 ${hrs}h ago`;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   WBGT ALERT
+   ═══════════════════════════════════════════════════════════ */
+function updateWBGT(metrics) {
+  const banner = document.getElementById('wbgt-banner');
+  const wbgt = metrics?.wbgt_c?.latest;
+  if (wbgt == null) { banner.style.display = 'none'; return; }
+
+  let level, label, icon;
+  if (wbgt < 21)      { level = 'safe';    label = 'Safe \u2014 No heat stress risk'; icon = 'OK'; }
+  else if (wbgt < 26) { level = 'limited'; label = `Limited risk \u2014 WBGT ${wbgt.toFixed(1)}\u00b0C`; icon = '!'; }
+  else if (wbgt < 29) { level = 'caution'; label = `Caution \u2014 WBGT ${wbgt.toFixed(1)}\u00b0C \u2014 Reduce heavy outdoor work`; icon = '!!'; }
+  else if (wbgt < 32) { level = 'danger';  label = `Danger \u2014 WBGT ${wbgt.toFixed(1)}\u00b0C \u2014 Limit outdoor exposure`; icon = '!!!'; }
+  else                { level = 'extreme'; label = `Extreme \u2014 WBGT ${wbgt.toFixed(1)}\u00b0C \u2014 Stop all outdoor activity`; icon = 'ALERT'; }
+
+  banner.className = `wbgt-banner ${level}`;
+  banner.style.display = 'flex';
+  document.querySelector('.wbgt-icon').textContent = icon;
+  document.getElementById('wbgt-text').textContent = label;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   METRIC CARDS
+   ═══════════════════════════════════════════════════════════ */
+function renderMetrics(metrics) {
+  const grid = document.getElementById('metrics-grid');
+  grid.innerHTML = '';
+
+  const available = PRIMARY_METRICS.filter(k => metrics[k]?.latest != null);
+
+  available.forEach(key => {
+    const m = metrics[key];
+    const def = METRIC_DEFS[key] || {};
+    const val = def.fmt ? def.fmt(m.latest) : m.latest;
+
+    const trendClass = m.trend === 'up' ? 'trend-up' : m.trend === 'down' ? 'trend-down' : 'trend-stable';
+    const trendArrow = m.trend === 'up' ? '\u2191' : m.trend === 'down' ? '\u2193' : '\u2192';
+    const trendVal = m.trend_value != null ? Math.abs(m.trend_value).toFixed(1) : '';
 
     const card = document.createElement('div');
-    card.className = 'mc';
+    card.className = `metric-card${key === activeMetric ? ' active' : ''}`;
+    card.style.setProperty('--metric-color', def.color || '#38bdf8');
+    card.onclick = () => selectMetric(key);
     card.innerHTML = `
-      <div class="mc-label">${ICONS[m.icon] || ''}${m.label}</div>
-      <div class="mc-value">${valStr}<span class="mc-unit">${unitStr}</span></div>
-      ${rangeStr ? `<div class="mc-range">${rangeStr}</div>` : ''}
-      ${extra}`;
-    mg.appendChild(card);
+      <div class="metric-label">${def.label || m.label || key}</div>
+      <div class="metric-value-row">
+        <span class="metric-value">${val ?? '\u2014'}</span>
+        <span class="metric-unit">${def.unit || m.unit || ''}</span>
+      </div>
+      <div class="metric-trend ${trendClass}">${trendArrow} ${trendVal} ${def.unit || m.unit || ''} (7d trend)</div>
+      <div class="metric-range">
+        <span>\u25bc ${def.fmt ? def.fmt(m.min) : m.min}</span>
+        <span>\u25b2 ${def.fmt ? def.fmt(m.max) : m.max}</span>
+        <span>\u03bc ${def.fmt ? def.fmt(m.mean) : m.mean}</span>
+      </div>
+    `;
+    grid.appendChild(card);
   });
 }
 
-let chartData   = null;
-let activeHours = 24;
+function selectMetric(key) {
+  activeMetric = key;
+  document.querySelectorAll('.metric-card').forEach((c, i) => {
+    const k = PRIMARY_METRICS.filter(k => statsData?.metrics?.[k]?.latest != null)[i];
+    c.classList.toggle('active', k === key);
+  });
+  renderChart();
+}
 
-function renderChart(hours) {
-  activeHours = hours;
+/* ═══════════════════════════════════════════════════════════
+   INTERACTIVE PLOTLY CHART
+   ═══════════════════════════════════════════════════════════ */
+function computeRollingAvg(values, timestamps, windowMs) {
+  const result = new Array(values.length);
+  const times = timestamps.map(t => new Date(t).getTime());
+  for (let i = 0; i < values.length; i++) {
+    if (values[i] == null) { result[i] = null; continue; }
+    let sum = 0, count = 0;
+    for (let j = i; j >= 0; j--) {
+      if (times[i] - times[j] > windowMs) break;
+      if (values[j] != null) { sum += values[j]; count++; }
+    }
+    result[i] = count > 0 ? sum / count : null;
+  }
+  return result;
+}
+
+function renderChart() {
   const wrap = document.getElementById('chart-wrap');
-  if (!chartData) { wrap.innerHTML = '<div class="info-state">No chart data</div>'; return; }
+  const data = chartData?.[activeMetric];
+  const def = METRIC_DEFS[activeMetric] || {};
 
-  const src = chartData.temperature_c;
-  if (!src?.timestamps?.length) {
-    wrap.innerHTML = '<div class="info-state err">No temperature series</div>';
+  document.getElementById('chart-title').textContent = `${def.label || activeMetric} \u2014 Interactive`;
+
+  if (!data?.timestamps?.length) {
+    wrap.innerHTML = '<div class="loading">No chart data available for this metric</div>';
     return;
   }
 
-  const now = Date.now(), cutMs = hours * 3600000;
-  const ts = [], raw = [];
-  src.timestamps.forEach((t, i) => {
-    if (now - new Date(t).getTime() <= cutMs) { ts.push(t); raw.push(src.raw[i]); }
-  });
+  const cutoff = new Date(Date.now() - currentRange * 3600000);
+  const indices = [];
+  for (let i = 0; i < data.timestamps.length; i++) {
+    if (new Date(data.timestamps[i]) >= cutoff) indices.push(i);
+  }
 
-  if (!ts.length) { wrap.innerHTML = '<div class="info-state">No data in range</div>'; return; }
+  const ts = indices.map(i => data.timestamps[i]);
+  const raw = indices.map(i => data.raw[i]);
+  const avg3h = computeRollingAvg(raw, ts, 3 * 3600000);
 
-  const avg = rollingAvg(ts, raw, 10800000);
-
-  const layout = {
-    paper_bgcolor: '#161637', plot_bgcolor: '#161637',
-    font: { family: "'JetBrains Mono', monospace", color: '#8888aa', size: 10 },
-    margin: { t: 12, r: 20, b: 46, l: 52 },
-    hovermode: 'x unified',
-    hoverlabel: { bgcolor: '#1e1e40', bordercolor: '#252555', font: { color: '#e8e8f0', size: 11 } },
-    legend: { orientation: 'h', x: 0, y: 1.05, xanchor: 'left', yanchor: 'bottom', font: { size: 10 }, bgcolor: 'rgba(0,0,0,0)' },
-    xaxis: {
-      type: 'date', gridcolor: 'rgba(37,37,85,0.6)', linecolor: '#252555',
-      tickformat: hours <= 24 ? '%H:%M' : hours <= 72 ? '%a %H:%M' : '%d %b',
-      nticks: hours <= 24 ? 12 : 8, tickfont: { size: 10 }, fixedrange: true,
-    },
-    yaxis: {
-      gridcolor: 'rgba(37,37,85,0.6)', linecolor: '#252555',
-      ticksuffix: ' °C', tickfont: { size: 10 }, fixedrange: true,
-    },
+  const rawTrace = {
+    x: ts, y: raw, type: 'scattergl', mode: 'lines',
+    name: 'Raw (5min)',
+    line: { color: def.color || '#38bdf8', width: 1, shape: 'spline' },
+    opacity: 0.5,
+    hovertemplate: `%{y:.1f} ${def.unit || ''}<extra>Raw</extra>`,
+  };
+  const avgTrace = {
+    x: ts, y: avg3h, type: 'scattergl', mode: 'lines',
+    name: '3h Average',
+    line: { color: def.color || '#38bdf8', width: 2.5, shape: 'spline' },
+    hovertemplate: `%{y:.1f} ${def.unit || ''}<extra>3h Avg</extra>`,
   };
 
-  Plotly.newPlot('chart-wrap',
-    [
-      { x: ts, y: raw,  type: 'scatter', mode: 'lines', name: 'Raw',
-        line: { color: 'rgba(69,183,209,0.3)', width: 1 },
-        hovertemplate: '<b>%{x|%d %b %H:%M}</b><br>%{y:.1f} °C<extra></extra>' },
-      { x: ts, y: avg,  type: 'scatter', mode: 'lines', name: '3h avg',
-        line: { color: '#45b7d1', width: 2.5 },
-        hovertemplate: '<b>%{x|%d %b %H:%M}</b><br>%{y:.1f} °C<extra></extra>' },
-    ],
-    layout,
-    { responsive: true, displayModeBar: false, scrollZoom: false, staticPlot: false }
-  );
+  const layout = {
+    paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+    margin: { l: 55, r: 20, t: 10, b: 40 },
+    font: { family: '-apple-system, Inter, sans-serif', color: '#8899aa', size: 12 },
+    xaxis: {
+      gridcolor: '#1e2d3d', gridwidth: 1,
+      tickformat: currentRange <= 24 ? '%H:%M' : '%b %d %H:%M',
+      fixedrange: true,
+    },
+    yaxis: {
+      gridcolor: '#1e2d3d', gridwidth: 1,
+      title: { text: def.unit || '', standoff: 10 },
+      fixedrange: true,
+    },
+    legend: { x: 0, y: 1.05, orientation: 'h', font: { size: 11 } },
+    hovermode: 'x unified',
+    hoverlabel: { bgcolor: '#1a2332', bordercolor: '#2a3a4e', font: { color: '#e2e8f0' } },
+  };
+
+  const config = {
+    responsive: true, displayModeBar: false,
+    scrollZoom: false, staticPlot: false,
+  };
+
+  Plotly.react(wrap, [rawTrace, avgTrace], layout, config);
 }
 
-async function load() {
-  if (!sid) return;
+function setRange(hours, btn) {
+  currentRange = hours;
+  document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderChart();
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PNG CHART IMAGES
+   ═══════════════════════════════════════════════════════════ */
+function renderChartImages() {
+  const grid = document.getElementById('charts-grid');
+  grid.innerHTML = '';
+  CHART_IMAGES.forEach(img => {
+    const url = `${BASE}/stations/${currentStation}/${img.key}`;
+    const card = document.createElement('div');
+    card.className = 'chart-image-card';
+    card.innerHTML = `
+      <div class="card-header">${img.label}</div>
+      <img src="${url}" alt="${img.label}" loading="lazy" onerror="this.parentElement.style.display='none'">
+    `;
+    grid.appendChild(card);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INIT
+   ═══════════════════════════════════════════════════════════ */
+async function init() {
+  const name = currentStation.replace(/_/g, ' ');
+  document.getElementById('station-name').textContent = name;
+  document.getElementById('station-meta').textContent = 'Loading data...';
+  document.title = `${name} \u2014 MeteoA Dashboard`;
+
   try {
-    const sr = await fetch(`stations/${sid}/statistics.json`);
-    if (!sr.ok) throw new Error(`Statistics: HTTP ${sr.status}`);
-    const stats = await sr.json();
+    const [stats, charts] = await Promise.all([fetchStats(), fetchChartData()]);
+    statsData = stats;
+    chartData = charts;
 
-    const name = stats.display_name || sid.replace(/_/g, ' ');
-    document.getElementById('sn').textContent = name;
-    document.title = `${name} — LoEco Dashboard`;
+    const m = stats.metrics || {};
+    const dateRange = stats.date_range || {};
 
-    const genDate = parseUTC(stats.generated_utc);
-    if (genDate) {
-      const ageMin = (Date.now() - genDate.getTime()) / 60000;
-      const badge  = document.getElementById('badge');
-      document.getElementById('lu').textContent = 'Updated ' + relTime(genDate.getTime());
-      badge.classList.add('show');
-      if (ageMin < 30) {
-        badge.className = 'badge show fresh';
-        badge.innerHTML = '<span class="badge-dot"></span>Live';
-      } else if (ageMin < 120) {
-        badge.className = 'badge show warning';
-        badge.innerHTML = `<span class="badge-dot"></span>${Math.round(ageMin)}m old`;
-      } else {
-        badge.className = 'badge show stale';
-        badge.innerHTML = `<span class="badge-dot"></span>${Math.round(ageMin / 60)}h old`;
-      }
+    document.getElementById('station-meta').textContent =
+      `${stats.record_count || '\u2014'} records \u00b7 ${stats.window_days || 7}-day window \u00b7 ${dateRange.start || ''} \u2192 ${dateRange.end || ''}`;
+
+    updateFreshness(stats.generated_utc);
+    updateWBGT(m);
+    renderMetrics(m);
+
+    // Auto-select first available metric if current isn't available
+    if (!m[activeMetric]?.latest) {
+      const first = PRIMARY_METRICS.find(k => m[k]?.latest != null);
+      if (first) activeMetric = first;
     }
-
-    const cr = await fetch(`stations/${sid}/chart_data.json`);
-    if (!cr.ok) throw new Error(`Chart data: HTTP ${cr.status}`);
-    chartData = await cr.json();
-
-    renderBoxes(stats, calcWeeklyRain(chartData));
-    renderChart(activeHours);
-
-    document.querySelectorAll('.range-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderChart(parseInt(btn.dataset.h, 10));
-      });
-    });
+    renderChart();
+    renderChartImages();
 
   } catch (err) {
-    console.error(err);
-    document.getElementById('mg').innerHTML =
-      `<div class="info-state err" style="grid-column:1/-1">Failed to load: ${err.message}</div>`;
+    console.error('Failed to load station data:', err);
+    document.getElementById('station-meta').textContent = 'Error loading data';
     document.getElementById('chart-wrap').innerHTML =
-      `<div class="info-state err">Chart unavailable</div>`;
+      `<div class="loading" style="color:var(--red)">Failed to load data. Check console for details.</div>`;
   }
 }
 
-load();
+/* Boot */
+loadStationList();
+init();
 </script>
 </body>
 </html>
